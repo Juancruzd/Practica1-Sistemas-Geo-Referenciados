@@ -3,49 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practica1 | Mapa</title>
+    <title>Practica2 | Objeto Navigator</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="scriptpractica2.js" ></script>
     <style>
         body{
-            background-color: #efefef;
+            background-color: yellowgreen;
         }
-        #mapa{    
-                width: 100%;
-                height: 500px;
+        .parrafos{    
+                font-size: 5em;
+        }
+        .texto1{
+            border: #000 solid 1px;
+        }
+        #boton{
+            background-color: white;
+            color: #000;
+            font-size: 30px;
         }
     </style>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="container bg-white rounded shadow-lg">
-            <div class="row m-5">
-                <div class="col-12 p-5">
-                    <h1 class="text-center">Google maps con bootstrap</h1>
-                    <div id="mapa"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        function initMap(){
-        var coordenadas = {
-            lat: 20.917259,
-            lng: -101.742785
-        }
-        var map = new google.maps.Map(
-            document.getElementById('mapa'),
-            {
-                center: coordenadas,
-                zoom: 15
-            }
-        );  
-        var marcador = new google.maps.Marker({position: coordenadas, map: map});
-        }
-    </script>
+    <h1>Ejemplo de navigator</h1>
+    <button id="boton" onclick="obtieneDatos()">Obtienen datos del navegador</button>
+    <p class="parrafos texto1">Este es un parrafo 1</p>
+    <p class="parrafos">Este es un parrafo 2</p>
+    <ul id="navegador">
+    <li></li>
+    <li></li>
+    <li></li> 
+    <li></li>    
+    </ul>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=initMap"
 async defer></script>
 </body>
 
