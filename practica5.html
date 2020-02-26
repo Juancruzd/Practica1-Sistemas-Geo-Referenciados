@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica5 | API InfoWindow</title>
+    <style>
+        #map{
+            height: 600px;
+            width: 100%;
+            background-color: cornsilk;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        function iniciaMapa(){
+
+            var coordenadas = {
+            lat: 20.917259,
+            lng: -101.742785
+        }
+        var map = new google.maps.Map(document.getElementById("map"),{center: { lat: coordenadas.lat,lng: coordenadas.lng},zoom:20});
+        
+        var informacion = new google.maps.InfoWindow;
+
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(function (position){
+                var pos = {
+                    lat: position.coords.latitude, 
+                    lng: position.coords.longitude
+                };
+                ///Actuakes del navegador
+                //informacion.setPosition(pos);
+                ///Estaticas
+                informacion.setPosition(coordenadas);
+                informacion.setContent("Jesus del Monte <br> <img src='foto.jfif'>");
+                informacion.open(map);
+                map.setCenter(pos);
+            });
+          }
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsMYDTaWc3Sr5_WUw2dNySgVHOd1l-PxI&callback=iniciaMapa"
+async defer></script>
+</body>
+</html>
