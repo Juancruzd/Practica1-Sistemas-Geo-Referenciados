@@ -3,7 +3,7 @@ function obtenerUbicacion(){
         navigator.geolocation.getCurrentPosition(muestraPosicion)
     }
     else{
-        alert("no");
+        document.getElementById("mensaje").innerHTML="El navegador con cuenta con geolocalizacion";
     }
     function muestraPosicion(position){
         var coordenas= position.coords.latitude+","+position.coords.longitude;

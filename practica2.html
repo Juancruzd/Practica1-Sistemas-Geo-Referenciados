@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practica2 | Objeto Navigator</title>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="scriptpractica2.js" ></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="js/scriptpractica2.js" ></script>
     
     <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
@@ -27,7 +29,7 @@
     
     <style>
         body{
-            background-color: yellowgreen;
+            background-color: #efefef;
         }
         .parrafos{    
                 font-size: 5em;
@@ -43,20 +45,37 @@
     </style>
 </head>
 <body>
-    <h1>Ejemplo de navigator</h1>
-    <button id="boton" onclick="obtieneDatos()">Obtienen datos del navegador</button>
-    <p class="parrafos texto1">Este es un parrafo 1</p>
-    <p class="parrafos">Este es un parrafo 2</p>
-    <ul id="navegador">
-    <li></li>
-    <li></li>
-    <li></li> 
-    <li></li>    
-    </ul>
+        <!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+      <a href="index.html" class="w3-bar-item w3-button">Inicio</a>
+      <!-- Right-sided navbar links. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+        <a href="#" class="w3-bar-item w3-button">Juan de Dios Guadalupe Cruz Delgado</a>
+      </div>
+    </div>
+  </div>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row m-5">
+                <div class="col-12 p-5">
+                    <h1>Ejemplo de Navigator</h1>
+
+                    <button type="submit" class="w3-button w3-khaki w3-section" id="boton" onclick="obtieneDatos()">Obtiene datos del navegador</button>
+                    <p>Esta es la informacion del navegador</p>
+                    <ul id="navegador">
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-async defer></script>
 </body>
 
 </html>

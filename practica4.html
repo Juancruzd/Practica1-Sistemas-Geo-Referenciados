@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,13 +21,37 @@
     <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <title>Practica4 | API estatica de Google</title>
-    <script src="scriptpractica4.js"></script>
+    <script src="js/scriptpractica4.js"></script> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        body{
+            background-color: #efefef;
+        }
+    </style>
 </head>
 <body>
-    <button onclick="obtenerUbicacion()">Obtener ubicacion</button>
-    <div id="mapa" style="padding-left:50px;border:#ccc 10px;background-color: greenyellow; width: 800px; height: 488px;">
-
+        <!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+      <a href="index.html" class="w3-bar-item w3-button">Inicio</a>
+      <!-- Right-sided navbar links. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+        <a href="#" class="w3-bar-item w3-button">Juan de Dios Guadalupe Cruz Delgado</a>
+      </div>
     </div>
-    
+  </div>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row m-5">
+                <div class="col-12 p-5">
+                    <h5 id="hide">Haz clic para obtener las coordenadas de tu dispositivo</h5>
+                    <button type="submit" class="w3-button w3-khaki w3-section" id="boton" onclick="obtenerUbicacion()">Obtener coordenadas</button>
+                    <p id="mensaje"></p>
+                    <div id="mapa"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

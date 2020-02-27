@@ -21,13 +21,39 @@
     <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <title>Practica3 | Obtener Coordenas</title>
-    <script src="scriptpractica3.js"></script>
+    <script src="js/scriptpractica3.js"></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        body{
+            background-color: #efefef;
+        }
+    </style>
 </head>
 <body>
-    <p>Haz click pa obtener cordenadas</p>
-    <button onclick="getLocation()">Ver cordenadas</button>
-    <p id="demo"></p>
-
+        <!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+      <a href="index.html" class="w3-bar-item w3-button">Inicio</a>
+      <!-- Right-sided navbar links. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+        <a href="#" class="w3-bar-item w3-button">Juan de Dios Guadalupe Cruz Delgado</a>
+      </div>
+    </div>
+  </div>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row m-5">
+                <div class="col-12 p-5">
+                    <h5 id="hide"> Haz click para obtener las coordenadas. </h5>
+                    <button type="submit" class="w3-button  w3-khaki w3-section" id="boton" onclick="getLocation()">Obtener coordenadas</button>
+                    <br>
+                    <p id="demo"></p>
+                </div>
+            </div>
+        </div>
+    </div>
     
 </body>
 </html>
