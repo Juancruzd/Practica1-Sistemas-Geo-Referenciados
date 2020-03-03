@@ -112,7 +112,39 @@
             </div>
         </div>
     </div>
-   
+   <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+                <form>
+                <h5 id="hide"> Actualizar documento. </h5>
+                    <div class="form-group">
+                      <label for="txtCodigoupdate" class="col-12">Codigo nuevo</label>
+                      <input type="number" min="1" class="form-control col-12" id="txtCodigoupdate" placeholder="Codigo nuevo">
+                    </div>
+                    <div class="form-group">
+                      <label for="txtNombreupdate" class="col-12">Nombre nuevo</label><br>
+                      <input type="text" class="form-control col-12" id="txtNombreupdate" placeholder="Nombre nuevo" >
+                    </div>
+                    <br>
+                        <input  type="button" value="Actualizar" class="btn btn-primary col-12 mt-3" onclick="ActualizarRegistro()"/>
+                        <br>
+                  </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="cancelarActualizacion()">Cancelar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
     <script>
         // Your web app's Firebase configuration
@@ -129,7 +161,7 @@
         firebase.initializeApp(firebaseConfig);
         ////
         var db = firebase.firestore();
-        const productoslista = document.querySelector("#lista");
+        //const productoslista = document.querySelector("#lista");
 
         db.collection("productos").onSnapshot({
         // Listen for document metadata changes
@@ -181,17 +213,32 @@
                     tr.appendChild(td3);
 
 
-                    var boton = document.createElement("button");
-                    boton.setAttribute("value", "Eliminar");
-                    boton.setAttribute("class", "btn btn-danger");
-                    boton.setAttribute("OnClick", "EliminarRegistro(" + JSON.stringify( doc.id )+ ")");
-                    boton.setAttribute("id", "boton" + doc.id);
-                    td3.appendChild(boton);
+                    var botonborrar = document.createElement("button");
+                    botonborrar.setAttribute("value", "Eliminar");
+                    botonborrar.setAttribute("class", "btn btn-danger m-1");
+                    botonborrar.setAttribute("OnClick", "EliminarRegistro(" + JSON.stringify( doc.id )+ ")");
+                    botonborrar.setAttribute("id", "botonborrar" + doc.id);
+                    td3.appendChild(botonborrar);
 
-                    var i=document.createElement("i");
-                    i.setAttribute("class", "glyphicon glyphicon-trash");
-                    i.textContent =" Borrar";
-                    boton.appendChild(i);
+                    var iborrar=document.createElement("i");
+                    iborrar.setAttribute("class", "glyphicon glyphicon-trash");
+                    iborrar.textContent =" Borrar";
+                    botonborrar.appendChild(iborrar);
+
+
+                    var botonactualizar = document.createElement("button");
+                    botonactualizar.setAttribute("value", "Actualizar");
+                    botonactualizar.setAttribute("class", "btn btn-success m-1");
+                    botonactualizar.setAttribute("OnClick", "saveidlocalstorage(" + JSON.stringify( doc.id )+ ")");
+                    botonactualizar.setAttribute("id", "botonactualizar" + doc.id);
+                    td3.appendChild(botonactualizar);
+
+                    var iactualizar=document.createElement("i");
+                    iactualizar.setAttribute("class", "glyphicon glyphicon-pencil");
+                    iactualizar.textContent =" Actualizar";
+                    botonactualizar.appendChild(iactualizar);
+
+
 
                 });
             })
@@ -202,7 +249,7 @@
         function agregarRegistro(){
             var codigo = $('#txtCodigo').val();
             var nombre = $('#txtNombre').val();
-            if (codigo !='' && nombre !=""){
+            if (parseInt(codigo) >0 && nombre !=""){
             // Add a new document in collection "cities"
             db.collection("productos").add({
                 codigo: parseInt(codigo),
@@ -210,7 +257,6 @@
             })
             .then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id);
-                ObtenerProductos();
             })
             .catch(function(error) {
                 console.error("Error adding document: ", error);
@@ -222,10 +268,41 @@
         function EliminarRegistro(id){
                 db.collection("productos").doc(id).delete().then(function() {
                 console.log("Document successfully deleted!");
-                ObtenerProductos();
                 }).catch(function(error) {
                     console.error("Error removing document: ", error);
                 });
+        }
+        function saveidlocalstorage(id){
+            ///delete
+            localStorage.removeItem("iddocumentupdate");
+            // Store
+            localStorage.setItem("iddocumentupdate", id);
+            document.getElementById('txtCodigoupdate').value = "";
+            document.getElementById('txtNombreupdate').value = "";
+            $("#myModal").modal('show');
+        }
+        function cancelarActualizacion(){
+            ///delete
+            localStorage.removeItem("iddocumentupdate");
+        }
+        function ActualizarRegistro(){
+                var id = localStorage.getItem("iddocumentupdate");
+                var codigo = $('#txtCodigoupdate').val();
+                var nombre = $('#txtNombreupdate').val();
+                if(parseInt(codigo) >0 && nombre!="" && id != ""){
+                    db.collection("productos").doc(id).update({
+                "codigo": parseInt(codigo),
+                "nombre": nombre
+                }).then(function() {
+                console.log("Document successfully updated!");
+                $("#myModal").modal('hide');
+                }).catch(function(error) {
+                    console.error("Error updating document: ", error);
+                });
+                }else{
+                    console.error("Ingrese codigo y nombre valido y el id");
+                }
+                
         }
     </script>
 
