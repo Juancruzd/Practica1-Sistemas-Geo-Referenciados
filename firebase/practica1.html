@@ -112,7 +112,109 @@
    
 
     <script>
-        var _0x5133=['forEach','textContent','EliminarRegistro(','producto','jdk-67024.firebaseapp.com','innerHTML','nombre','doc','querySelector','initializeApp','jdk-67024.appspot.com','#txtNombre','#lista','then','get','Error\x20getting\x20documents:\x20','Error\x20adding\x20document:\x20','ready','val','collection','add','156274067262','orderBy','productos','Document\x20written\x20with\x20ID:\x20','Document\x20successfully\x20deleted!','firestore','\x20Borrar','class','log','https://jdk-67024.firebaseio.com','glyphicon\x20glyphicon-trash','setAttribute','getElementById','1:156274067262:web:ce191148ff46b892f88e6f','AIzaSyAehJe1oQZOYjOWxWoMSAI1bASKm5uM7IY','boton','append','value','asc','codigo','error','catch','btn\x20btn-danger','createElement','data','Error\x20removing\x20document:\x20','tdbutton'];(function(_0x27e91f,_0x51333f){var _0x5d33c3=function(_0x320ece){while(--_0x320ece){_0x27e91f['push'](_0x27e91f['shift']());}};_0x5d33c3(++_0x51333f);}(_0x5133,0x10b));var _0x5d33=function(_0x27e91f,_0x51333f){_0x27e91f=_0x27e91f-0x0;var _0x5d33c3=_0x5133[_0x27e91f];return _0x5d33c3;};var firebaseConfig={'apiKey':_0x5d33('0x8'),'authDomain':_0x5d33('0x19'),'databaseURL':_0x5d33('0x3'),'projectId':'jdk-67024','storageBucket':_0x5d33('0x1f'),'messagingSenderId':_0x5d33('0x2a'),'appId':_0x5d33('0x7')};firebase[_0x5d33('0x1e')](firebaseConfig);var db=firebase[_0x5d33('0x2f')]();const productoslista=document[_0x5d33('0x1d')](_0x5d33('0x21'));$(document)[_0x5d33('0x26')](function(){ObtenerProductos();});function ObtenerProductos(){db[_0x5d33('0x28')]('productos')[_0x5d33('0x2b')](_0x5d33('0xd'),_0x5d33('0xc'))[_0x5d33('0x23')]()[_0x5d33('0x22')](function(_0x62ec48){document[_0x5d33('0x6')]('lista')[_0x5d33('0x1a')]='';_0x62ec48[_0x5d33('0x15')](function(_0x5a83a7){console[_0x5d33('0x2')](_0x5a83a7['id'],'\x20=>\x20',_0x5a83a7[_0x5d33('0x12')]());var _0x5f5d17=document['createElement']('tr');_0x5f5d17[_0x5d33('0x5')](_0x5d33('0x1'),'');_0x5f5d17['setAttribute']('id',_0x5d33('0x18')+_0x5a83a7['id']);var _0x108148=document[_0x5d33('0x6')]('lista');_0x108148[_0x5d33('0xa')](_0x5f5d17);var _0x33b2c1=document[_0x5d33('0x6')]('producto'+_0x5a83a7['id']);var _0x3e3bb3=document[_0x5d33('0x11')]('th');_0x3e3bb3[_0x5d33('0x5')](_0x5d33('0x1'),'');_0x3e3bb3[_0x5d33('0x16')]=_0x5a83a7[_0x5d33('0x12')]()[_0x5d33('0xd')];_0x3e3bb3[_0x5d33('0x5')]('id',_0x5d33('0xd')+_0x5a83a7['id']);_0x33b2c1[_0x5d33('0xa')](_0x3e3bb3);var _0x5901d1=document[_0x5d33('0x11')]('td');_0x5901d1[_0x5d33('0x5')]('class','');_0x5901d1[_0x5d33('0x16')]=_0x5a83a7[_0x5d33('0x12')]()[_0x5d33('0x1b')];_0x33b2c1[_0x5d33('0xa')](_0x5901d1);var _0x50d9df=document[_0x5d33('0x11')]('td');_0x50d9df[_0x5d33('0x5')]('id',_0x5d33('0x14')+_0x5a83a7['id']);_0x33b2c1[_0x5d33('0xa')](_0x50d9df);var _0x302fec=document[_0x5d33('0x11')]('button');_0x302fec[_0x5d33('0x5')](_0x5d33('0xb'),'Eliminar');_0x302fec[_0x5d33('0x5')](_0x5d33('0x1'),_0x5d33('0x10'));_0x302fec['setAttribute']('OnClick',_0x5d33('0x17')+JSON['stringify'](_0x5a83a7['id'])+')');_0x302fec['setAttribute']('id',_0x5d33('0x9')+_0x5a83a7['id']);_0x50d9df[_0x5d33('0xa')](_0x302fec);var _0xc4e25a=document[_0x5d33('0x11')]('i');_0xc4e25a['setAttribute'](_0x5d33('0x1'),_0x5d33('0x4'));_0xc4e25a[_0x5d33('0x16')]=_0x5d33('0x0');_0x302fec[_0x5d33('0xa')](_0xc4e25a);});})[_0x5d33('0xf')](function(_0x312e39){console[_0x5d33('0x2')](_0x5d33('0x24'),_0x312e39);});}function agregarRegistro(){var _0x12caad=$('#txtCodigo')[_0x5d33('0x27')]();var _0x1135dc=$(_0x5d33('0x20'))[_0x5d33('0x27')]();if(_0x12caad!=''&&_0x1135dc!=''){db['collection'](_0x5d33('0x2c'))[_0x5d33('0x29')]({'codigo':parseInt(_0x12caad),'nombre':_0x1135dc})[_0x5d33('0x22')](function(_0x31ab3e){console[_0x5d33('0x2')](_0x5d33('0x2d'),_0x31ab3e['id']);ObtenerProductos();})[_0x5d33('0xf')](function(_0x16a313){console[_0x5d33('0xe')](_0x5d33('0x25'),_0x16a313);});}else{}}function EliminarRegistro(_0x32b713){db[_0x5d33('0x28')]('productos')[_0x5d33('0x1c')](_0x32b713)['delete']()[_0x5d33('0x22')](function(){console[_0x5d33('0x2')](_0x5d33('0x2e'));ObtenerProductos();})[_0x5d33('0xf')](function(_0x5db718){console[_0x5d33('0xe')](_0x5d33('0x13'),_0x5db718);});}
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAehJe1oQZOYjOWxWoMSAI1bASKm5uM7IY",
+            authDomain: "jdk-67024.firebaseapp.com",
+            databaseURL: "https://jdk-67024.firebaseio.com",
+            projectId: "jdk-67024",
+            storageBucket: "jdk-67024.appspot.com",
+            messagingSenderId: "156274067262",
+            appId: "1:156274067262:web:ce191148ff46b892f88e6f"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        ////
+        var db = firebase.firestore();
+        const productoslista = document.querySelector("#lista");
+
+        ////Obtener lista de productos
+        $(document).ready(function () {
+            ObtenerProductos();
+        });
+        function ObtenerProductos(){
+        db.collection("productos").orderBy("codigo", "asc").get()
+            .then(function (querySnapshot) {
+                
+                document.getElementById('lista').innerHTML = "";
+                querySnapshot.forEach(function (doc) {
+                    // doc.data() is never undefined for query doc snapshots
+                    console.log(doc.id, " => ", doc.data());
+
+                    var x = document.createElement("tr");
+                    x.setAttribute("class", "");
+                    x.setAttribute("id", "producto" + doc.id);
+                    
+                    var id = document.getElementById('lista');
+                    id.append(x);
+
+
+                    var tr = document.getElementById("producto" + doc.id);
+
+                    var td1 = document.createElement("th");
+                    td1.setAttribute("class", "");
+                    td1.textContent =  doc.data().codigo;
+                    td1.setAttribute("id", "codigo" + doc.id);
+                    tr.append(td1);
+
+                    var td2 = document.createElement("td");
+                    td2.setAttribute("class", "");
+                    td2.textContent =  doc.data().nombre;
+                    tr.append(td2);
+
+                    var td3 = document.createElement("td");
+                    td3.setAttribute("id", "tdbutton" + doc.id);
+                    tr.append(td3);
+
+
+                    var boton = document.createElement("button");
+                    boton.setAttribute("value", "Eliminar");
+                    boton.setAttribute("class", "btn btn-danger");
+                    boton.setAttribute("OnClick", "EliminarRegistro(" + JSON.stringify( doc.id )+ ")");
+                    boton.setAttribute("id", "boton" + doc.id);
+                    td3.append(boton);
+
+                    var i=document.createElement("i");
+                    i.setAttribute("class", "glyphicon glyphicon-trash");
+                    i.textContent =" Borrar";
+                    boton.append(i);
+
+                });
+
+                
+            })
+            .catch(function (error) {
+                console.log("Error getting documents: ", error);
+            });
+        }
+        function agregarRegistro(){
+            var codigo = $('#txtCodigo').val();
+            var nombre = $('#txtNombre').val();
+            if (codigo !='' && nombre !=""){
+            // Add a new document in collection "cities"
+            db.collection("productos").add({
+                codigo: parseInt(codigo),
+                nombre: nombre
+            })
+            .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+                ObtenerProductos();
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
+            }else{
+
+            }
+        }
+        function EliminarRegistro(id){
+                db.collection("productos").doc(id).delete().then(function() {
+                console.log("Document successfully deleted!");
+                ObtenerProductos();
+                }).catch(function(error) {
+                    console.error("Error removing document: ", error);
+                });
+        }
     </script>
 
 
