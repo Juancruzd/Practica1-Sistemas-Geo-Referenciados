@@ -43,7 +43,7 @@
         #contenedorpracticas {
             width: 100%;
         }
-                .container {
+        .container {
         padding: 2rem 0rem;
         }
 
@@ -131,6 +131,15 @@
         var db = firebase.firestore();
         const productoslista = document.querySelector("#lista");
 
+        db.collection("productos").onSnapshot({
+        // Listen for document metadata changes
+        includeMetadataChanges: true
+        }, function(doc) {
+            ObtenerProductos();
+            console.log(doc);
+        });
+
+
         ////Obtener lista de productos
         $(document).ready(function () {
             ObtenerProductos();
@@ -142,7 +151,9 @@
                 document.getElementById('lista').innerHTML = "";
                 querySnapshot.forEach(function (doc) {
                     // doc.data() is never undefined for query doc snapshots
-                    console.log(doc.id, " => ", doc.data());
+                    
+                    ///imprimir objeto en consola
+                    //console.log(doc.id, " => ", doc.data());
 
                     var x = document.createElement("tr");
                     x.setAttribute("class", "");
