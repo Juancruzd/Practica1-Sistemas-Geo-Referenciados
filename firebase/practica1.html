@@ -79,13 +79,21 @@
         <div class="container">
             <div class="row m-5">
                 <div class="col-12 p-5">
+                    <form>
                     <h5 id="hide"> Registrar un nuevo producto. </h5>
-                    <form id="form">
-                        <input type="text" name="nombre" placeholder="Nombre">
-                        <input type="text" name="codigo" placeholder="Codigo">
-                        <button class="w3-button  w3-khaki w3-section" type="submit">Agregar</button>
-                    </form>
-                    <table class="table mt-5">
+                        <div class="form-group">
+                          <label for="txtCodigo" class="col-12">Codigo</label>
+                          <input type="number" min="1" class="form-control col-lg-4 col-sm-12" id="txtCodigo" placeholder="Codigo">
+                        </div>
+                        <div class="form-group">
+                          <label for="txtNombre" class="col-12">Nombre</label><br>
+                          <input type="text" class="form-control col-12 col-lg-4 col-sm-12" id="txtNombre" placeholder="Nombre" >
+                        </div>
+                        <br>
+                            <input  type="button" value="Registrar" class="btn btn-primary col-lg-4 col-sm-12 mt-3" onclick="agregarRegistro()"/>
+                            <br>
+                      </form>
+                    <table  class="table table-bordered mt-5">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -121,7 +129,11 @@
         const productoslista = document.querySelector("#lista");
 
         ////Obtener lista de productos
-        db.collection("productos").get()
+        $(document).ready(function () {
+            ObtenerProductos();
+        });
+        function ObtenerProductos(){
+        db.collection("productos").orderBy("codigo", "asc").get()
             .then(function (querySnapshot) {
                 
                 document.getElementById('lista').innerHTML = "";
@@ -149,13 +161,17 @@
                     td2.textContent =  doc.data().nombre;
                     tr.append(td2);
 
+                    var td3 = document.createElement("td");
+                    td3.setAttribute("id", "tdbutton" + doc.id);
+                    tr.append(td3);
+
 
                     var boton = document.createElement("button");
                     boton.setAttribute("value", "Eliminar");
-                    boton.setAttribute("class", "btn btn-danger mt-3");
-                    boton.setAttribute("OnClick", "borrarproducto(" + doc.id + ")");
+                    boton.setAttribute("class", "btn btn-danger");
+                    boton.setAttribute("OnClick", "EliminarRegistro(" + JSON.stringify( doc.id )+ ")");
                     boton.setAttribute("id", "boton" + doc.id);
-                    tr.append(boton);
+                    td3.append(boton);
 
                     var i=document.createElement("i");
                     i.setAttribute("class", "glyphicon glyphicon-trash");
@@ -169,6 +185,35 @@
             .catch(function (error) {
                 console.log("Error getting documents: ", error);
             });
+        }
+        function agregarRegistro(){
+            var codigo = $('#txtCodigo').val();
+            var nombre = $('#txtNombre').val();
+            if (codigo !='' && nombre !=""){
+            // Add a new document in collection "cities"
+            db.collection("productos").add({
+                codigo: parseInt(codigo),
+                nombre: nombre
+            })
+            .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+                ObtenerProductos();
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
+            }else{
+
+            }
+        }
+        function EliminarRegistro(id){
+                db.collection("productos").doc(id).delete().then(function() {
+                console.log("Document successfully deleted!");
+                ObtenerProductos();
+                }).catch(function(error) {
+                    console.error("Error removing document: ", error);
+                });
+        }
     </script>
 
 
