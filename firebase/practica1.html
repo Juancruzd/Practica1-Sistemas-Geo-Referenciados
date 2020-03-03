@@ -23,9 +23,10 @@
     <meta name="msapplication-TileImage" content="../img/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Practica1 Firebase</title>
+    <title>Practica1 Firebase | Lista de productos</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
     <style>
         body{
             background-color: #efefef;
@@ -37,14 +38,19 @@
     </style>
 </head>
 <body>
-
-
-
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-firestore.js"></script>
+    
+    <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
+<h1>Lista de Productos</h1>
+<form id="form">
+    <input type="text" name="nombre" placeholder="Nombre">
+    <input type="text" name="codigo" placeholder="Codigo">
+    <button type="submit">Agregar</button>
+</form>
+<ul id="lista"></ul>
 
 <script>
   // Your web app's Firebase configuration
@@ -59,7 +65,23 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  ////
+  var db = firebase.firestore();
+  const productoslista=document.querySelector("#lista");
+  
+    
+    db.collection("productos").get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
 </script>
+
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
