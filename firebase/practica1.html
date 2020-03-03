@@ -25,8 +25,11 @@
     <meta name="theme-color" content="#ffffff">
 
     <title>Practica1 Firebase | Lista de productos</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <style>
@@ -36,6 +39,17 @@
 
         #contenedorpracticas {
             width: 100%;
+        }
+                .container {
+        padding: 2rem 0rem;
+        }
+
+        h4 {
+        margin: 2rem 0rem 1rem;
+        }
+
+        td, th {
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -47,50 +61,47 @@
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-    <h1>Lista de Productos</h1>
-    <form id="form">
-        <input type="text" name="nombre" placeholder="Nombre">
-        <input type="text" name="codigo" placeholder="Codigo">
-        <button type="submit">Agregar</button>
-    </form>
-    <ul id="lista"></ul>
+
+
+       <!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+      <a href="../index.html" class="w3-bar-item w3-button">Inicio</a>
+      <!-- Right-sided navbar links. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+        <a href="#" class="w3-bar-item w3-button">Juan de Dios Guadalupe Cruz Delgado</a>
+      </div>
+    </div>
+  </div>
+
 
     <div class="container-fluid">
-        <div style="height:auto;" class="container bg-white rounded shadow-lg">
+        <div class="container">
             <div class="row m-5">
-                <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <div class="col-12 p-5">
+                    <h5 id="hide"> Registrar un nuevo producto. </h5>
+                    <form id="form">
+                        <input type="text" name="nombre" placeholder="Nombre">
+                        <input type="text" name="codigo" placeholder="Codigo">
+                        <button class="w3-button  w3-khaki w3-section" type="submit">Agregar</button>
+                    </form>
+                    <table class="table mt-5">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Accion</th>
+                          </tr>
+                        </thead>
+    
+                        <tbody id="lista">
+                        </tbody>
+                      </table>
+                </div>
             </div>
         </div>
     </div>
+   
 
     <script>
         // Your web app's Firebase configuration
@@ -109,13 +120,51 @@
         var db = firebase.firestore();
         const productoslista = document.querySelector("#lista");
 
-
+        ////Obtener lista de productos
         db.collection("productos").get()
             .then(function (querySnapshot) {
+                
+                document.getElementById('lista').innerHTML = "";
                 querySnapshot.forEach(function (doc) {
                     // doc.data() is never undefined for query doc snapshots
                     console.log(doc.id, " => ", doc.data());
+
+                    var x = document.createElement("tr");
+                    x.setAttribute("class", "");
+                    x.setAttribute("id", "producto" + doc.id);
+                    var id = document.getElementById('lista');
+                    id.append(x);
+
+
+                    var tr = document.getElementById("producto" + doc.id);
+
+                    var td1 = document.createElement("th");
+                    td1.setAttribute("class", "");
+                    td1.textContent =  doc.data().codigo;
+                    td1.setAttribute("id", "codigo" + doc.id);
+                    tr.append(td1);
+
+                    var td2 = document.createElement("td");
+                    td2.setAttribute("class", "");
+                    td2.textContent =  doc.data().nombre;
+                    tr.append(td2);
+
+
+                    var boton = document.createElement("button");
+                    boton.setAttribute("value", "Eliminar");
+                    boton.setAttribute("class", "btn btn-danger mt-3");
+                    boton.setAttribute("OnClick", "borrarproducto(" + doc.id + ")");
+                    boton.setAttribute("id", "boton" + doc.id);
+                    tr.append(boton);
+
+                    var i=document.createElement("i");
+                    i.setAttribute("class", "glyphicon glyphicon-trash");
+                    i.textContent =" Borrar";
+                    boton.append(i);
+
                 });
+
+                
             })
             .catch(function (error) {
                 console.log("Error getting documents: ", error);
