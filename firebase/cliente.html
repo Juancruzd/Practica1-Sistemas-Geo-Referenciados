@@ -232,7 +232,7 @@
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
                     console.log();
-                   if(JSON.stringify(doc.data().usuario)===usuario && JSON.stringify(doc.data().constrasena) ===contrasena) {
+                   if(JSON.stringify(doc.data().usuario) == usuario && JSON.stringify(doc.data().constrasena) == contrasena) {
                        console.log("usuario encontrado"+doc.id)
                        $("#loginModal").modal('hide');
                         document.getElementById('txtUsuariologin').value = "";
