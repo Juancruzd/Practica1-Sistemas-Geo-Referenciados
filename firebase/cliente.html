@@ -222,7 +222,11 @@
         $(document).ready(function () {
             var id = localStorage.getItem("iddocumentupdate");
             if(id!=null){
-                actualizarPosicion();
+                if (navigator.geolocation) {
+                    setInterval(function() {
+                    actualizarPosicion();
+                    }, 1000);
+                    } 
             }
             else{
             $("#loginModal").modal({backdrop: 'static', keyboard: false});
@@ -287,26 +291,61 @@
 
         function Registrarse(){
             var usuario = $('#txtUsuarioregistro').val();
-            var constrasena = sha256($('#txtNombre').val());
-            var nombre = $('#txtUsuarioregistro').val();
-            var apellido = $('#txtUsuarioregistro').val();
-            var usuario = $('#txtUsuarioregistro').val();
-            if (parseInt(codigo) >0 && nombre !=""){
-            // Add a new document in collection "cities"
-            db.collection("productos").add({
-                codigo: parseInt(codigo),
-                nombre: nombre
+            var constrasena = sha256($('#txtContrasenaregistro').val());
+            var nombre = $('#txtNombreregistro').val();
+            var apellido = $('#txtApellidoregistro').val();
+            if (usuario !="" && constrasena !="" && nombre !="" && apellido !=""){
+            
+            db.collection("personamovil").where("usuario", "==",usuario).get()
+            .then(function (querySnapshot) {
+
+                if(querySnapshot.size>0){
+                    document.getElementById('txtUsuarioregistro').value = ""; 
+                }
+                else{
+                    var coordenadas = {
+                    Latitud: 0, 
+                    Longitud: 0
+                    }
+                    // Add a new document in collection "cities"
+                db.collection("personamovil").add({
+                    usuario:usuario,
+                    constrasena:constrasena,
+                    nombre: nombre,
+                    apellido:apellido,
+                    estado:parseInt(1),
+                    coordenadas:coordenadas
+                })
+                .then(function(docRef) {
+                    console.log("Document written with ID: ", docRef.id);
+                    $("#registroModal").modal('hide');
+                    document.getElementById('txtUsuarioregistro').value = "";
+                    document.getElementById('txtNombreregistro').value = "";
+                    document.getElementById('txtApellidoregistro').value = "";
+
+                    localStorage.removeItem("iddocumentupdate");
+                    // Store
+                    localStorage.setItem("iddocumentupdate", docRef.id);
+                    if (navigator.geolocation) {
+                    setInterval(function() {
+                    actualizarPosicion();
+                    }, 1000);
+                    } 
+                })
+                .catch(function(error) {
+                    console.error("Error adding document: ", error);
+                });
+
+                }
             })
-            .then(function(docRef) {
-                console.log("Document written with ID: ", docRef.id);
-            })
-            .catch(function(error) {
-                console.error("Error adding document: ", error);
+            .catch(function (error) {
+                console.log("Error getting documents: ", error);
             });
             }else{
                 console.error("Ingrese Codigo y Nombre ");
             }
         }
+        
         function saveidlocalstorage(id){
             ///delete
             localStorage.removeItem("iddocumentupdate");
