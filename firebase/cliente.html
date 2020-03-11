@@ -86,7 +86,7 @@
     <div class="container bg-white rounded shadow-lg">
         <div class="row m-5">
             <div class="col-12 p-5">
-                <h1 class="text-center">Emitiendo ubicacion en tiempo real</h1>
+                <h1 id="titleemit" class="text-center"></h1>
                 <div id="map"></div>
             </div>
         </div>
@@ -382,6 +382,7 @@
         function iniciaMapa() {
             var id = localStorage.getItem("iddocumentupdate");
             if(id!=null){
+                document.getElementById('titleemit').value = "Emitiendo ubicacion en tiempo real";
                 map = new google.maps.Map(document.getElementById('map'), propiedades);
                 var icono = {
                         url: "https://www.interbolivia.com/wp-content/uploads/2018/12/pulse.gif", // url
@@ -401,7 +402,11 @@
                     setInterval(function() {
                         moverPosicion(marker);
                     }, 1000);
-                }  
+                }
+
+            }
+            else{
+                document.getElementById('titleemit').value = "";
             }
         }
 
