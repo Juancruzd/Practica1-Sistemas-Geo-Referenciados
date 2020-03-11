@@ -353,28 +353,25 @@
                 }
                 
         } 
+        
+        
         var map;
-
         var coordenadas = {
             lat: 0, 
             lng: 0
         }
-
         var propiedades = {
             center: coordenadas,
             zoom: 20
         }
         function iniciaMapa() {
-
         map = new google.maps.Map(document.getElementById('map'), propiedades);
-
         var icono = {
-                url: "img/4.gif", // url
+                url: "../img/4.gif", // url
                 scaledSize: new google.maps.Size(50, 50), // scaled size
                 origin: new google.maps.Point(0,0), // origin
                 anchor: new google.maps.Point(0,0) // anchor
             };
-
         var marker = new google.maps.Marker({
             position: { lat: 0, lng: 0 },
             icon: icono,
@@ -388,7 +385,6 @@
                 moverPosicion(marker);
             }, 1000);
         }  
-
         }
 
         function moverPosicion(marker) {
