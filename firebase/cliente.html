@@ -221,7 +221,7 @@
         ////Obtener lista de productos
         $(document).ready(function () {
             var id = localStorage.getItem("iddocumentupdate");
-            if(id!=""){
+            if(id!=null){
                 actualizarPosicion();
             }
             else{
@@ -270,7 +270,7 @@
                     Latitud: posicion.coords.latitude, 
                     Longitud: posicion.coords.longitude
                     }
-                    if(posicion.coords.latitude!="" && posicion.coords.longitude!="" && id != ""){
+                    if(posicion.coords.latitude!="" && posicion.coords.longitude!="" && id != null){
                         db.collection("personamovil").doc(id).update({
                     "coordenadas": coordenadas,
                     "estado":parseInt(1)
@@ -285,9 +285,12 @@
                     });
         }
 
-        function agregarRegistro(){
-            var codigo = $('#txtCodigo').val();
-            var nombre = $('#txtNombre').val();
+        function Registrarse(){
+            var usuario = $('#txtUsuarioregistro').val();
+            var constrasena = sha256($('#txtNombre').val());
+            var nombre = $('#txtUsuarioregistro').val();
+            var apellido = $('#txtUsuarioregistro').val();
+            var usuario = $('#txtUsuarioregistro').val();
             if (parseInt(codigo) >0 && nombre !=""){
             // Add a new document in collection "cities"
             db.collection("productos").add({
