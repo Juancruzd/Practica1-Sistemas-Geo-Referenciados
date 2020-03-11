@@ -259,14 +259,24 @@
         }
         function actualizarPosicion() {
                 navigator.geolocation.getCurrentPosition( posicion => {
-                    var pos = {
-                    lat: posicion.coords.latitude,
-                    lng: posicion.coords.longitude
-                    };
-                    console.log("lat:"+posicion.coords.latitude +"long:"+   posicion.coords.longitude);
-                });
-                
-
+                    var id = localStorage.getItem("iddocumentupdate");
+                    var coordenadas = {
+                    Latitud: posicion.coords.latitude, 
+                    Longitud: posicion.coords.longitude
+                    }
+                    if(posicion.coords.latitude!="" && posicion.coords.longitude!="" && id != ""){
+                        db.collection("personamovil").doc(id).update({
+                    "coordenadas": coordenadas,
+                    "estado":parseInt(1)
+                    }).then(function() {
+                    console.log("Document successfully updated!");
+                    }).catch(function(error) {
+                        console.error("Error updating document: ", error);
+                    });
+                    }else{
+                        console.error("No hay datos para actualizar");
+                    }
+                    });
         }
 
         function agregarRegistro(){
