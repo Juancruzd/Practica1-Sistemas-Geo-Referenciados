@@ -193,16 +193,27 @@
             });
         });
 
-
+        const intervalCarga=null;
+        const intervalIniciarsesion=null;
+        const intervalRegistro=null;
         ////Obtener lista de productos
         $(document).ready(function () {
             var id = localStorage.getItem("iddocumentupdate");
             if(id!=null){
                 if (navigator.geolocation) {
-                    setInterval(function() {
+                    if(intervalIniciarsesion!=null){
+                        clearInterval(intervalIniciarsesion);
+                    }
+                    if(intervalRegistro!=null){
+                        clearInterval(intervalRegistro);
+                    }
+                    if(intervalCarga!=null){
+                        clearInterval(intervalCarga);
+                    }
+                    intervalCarga =  setInterval(function() {
                     actualizarPosicion();
                     }, 1000);
-                    } 
+                } 
             }
             else{
             $("#loginModal").modal({backdrop: 'static', keyboard: false});
@@ -228,7 +239,7 @@
                     // Store
                     localStorage.setItem("iddocumentupdate", doc.id);
                     if (navigator.geolocation) {
-                    setInterval(function() {
+                    intervalIniciarsesion= setInterval(function() {
                     actualizarPosicion();
                     }, 1000);
                     }  
@@ -302,7 +313,7 @@
                     // Store
                     localStorage.setItem("iddocumentupdate", docRef.id);
                     if (navigator.geolocation) {
-                    setInterval(function() {
+                   intervalRegistro= setInterval(function() {
                     actualizarPosicion();
                     }, 1000);
                     } 
