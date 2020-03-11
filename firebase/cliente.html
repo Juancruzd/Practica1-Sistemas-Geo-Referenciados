@@ -233,39 +233,29 @@
                 querySnapshot.forEach(function (doc) {
                    if(doc.data().usuario==usuario && doc.data().constrasena ==contrasena) {
                        console.log("usuario encontrado"+doc.id)
+                       $("#loginModal").modal('hide');
+                        document.getElementById('txtUsuariologin').value = "";
+                        document.getElementById('txtContrasenalogin').value = "";
+                        // doc.data() is never undefined for query doc snapshots
+                        
+                        ///imprimir objeto en consola
+                        //console.log(doc.id, " => ", doc.data());
+                        console.log(doc.id);
+                        localStorage.removeItem("iddocumentupdate");
+                        // Store
+                        localStorage.setItem("iddocumentupdate", doc.id);
+                        if (navigator.geolocation) {
+                        intervalIniciarsesion= setInterval(function() {
+                        actualizarPosicion();
+                        }, 1000);
+                        } 
                    }
                 });
             })
             .catch(function (error) {
                 console.log("Error getting documents: ", error);
             });
-            db.collection("personamovil").where("usuario", "==",usuario).where("contrasena", "==",contrasena).get()
-            .then(function (querySnapshot) {
-
-                querySnapshot.forEach(function (doc) {
-                    $("#loginModal").modal('hide');
-                    document.getElementById('txtUsuariologin').value = "";
-                    document.getElementById('txtContrasenalogin').value = "";
-                    // doc.data() is never undefined for query doc snapshots
-                    
-                    ///imprimir objeto en consola
-                    //console.log(doc.id, " => ", doc.data());
-                    console.log(doc.id);
-                    localStorage.removeItem("iddocumentupdate");
-                    // Store
-                    localStorage.setItem("iddocumentupdate", doc.id);
-                    if (navigator.geolocation) {
-                    intervalIniciarsesion= setInterval(function() {
-                    actualizarPosicion();
-                    }, 1000);
-                    }  
-
-
-                });
-            })
-            .catch(function (error) {
-                console.log("Error getting documents: ", error);
-            });
+            
             }else{
                 console.error("Ingrese Usuario y Contrasena ");
             }
