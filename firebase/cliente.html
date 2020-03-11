@@ -131,7 +131,7 @@
             <br>
             <br>
             <ul class="nav nav-tabs" id="myTab">
-                <li class="active"><a href="#sent" data-toggle="tab"><i class="fa fa-envelope-o"></i> Mi Ubicacion</a></li>
+                <li class="active"><a href="#inbox" data-toggle="tab"><i class="fa fa-envelope-o"></i> Mi Ubicacion</a></li>
                <!-- <li><a href="#sent" data-toggle="tab"><i class="fa fa-reply-all"></i> Sent</a></li>-->
                 <li><a href="#assignment" data-toggle="tab"><i class="fa fa-file-text-o"></i> Editar Perfil</a></li>
                <!-- <li><a href="#event" data-toggle="tab"><i class="fa fa-clock-o"></i> Event</a></li>-->
@@ -140,23 +140,20 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="inbox">
                     <a type="button" data-toggle="collapse" data-target="#a1">
-                    <div id="a1" class="collapse out well">
-                                    <h1 id="titleemit" class="text-center"></h1>
-                                    <div id="map"></div>
-                    </div>
-                     </a>
+                        <div class="btn-toolbar well well-sm" role="toolbar" style="margin:0px;">
+                            <h1 id="titleemit" class="text-center"></h1>
+                            <div id="map"></div>
+                        </div>
+                    </a>
+                    <div id="a1" class="collapse out well">This is the message body1</div>
+                    <br>
+                    <button class="btn btn-primary btn-xs"><i class="fa fa-check-square-o"></i> Delete Checked Item's</button>
                 </div>
 
                 <div class="tab-pane" id="sent">
                     <a type="button" data-toggle="collapse" data-target="#s1">
                         <div class="btn-toolbar well well-sm" role="toolbar" style="margin:0px;">
-                            <div class="btn-group">
-                                <input type="checkbox">
-                            </div>
-                            <div class="btn-group col-md-3">Kumar</div>
-                            <div class="btn-group col-md-8"><b>This is reply from Bootstrap plugin</b>
-                                <div class="pull-right"><i class="glyphicon glyphicon-time"></i> 12:30 AM</div>
-                            </div>
+                           
                         </div>
                     </a>
                     <div id="s1" class="collapse out well">This is the message body1</div>
