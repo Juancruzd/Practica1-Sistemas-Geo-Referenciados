@@ -291,7 +291,7 @@
             var contrasena = sha256($('#txtContrasenaregistro').val());
             var nombre = $('#txtNombreregistro').val();
             var apellido = $('#txtApellidoregistro').val();
-            if (usuario !="" && constrasena !="" && nombre !="" && apellido !=""){
+            if (usuario !="" && contrasena !="" && nombre !="" && apellido !=""){
             
             db.collection("personamovil").where("usuario", "==",usuario).get()
             .then(function (querySnapshot) {
