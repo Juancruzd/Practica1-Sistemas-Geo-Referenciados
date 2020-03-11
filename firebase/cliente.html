@@ -240,7 +240,7 @@
                     console.log(doc.id);
                     localStorage.removeItem("iddocumentupdate");
                     // Store
-                    localStorage.setItem("iddocumentupdate", JSON.stringify( doc.id ));
+                    localStorage.setItem("iddocumentupdate", doc.id);
                     if (navigator.geolocation) {
                     setInterval(function() {
                     actualizarPosicion();
