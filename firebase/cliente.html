@@ -86,7 +86,7 @@
     <div class="container bg-white rounded shadow-lg">
         <div class="row m-5">
             <div class="col-12 p-5">
-                <h1 class="text-center">Transmitiendo ubicacion en tiempo real</h1>
+                <h1 class="text-center">Emitiendo ubicacion en tiempo real</h1>
                 <div id="map"></div>
             </div>
         </div>
@@ -231,7 +231,6 @@
             db.collection("personamovil").where("usuario", "==", usuario).where("contrasena", "==",contrasena).get()
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
-                    console.log("usuario encontrado"+doc.id)
                        $("#loginModal").modal('hide');
                         document.getElementById('txtUsuariologin').value = "";
                         document.getElementById('txtContrasenalogin').value = "";
@@ -282,7 +281,7 @@
         }
         function Registrarse(){
             var usuario = $('#txtUsuarioregistro').val();
-            var constrasena = sha256($('#txtContrasenaregistro').val());
+            var contrasena = sha256($('#txtContrasenaregistro').val());
             var nombre = $('#txtNombreregistro').val();
             var apellido = $('#txtApellidoregistro').val();
             if (usuario !="" && constrasena !="" && nombre !="" && apellido !=""){
@@ -301,7 +300,7 @@
                     // Add a new document in collection "cities"
                 db.collection("personamovil").add({
                     usuario:usuario,
-                    contrasena:constrasena,
+                    contrasena:contrasena,
                     nombre: nombre,
                     apellido:apellido,
                     estado:parseInt(1),
