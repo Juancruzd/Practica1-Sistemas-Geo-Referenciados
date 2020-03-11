@@ -220,7 +220,13 @@
 
         ////Obtener lista de productos
         $(document).ready(function () {
+            var id = localStorage.getItem("iddocumentupdate");
+            if(id!=""){
+                actualizarPosicion();
+            }
+            else{
             $("#loginModal").modal({backdrop: 'static', keyboard: false});
+            }
         });
         function IniciarSesion(){
             var usuario = $('#txtUsuariologin').val();
@@ -258,7 +264,7 @@
             }
         }
         function actualizarPosicion() {
-                navigator.geolocation.getCurrentPosition( posicion => {
+                    navigator.geolocation.getCurrentPosition( posicion => {
                     var id = localStorage.getItem("iddocumentupdate");
                     var coordenadas = {
                     Latitud: posicion.coords.latitude, 
