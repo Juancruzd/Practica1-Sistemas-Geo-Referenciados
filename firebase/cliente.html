@@ -130,7 +130,7 @@
             <br>
             <br>
             <br>
-            <ul class="nav nav-tabs" id="myTab">
+            <ul class="tabs " id="myTab">
                 <li class="active"><a href="#assignment" data-toggle="tab"><i class="fa fa-envelope-o"></i> Mi Ubicacion</a></li>
                <!-- <li><a href="#sent" data-toggle="tab"><i class="fa fa-reply-all"></i> Sent</a></li>-->
                 <li><a href="#event" data-toggle="tab"><i class="fa fa-file-text-o"></i> Editar Perfil</a></li>
@@ -139,7 +139,7 @@
 
             <div class="tab-content">
 
-                <div class="tab-pane active" id="assignment">
+                <div id="assignment">
                         <div class="well well-sm" style="margin:0px;">
                             <div class="row m-5">
                                 <h1 id="titleemit" class="text-center col-md-12" ></h1>
@@ -149,7 +149,7 @@
                         </div>
                 </div>
 
-                <div class="tab-pane" id="event">
+                <div  id="event">
                     <div class="media">
                         <a class="pull-left" href="#">
                             <img class="media-object img-thumbnail" width="100" src="https://via.placeholder.com/200x200" alt="...">
@@ -243,9 +243,19 @@
   </div>
 
     <script>
-          $(function () {
-            $('#myTab a:last').tab('show')
-            });
+     document.getElementById("assignment").classList.add("active");;
+    document.getElementById("event").style.display = "none";
+    document.getElementById("assignment").style.display = "block";
+
+	$('ul.tabs li a').click(function(){
+		$('ul.tabs li a').removeClass('active');
+		$(this).addClass('active');
+		$('.secciones article').hide();
+
+		var activeTab = $(this).attr('href');
+		$(activeTab).show();
+		return false;
+	});
   
        // Your web app's Firebase configuration
        var firebaseConfig = {
