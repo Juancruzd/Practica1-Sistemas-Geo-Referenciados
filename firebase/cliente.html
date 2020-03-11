@@ -231,6 +231,7 @@
             db.collection("personamovil").where("usuario", "==", usuario).get()
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
+                    if(doc.data().contrasena == contrasena){
                     console.log("usuario encontrado"+doc.id)
                        $("#loginModal").modal('hide');
                         document.getElementById('txtUsuariologin').value = "";
@@ -248,6 +249,7 @@
                         actualizarPosicion();
                         }, 1000);
                         } 
+                    }
                 });
             })
             .catch(function (error) {
