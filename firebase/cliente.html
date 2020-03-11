@@ -35,47 +35,7 @@
     <link href='https://fonts.googleapis.com/css?family=Barlow Condensed' rel='stylesheet'>
     <script src="sha256.js"></script>
     <style>
-     .pic
-{
-     margin-top:50px; 
-     width:120px;
-     margin-left:50px;
-     margin-bottom:-60px;
-}
-
-.panel
-{
-    background-image:url("http://autoimagesize.com/wp-content/uploads/2014/01/rainbow-aurora-background-wallpaper-colour-images-rainbow-background.jpg"); 
-}
-
-.name
-{
-    position:absolute;
-    padding-left:200px;
-    font-size:30px;
-}
-
-.dropdown
-{
-    position:absolute;
-}
-
-.change
-{
- position:relative; 
- bottom:20px;
- padding:1px;
- color:white;
- text-decoration:none;
-}
-
-
-.change:hover
-{
- text-decoration:none;
- background-color:black;
- color:white;
-}
+     
         body{
             background-color: #efefef;
             font-family: 'Barlow Condensed';font-size: 15px;
@@ -112,37 +72,37 @@
 
 
 <!--Navbar -->
-<nav class="navbar navbar-inverse container" role="navigation">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Dynasofts</a>
-      </div>
-  
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi... Apple K <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li align="center" class="well">
-                  <div><img class="img-responsive" style="padding:2%;" src="http://placehold.it/120x120"/><a class="change" href="">Change Picture</a></div>
-                  <a href="#" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-lock"></span> Security</a>
-                  <a href="#" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
-              </li>
-             </ul>
-          </li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
+<div class="navbar navbar-inverse nav">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">CMS</a>
+    		
+          	<div class="nav-collapse collapse">
+              <ul class="nav">
+                  <li class="divider-vertical"></li>
+                  <li><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+              </ul>
+              <div class="pull-right">
+                <ul class="nav pull-right">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, User <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/user/preferences"><i class="icon-cog"></i> Preferences</a></li>
+                            <li><a href="/help/support"><i class="icon-envelope"></i> Contact Support</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/auth/logout"><i class="icon-off"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
   <!--/.Navbar -->
 
 
