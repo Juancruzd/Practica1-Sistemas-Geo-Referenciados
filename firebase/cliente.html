@@ -83,32 +83,7 @@
         <div class="container">
             <div class="row m-5">
                 <div class="col-12 p-5">
-                    <form>
-                    <h5 id="hide"> Registrar un nuevo producto. </h5>
-                        <div class="form-group">
-                          <label for="txtCodigo" class="col-12">Codigo</label>
-                          <input type="number" min="1" class="form-control col-lg-4 col-sm-12" id="txtCodigo" placeholder="Codigo">
-                        </div>
-                        <div class="form-group">
-                          <label for="txtNombre" class="col-12">Nombre</label><br>
-                          <input type="text" class="form-control col-12 col-lg-4 col-sm-12" id="txtNombre" placeholder="Nombre" >
-                        </div>
-                        <br>
-                            <input  type="button" value="Registrar" class="btn btn-primary col-lg-4 col-sm-12 mt-3" onclick="agregarRegistro()"/>
-                            <br>
-                      </form>
-                    <table  class="table table-bordered mt-5">
-                        <thead>
-                          <tr>
-                            <th scope="col " class="col-12 col-lg-1 col-md-2 col-sm-1">#</th>
-                            <th scope="col" class="col-12 col-lg-8 col-md-5 col-sm-7">Nombre</th>
-                            <th scope="col" class="col-12 col-lg-3 col-md-5 col-sm-4">Acciones</th>
-                          </tr>
-                        </thead>
-    
-                        <tbody id="lista">
-                        </tbody>
-                      </table>
+                    <div id="map"></div>
                 </div>
             </div>
         </div>
@@ -289,7 +264,6 @@
                     }
                     });
         }
-
         function Registrarse(){
             var usuario = $('#txtUsuarioregistro').val();
             var constrasena = sha256($('#txtContrasenaregistro').val());
@@ -379,10 +353,66 @@
                 }
                 
         } 
+        var map;
+
+        var coordenadas = {
+            lat: 0, 
+            lng: 0
+        }
+
+        var propiedades = {
+            center: coordenadas,
+            zoom: 20
+        }
+        function iniciaMapa() {
+
+        map = new google.maps.Map(document.getElementById('map'), propiedades);
+
+        var icono = {
+                url: "img/4.gif", // url
+                scaledSize: new google.maps.Size(50, 50), // scaled size
+                origin: new google.maps.Point(0,0), // origin
+                anchor: new google.maps.Point(0,0) // anchor
+            };
+
+        var marker = new google.maps.Marker({
+            position: { lat: 0, lng: 0 },
+            icon: icono,
+            scaledSize: new google.maps.Size(50, 50), 
+            map: map
+        });
+
+
+        if (navigator.geolocation) {
+            setInterval(function() {
+                moverPosicion(marker);
+            }, 1000);
+        }  
+
+        }
+
+        function moverPosicion(marker) {
+
+        navigator.geolocation.getCurrentPosition( posicion => {
+            var pos = {
+            lat: posicion.coords.latitude,
+            lng: posicion.coords.longitude
+            };
+
+            marker.setPosition( new google.maps.LatLng( posicion.coords.latitude, posicion.coords.longitude ) );
+            map.panTo( new google.maps.LatLng( posicion.coords.latitude, posicion.coords.longitude ) );
+
+            map.setCenter(pos);
+
+        });
+
+        }
         </script>
 
 
-
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=iniciaMapa">
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
