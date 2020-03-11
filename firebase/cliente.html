@@ -380,26 +380,29 @@
             zoom: 20
         }
         function iniciaMapa() {
-        map = new google.maps.Map(document.getElementById('map'), propiedades);
-        var icono = {
-                url: "https://www.interbolivia.com/wp-content/uploads/2018/12/pulse.gif", // url
-                scaledSize: new google.maps.Size(50, 50), // scaled size
-                origin: new google.maps.Point(0,0), // origin
-                anchor: new google.maps.Point(0,0) // anchor
-            };
-        var marker = new google.maps.Marker({
-            position: { lat: 0, lng: 0 },
-            icon: icono,
-            scaledSize: new google.maps.Size(50, 50), 
-            map: map
-        });
+            var id = localStorage.getItem("iddocumentupdate");
+            if(id!=null){
+                map = new google.maps.Map(document.getElementById('map'), propiedades);
+                var icono = {
+                        url: "https://www.interbolivia.com/wp-content/uploads/2018/12/pulse.gif", // url
+                        scaledSize: new google.maps.Size(50, 50), // scaled size
+                        origin: new google.maps.Point(0,0), // origin
+                        anchor: new google.maps.Point(0,0) // anchor
+                    };
+                var marker = new google.maps.Marker({
+                    position: { lat: 0, lng: 0 },
+                    icon: icono,
+                    scaledSize: new google.maps.Size(50, 50), 
+                    map: map
+                });
 
 
-        if (navigator.geolocation) {
-            setInterval(function() {
-                moverPosicion(marker);
-            }, 1000);
-        }  
+                if (navigator.geolocation) {
+                    setInterval(function() {
+                        moverPosicion(marker);
+                    }, 1000);
+                }  
+            }
         }
 
         function moverPosicion(marker) {
