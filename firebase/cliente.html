@@ -231,8 +231,8 @@
             db.collection("personamovil").get()
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
-                    console.log(JSON.stringify(doc.data().usuario));
-                   if(doc.data().usuario===usuario && doc.data().constrasena ===contrasena) {
+                    console.log();
+                   if(JSON.stringify(doc.data().usuario)===usuario && JSON.stringify(doc.data().constrasena) ===contrasena) {
                        console.log("usuario encontrado"+doc.id)
                        $("#loginModal").modal('hide');
                         document.getElementById('txtUsuariologin').value = "";
