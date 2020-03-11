@@ -385,7 +385,7 @@
         function iniciaMapa() {
             var id = localStorage.getItem("iddocumentupdate");
             if(id!=null){
-                document.getElementById('titleemit').value = "Emitiendo ubicacion en tiempo real";
+                document.getElementById('titleemit').innerHTML = "Emitiendo ubicacion en tiempo real";
                 map = new google.maps.Map(document.getElementById('map'), propiedades);
                 var icono = {
                         url: "https://www.interbolivia.com/wp-content/uploads/2018/12/pulse.gif", // url
@@ -409,7 +409,7 @@
 
             }
             else{
-                document.getElementById('titleemit').value = "";
+                document.getElementById('titleemit').innerHTML = "";
             }
         }
 
