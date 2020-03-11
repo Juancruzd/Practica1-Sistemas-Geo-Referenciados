@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="../img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="../img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Practica1 Firebase | Lista de productos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Barlow Condensed' rel='stylesheet'>
+    <script src="sha256.js"></script>
+    <style>
+        body{
+            background-color: #efefef;
+            font-family: 'Barlow Condensed';font-size: 15px;
+        }
+   
+
+        #contenedorpracticas {
+            width: 100%;
+        }
+        .container {
+        padding: 2rem 0rem;
+        }
+
+        h4 {
+        margin: 2rem 0rem 1rem;
+        }
+
+        td, th {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+
+       <!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+      <a href="../index.html" class="w3-bar-item w3-button">Inicio</a>
+      <!-- Right-sided navbar links. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+        <a href="#" class="w3-bar-item w3-button">Juan de Dios Guadalupe Cruz Delgado</a>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row m-5">
+                <div class="col-12 p-5">
+                    <form>
+                    <h5 id="hide"> Registrar un nuevo producto. </h5>
+                        <div class="form-group">
+                          <label for="txtCodigo" class="col-12">Codigo</label>
+                          <input type="number" min="1" class="form-control col-lg-4 col-sm-12" id="txtCodigo" placeholder="Codigo">
+                        </div>
+                        <div class="form-group">
+                          <label for="txtNombre" class="col-12">Nombre</label><br>
+                          <input type="text" class="form-control col-12 col-lg-4 col-sm-12" id="txtNombre" placeholder="Nombre" >
+                        </div>
+                        <br>
+                            <input  type="button" value="Registrar" class="btn btn-primary col-lg-4 col-sm-12 mt-3" onclick="agregarRegistro()"/>
+                            <br>
+                      </form>
+                    <table  class="table table-bordered mt-5">
+                        <thead>
+                          <tr>
+                            <th scope="col " class="col-12 col-lg-1 col-md-2 col-sm-1">#</th>
+                            <th scope="col" class="col-12 col-lg-8 col-md-5 col-sm-7">Nombre</th>
+                            <th scope="col" class="col-12 col-lg-3 col-md-5 col-sm-4">Acciones</th>
+                          </tr>
+                        </thead>
+    
+                        <tbody id="lista">
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!-- Modal -->
+  <div class="modal fade" id="loginModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Iniciar Sesion</h4>
+        </div>
+        <div class="modal-body">
+                <form>
+                <h5 id="hide"> Iniciar Sesion. </h5>
+                    <div class="form-group">
+                      <label for="txtUsuariologin" class="col-12">Usuario</label>
+                      <input type="text" class="form-control col-12" id="txtUsuariologin" placeholder="Usuario">
+                    </div>
+                    <div class="form-group">
+                      <label for="txtContrasenalogin" class="col-12">Contrasena</label><br>
+                      <input type="text" class="form-control col-12" id="txtContrasenalogin" placeholder="Contrasena" >
+                    </div>
+                    <br>
+                        <input  type="button" value="Iniciar Sesion" class="btn btn-primary col-12 mt-3" onclick="IniciarSesion()"/>
+                        <br>
+                        <input  data-dismiss="modal" type="button" value="Registrarse" class="btn btn-primary col-12 mt-3" onclick="$('#registroModal').modal({backdrop: 'static', keyboard: false});"/>
+                        <br>
+                  </form>
+                </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="modal fade" id="registroModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Registro</h4>
+        </div>
+        <div class="modal-body">
+                <form>
+                <h5 id="hide"> Registro. </h5>
+                    <div class="form-group">
+                      <label for="txtUsuarioregistro" class="col-12">Usuario</label>
+                      <input type="text"  class="form-control col-12" id="txtUsuarioregistro" placeholder="Usuario">
+                    </div>
+                    <div class="form-group">
+                      <label for="txtContrasenaregistro" class="col-12">Contrasena</label><br>
+                      <input type="text" class="form-control col-12" id="txtContrasenaregistro" placeholder="Contrasena" >
+                    </div>
+                    <div class="form-group">
+                        <label for="txtNombreregistro" class="col-12">Nombre</label><br>
+                        <input type="text" class="form-control col-12" id="txtNombreregistro" placeholder="Nombre" >
+                      </div>
+                      <div class="form-group">
+                        <label for="txtApellidoregistro" class="col-12">Apellido</label><br>
+                        <input type="text" class="form-control col-12" id="txtApellidoregistro" placeholder="Apellido" >
+                      </div>
+                    <br>
+                        <input  type="button" value="Registrarse" class="btn btn-primary col-12 mt-3" onclick="Registrarse()"/>
+                        <br>
+                        <input  data-dismiss="modal" type="button" value="Iniciar Sesion" class="btn btn-primary col-12 mt-3" onclick="$('#loginModal').modal({backdrop: 'static', keyboard: false});"/>
+                        <br>
+                  </form>
+                </div>
+      </div>
+      
+    </div>
+  </div>
+
+    <script>
+       // Your web app's Firebase configuration
+       var firebaseConfig = {
+            apiKey: "AIzaSyAehJe1oQZOYjOWxWoMSAI1bASKm5uM7IY",
+            authDomain: "jdk-67024.firebaseapp.com",
+            databaseURL: "https://jdk-67024.firebaseio.com",
+            projectId: "jdk-67024",
+            storageBucket: "jdk-67024.appspot.com",
+            messagingSenderId: "156274067262",
+            appId: "1:156274067262:web:ce191148ff46b892f88e6f"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        ////
+        var db = firebase.firestore();
+        //const productoslista = document.querySelector("#lista");
+
+        db.collection("personamovil").onSnapshot({
+        // Listen for document metadata changes
+        includeMetadataChanges: true
+        }, function(snapshot) {
+            snapshot.docChanges().forEach(function(change) {
+            if (change.type === "added") {
+                console.log("New: ", change.doc.data());
+            }
+            if (change.type === "modified") {
+                console.log("Modified: ", change.doc.data());
+            }
+            if (change.type === "removed") {
+                console.log("Removed: ", change.doc.data());
+            }
+            });
+        });
+
+
+        ////Obtener lista de productos
+        $(document).ready(function () {
+            $("#loginModal").modal({backdrop: 'static', keyboard: false});
+        });
+        function IniciarSesion(){
+            var usuario = $('#txtUsuariologin').val();
+            var contrasena =sha256( $('#txtContrasenalogin').val());
+            if (usuario !="" && contrasena !=""){
+            db.collection("personamovil").where("usuario", "==",usuario).where("contrasena", "==",contrasena).get()
+            .then(function (querySnapshot) {
+
+                querySnapshot.forEach(function (doc) {
+                    $("#loginModal").modal('hide');
+                    document.getElementById('txtUsuariologin').value = "";
+                    document.getElementById('txtContrasenalogin').value = "";
+                    // doc.data() is never undefined for query doc snapshots
+                    
+                    ///imprimir objeto en consola
+                    //console.log(doc.id, " => ", doc.data());
+                    console.log(doc.id);
+                    localStorage.removeItem("iddocumentupdate");
+                    // Store
+                    localStorage.setItem("iddocumentupdate", JSON.stringify( doc.id ));
+                    if (navigator.geolocation) {
+                    setInterval(function() {
+                    actualizarPosicion();
+                    }, 1000);
+                    }  
+
+
+                });
+            })
+            .catch(function (error) {
+                console.log("Error getting documents: ", error);
+            });
+            }else{
+                console.error("Ingrese Usuario y Contrasena ");
+            }
+        }
+        function actualizarPosicion() {
+                navigator.geolocation.getCurrentPosition( posicion => {
+                    var pos = {
+                    lat: posicion.coords.latitude,
+                    lng: posicion.coords.longitude
+                    };
+                    console.log("lat:"+posicion.coords.latitude +"long:"+   posicion.coords.longitude);
+                });
+                
+
+        }
+
+        function agregarRegistro(){
+            var codigo = $('#txtCodigo').val();
+            var nombre = $('#txtNombre').val();
+            if (parseInt(codigo) >0 && nombre !=""){
+            // Add a new document in collection "cities"
+            db.collection("productos").add({
+                codigo: parseInt(codigo),
+                nombre: nombre
+            })
+            .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
+            }else{
+                console.error("Ingrese Codigo y Nombre ");
+            }
+        }
+        function saveidlocalstorage(id){
+            ///delete
+            localStorage.removeItem("iddocumentupdate");
+            // Store
+            localStorage.setItem("iddocumentupdate", id);
+            document.getElementById('txtCodigoupdate').value = "";
+            document.getElementById('txtNombreupdate').value = "";
+            
+        }
+        function cancelarActualizacion(){
+            ///delete
+            localStorage.removeItem("iddocumentupdate");
+        }
+        function ActualizarRegistro(){
+                var id = localStorage.getItem("iddocumentupdate");
+                var codigo = $('#txtCodigoupdate').val();
+                var nombre = $('#txtNombreupdate').val();
+                if(parseInt(codigo) >0 && nombre!="" && id != ""){
+                    db.collection("productos").doc(id).update({
+                "codigo": parseInt(codigo),
+                "nombre": nombre
+                }).then(function() {
+                console.log("Document successfully updated!");
+                $("#myModal").modal('hide');
+                }).catch(function(error) {
+                    console.error("Error updating document: ", error);
+                });
+                }else{
+                    console.error("Ingrese codigo y nombre valido y el id");
+                }
+                
+        } 
+        </script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
