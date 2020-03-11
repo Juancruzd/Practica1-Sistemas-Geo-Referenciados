@@ -228,12 +228,10 @@
             var contrasena =sha256( $('#txtContrasenalogin').val());
             if (usuario !="" && contrasena !=""){
 
-            db.collection("personamovil").get()
+            db.collection("personamovil").where("usuario", "==", usuario).where("contrasena", "==",contrasena).get()
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
-                    console.log();
-                   if(JSON.stringify(doc.data().usuario) == usuario && JSON.stringify(doc.data().constrasena) == contrasena) {
-                       console.log("usuario encontrado"+doc.id)
+                    console.log("usuario encontrado"+doc.id)
                        $("#loginModal").modal('hide');
                         document.getElementById('txtUsuariologin').value = "";
                         document.getElementById('txtContrasenalogin').value = "";
@@ -250,7 +248,6 @@
                         actualizarPosicion();
                         }, 1000);
                         } 
-                   }
                 });
             })
             .catch(function (error) {
