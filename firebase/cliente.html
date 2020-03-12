@@ -473,28 +473,19 @@
                     });
         }
        
-
-
-        function cancelarActualizacion(){
-            ///delete
-            localStorage.removeItem("iddocumentupdate");
-        }
-        function ActualizarRegistro(){
+        function ActualizarContrasena(){
                 var id = localStorage.getItem("iddocumentupdate");
-                var codigo = $('#txtCodigoupdate').val();
-                var nombre = $('#txtNombreupdate').val();
-                if(parseInt(codigo) >0 && nombre!="" && id != ""){
-                    db.collection("productos").doc(id).update({
-                "codigo": parseInt(codigo),
-                "nombre": nombre
+                var contrasenanueva = $('#txtContrasenaUpdate').val();
+                if( contrasenanueva!="" && id != null){
+                    db.collection("personamovil").doc(id).update({
+                "contrasena": contrasenanueva
                 }).then(function() {
                 console.log("Document successfully updated!");
-                $("#myModal").modal('hide');
                 }).catch(function(error) {
                     console.error("Error updating document: ", error);
                 });
                 }else{
-                    console.error("Ingrese codigo y nombre valido y el id");
+                    console.error("Ingrese la contrasena");
                 }
                 
         } 
