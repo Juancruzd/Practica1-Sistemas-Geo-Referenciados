@@ -255,7 +255,7 @@
             };
             var id = localStorage.getItem("idusuarioseleccionado");
             if(id!=null){
-            db.collection("personamovil").doc(id).where("estado", "==",1).get()
+            db.collection("personamovil").doc(id).get()
                     .then(function(querySnapshot) {
                         querySnapshot.forEach(function (doc) {
                             pos.lat=doc.data().coordenadas.Latitud;
