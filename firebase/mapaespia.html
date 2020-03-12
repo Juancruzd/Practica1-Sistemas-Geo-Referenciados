@@ -249,25 +249,25 @@
         }
 
         function moverPosicion(marker) {
-            var pos = {
-            lat: 0,
-            lng: 0
-            };
+           
             var id = localStorage.getItem("idusuarioseleccionado");
             if(id!=null){
             db.collection("personamovil").doc(id).get()
                     .then(function(doc) {
+                        var pos = {
+                        lat: 0,
+                        lng: 0
+                        };
                             pos.lat=doc.data().coordenadas.Latitud;
                             pos.lng=doc.data().coordenadas.Longitud;
-                        
-                        
+                            marker.setPosition( new google.maps.LatLng( pos.lat, pos.lng ) );
+                            map.panTo( new google.maps.LatLng( pos.lat, pos.lng) );
+                            map.setCenter(pos);
                         }).catch(function(error) {
                             console.error("Error getting document: ", error);
                         });
             }
-            marker.setPosition( new google.maps.LatLng( pos.lat, pos.lng ) );
-            map.panTo( new google.maps.LatLng( pos.lat, pos.lng) );
-            map.setCenter(pos);
+            
         }
 
 
