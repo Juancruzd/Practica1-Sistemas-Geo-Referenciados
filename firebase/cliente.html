@@ -113,7 +113,7 @@
 <!--Navbar -->
 
 <div class="container bootstrap snippet">
-    <div class="row well">
+    <div class="row well" id="contendorusuario">
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked well">
                 <li class="active"><a><i class="fa fa-envelope"></i> Perfil</a></li>
@@ -166,7 +166,6 @@
     </div>
 
 </div>
-  <!--/.Navbar -->
 
 
   
@@ -305,6 +304,7 @@
         $(document).ready(function () {
             var id = localStorage.getItem("iddocumentupdate");
             if(id!=null){
+            document.getElementById("contendorusuario").style.display = "none";
                 if (navigator.geolocation) {
                     if(intervalload!=null){
                         clearInterval(intervalload);
@@ -451,7 +451,7 @@
                     console.log("Document successfully updated!");
                     localStorage.removeItem("iddocumentupdate");
                     location.reload();
-                    
+
                     }).catch(function(error) {
                         console.error("Error updating document: ", error);
                     });
