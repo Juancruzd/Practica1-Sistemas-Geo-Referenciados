@@ -304,8 +304,6 @@
         $(document).ready(function () {
             var id = localStorage.getItem("iddocumentupdate");
             if(id!=null){
-            document.getElementById("contendorusuario").style.display = "none";
-            
                 if (navigator.geolocation) {
                     if(intervalload!=null){
                         clearInterval(intervalload);
@@ -327,6 +325,7 @@
                 } 
             }
             else{
+            document.getElementById("contendorusuario").style.display = "none";
             $("#loginModal").modal({backdrop: 'static', keyboard: false});
             }
         });
