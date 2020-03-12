@@ -113,6 +113,7 @@
             }
             });
         });
+
         var listOfObjects = [];
         function obtenerusuarios(){
         db.collection("personamovil").where("estado", "==",1).get()
@@ -128,7 +129,7 @@
                         lng: 0
                     };
                     singleObj.nombre = doc.data().nombre;
-                    singleObj.apellido = doc.data().nombre;
+                    singleObj.apellido = doc.data().apellido;
                     singleObj.usuario = doc.data().usuario;
                     singleObj.lat = doc.data().coordenadas.Latitud;
                     singleObj.lng = doc.data().coordenadas.Longitud;
