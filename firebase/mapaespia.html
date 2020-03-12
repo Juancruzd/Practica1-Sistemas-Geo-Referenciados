@@ -182,7 +182,7 @@
             marker.setPosition( new google.maps.LatLng( entry.lat,entry.lng ) );
             map.panTo( new google.maps.LatLng( entry.lat, entry.lng ) );
 
-            //map.setCenter(pos);
+            map.setCenter(pos);
 
             google.maps.event.addListener(marker, 'click', (function(marker) {
                 return function() {
