@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    
+    <title>Practica6 | Sigueme</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href='https://fonts.googleapis.com/css?family=Barlow Condensed' rel='stylesheet'>
+    <style>
+         body{
+            background-color: #efefef;
+            font-family: 'Barlow Condensed';font-size: 15px;
+        }
+        #map{    
+                width: 100%;
+                height: 500px;
+        }
+
+        #contenedorpracticas {
+            width: 100%;
+        }
+        .container {
+        padding: 2rem 0rem;
+        }
+
+        h4 {
+        margin: 2rem 0rem 1rem;
+        }
+
+        td, th {
+            vertical-align: middle;
+        }
+    </style>
+  </head>
+  <body>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+         <!-- <a href="index.html" class="w3-bar-item w3-button">Inicio</a>-->
+          <!-- Right-sided navbar links. Hide them on small screens -->
+          <div class="w3-right w3-hide-small">
+            <a href="#" class="w3-bar-item w3-button">Juan de Dios Guadalupe Cruz Delgado</a>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="container bg-white rounded shadow-lg">
+            <div class="row m-5">
+                <div class="col-12 p-5">
+                    <h1 id="titleemit" class="text-center"></h1>
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAehJe1oQZOYjOWxWoMSAI1bASKm5uM7IY",
+            authDomain: "jdk-67024.firebaseapp.com",
+            databaseURL: "https://jdk-67024.firebaseio.com",
+            projectId: "jdk-67024",
+            storageBucket: "jdk-67024.appspot.com",
+            messagingSenderId: "156274067262",
+            appId: "1:156274067262:web:ce191148ff46b892f88e6f"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        ////
+        var db = firebase.firestore();
+        //const productoslista = document.querySelector("#lista");
+
+        db.collection("personamovil").onSnapshot({
+        // Listen for document metadata changes
+        includeMetadataChanges: true
+        }, function(snapshot) {
+            snapshot.docChanges().forEach(function(change) {
+                obtenerusuarios();
+            if (change.type === "added") {
+                console.log("New: ", change.doc.data());
+            }
+            if (change.type === "modified") {
+                console.log("Modified: ", change.doc.data());
+            }
+            if (change.type === "removed") {
+                console.log("Removed: ", change.doc.data());
+            }
+            });
+        });
+        var listOfObjects = [];
+        function obtenerusuarios(){
+        db.collection("personamovil").where("estado", "==",1).get()
+            .then(function (querySnapshot) {
+                ///vaciar objetos
+                listOfObjects=[];
+                querySnapshot.forEach(function (doc) {
+                    var singleObj = {
+                        nombre:"",
+                        apellido:"",
+                        usuario:"",
+                        lat: 0, 
+                        lng: 0
+                    };
+                    singleObj.nombre = doc.data().nombre;
+                    singleObj.apellido = doc.data().nombre;
+                    singleObj.usuario = doc.data().usuario;
+                    singleObj.lat = doc.data().coordenadas.Latitud;
+                    singleObj.lng = doc.data().coordenadas.Longitud;
+                    listOfObjects.push(singleObj);
+                });
+
+            })
+            .catch(function (error) {
+                console.log("Error getting documents: ", error);
+            });
+        }
+      var map;
+
+      var coordenadasiniciales = {
+        lat: 0, 
+        lng: 0
+      }
+      var propiedades = {
+        center: coordenadasiniciales,
+        zoom: 40
+      }
+
+      function iniciaMapa() {
+
+        map = new google.maps.Map(document.getElementById('map'), propiedades);
+
+        var icono = {
+                url: "https://www.interbolivia.com/wp-content/uploads/2018/12/pulse.gif", // url
+                scaledSize: new google.maps.Size(50, 50), // scaled size
+                origin: new google.maps.Point(0,0), // origin
+                anchor: new google.maps.Point(0,0) // anchor
+            };
+        varlistOfMarkers=[];
+        
+        listOfObjects.forEach(function(entry) {
+            var marker = new google.maps.Marker({
+            position: { lat: entry.lat, lng: entry.lng },
+            icon: icono,
+            scaledSize: new google.maps.Size(50, 50), 
+            map: map
+             });
+             varlistOfMarkers.push(marker);
+             var pos = {
+              lat: entry.lat,
+              lng: entry.lng
+            };
+
+            marker.setPosition( new google.maps.LatLng( entry.lat,entry.lng ) );
+            map.panTo( new google.maps.LatLng( entry.lat, entry.lng ) );
+
+            map.setCenter(pos);
+        });
+      }
+ 
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=iniciaMapa">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  </body>
+</html>
