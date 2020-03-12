@@ -130,6 +130,7 @@
         });
 
         var listOfObjects = [];
+        var interval=null;
         function obtenerusuarios(){
         db.collection("personamovil").where("estado", "==",1).get()
             .then(function (querySnapshot) {
@@ -213,6 +214,9 @@
              localStorage.removeItem("idusuarioseleccionado");
             // Store
             localStorage.setItem("idusuarioseleccionado", id);
+            if(interval!=null){
+            clearInterval(interval);
+            }
             iniciaMapa();
         }
 
@@ -236,7 +240,7 @@
 
 
             if (navigator.geolocation) {
-                setInterval(function() {
+               interval= setInterval(function() {
                     moverPosicion(marker);
                 }, 1000);
             }  
