@@ -417,6 +417,7 @@
                     coordenadas:coordenadas
                 })
                 .then(function(docRef) {
+                    document.getElementById('txtProfilename').innerHTML = docRef.data().nombre+" "+docRef.data().apellido;
                     console.log("Document written with ID: ", docRef.id);
                     $('#contendorusuario').show();
                     $("#registroModal").modal('hide');
