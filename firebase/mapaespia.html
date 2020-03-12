@@ -256,11 +256,10 @@
             var id = localStorage.getItem("idusuarioseleccionado");
             if(id!=null){
             db.collection("personamovil").doc(id).get()
-                    .then(function(querySnapshot) {
-                        querySnapshot.forEach(function (doc) {
+                    .then(function(doc) {
                             pos.lat=doc.data().coordenadas.Latitud;
                             pos.lng=doc.data().coordenadas.Longitud;
-                        });
+                        
                         
                         }).catch(function(error) {
                             console.error("Error getting document: ", error);
