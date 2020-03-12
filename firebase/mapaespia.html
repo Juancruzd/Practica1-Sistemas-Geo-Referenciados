@@ -258,7 +258,7 @@
                         lat: 0,
                         lng: 0
                         };
-                        if(doc.data().estao==1){
+                        if(doc.data().estado==1){
                             pos.lat=doc.data().coordenadas.Latitud;
                             pos.lng=doc.data().coordenadas.Longitud;
                             marker.setPosition( new google.maps.LatLng( pos.lat, pos.lng ) );
