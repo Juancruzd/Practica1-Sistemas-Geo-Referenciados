@@ -116,7 +116,7 @@
     <div class="row well">
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked well">
-                <li class="active"><a href="#"><i class="fa fa-envelope"></i> Perfil</a></li>
+                <li class="active"><a href="#" onclick="cerrarsesion()"><i class="fa fa-envelope"></i> Perfil</a></li>
                 <li><a href="#"><i class="fa fa-sign-out"></i> Cerrar Sesion</a></li>
             </ul>
         </div>
@@ -131,9 +131,9 @@
             <br>
             <br>
             <ul class="nav nav-tabs " id="myTab">
-                <li id="li1"  class="active"><a  onclick="tab1()" data-toggle="tab"><i class="fa fa-envelope-o"></i> Mi Ubicacion</a></li>
+                <li id="li1"  class="active"><a href="#mapapanel" onclick="tab1()" data-toggle="tab"><i class="fa fa-envelope-o"></i> Mi Ubicacion</a></li>
                <!-- <li><a href="#sent" data-toggle="tab"><i class="fa fa-reply-all"></i> Sent</a></li>-->
-                <li id="li2"><a id="tab2" onclick="tab2()"  data-toggle="tab"><i class="fa fa-file-text-o"></i> Editar Perfil</a></li>
+                <li id="li2"><a id="tab2" onclick="tab2()" href="#editarpanel"  data-toggle="tab"><i class="fa fa-file-text-o"></i> Editar Perfil</a></li>
                <!-- <li><a href="#event" data-toggle="tab"><i class="fa fa-clock-o"></i> Event</a></li>-->
             </ul>
 
@@ -243,10 +243,9 @@
   </div>
 
     <script>
-        document.getElementById("mapapanel").classList.add("active");
+    document.getElementById("mapapanel").classList.add("active");
     document.getElementById("editarpanel").style.display = "none";
     document.getElementById("mapapanel").style.display = "block";
-
 	function tab1(){
 		$('#li2').removeClass('active');
 		$('#li1').addClass('active');
@@ -264,7 +263,7 @@
         $('#editarpanel').show();
 	};
   
-    
+
        // Your web app's Firebase configuration
        var firebaseConfig = {
             apiKey: "AIzaSyAehJe1oQZOYjOWxWoMSAI1bASKm5uM7IY",
@@ -444,15 +443,8 @@
                 console.error("Ingrese Codigo y Nombre ");
             }
         }
-        
-        function saveidlocalstorage(id){
-            ///delete
+        function cerrarsesion(){
             localStorage.removeItem("iddocumentupdate");
-            // Store
-            localStorage.setItem("iddocumentupdate", id);
-            document.getElementById('txtCodigoupdate').value = "";
-            document.getElementById('txtNombreupdate').value = "";
-            
         }
         function cancelarActualizacion(){
             ///delete
