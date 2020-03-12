@@ -311,6 +311,8 @@
         $(document).ready(function () {
             var id = localStorage.getItem("iddocumentupdate");
             if(id!=null){
+                var nombreusuario=localStorage.getItem("nombreusuario");
+                document.getElementById('txtProfilename').innerHTML = nombreusuario;
                 if (navigator.geolocation) {
                     if(intervalload!=null){
                         clearInterval(intervalload);
@@ -354,10 +356,10 @@
                         
                         ///imprimir objeto en consola
                         //console.log(doc.id, " => ", doc.data());
-                        console.log(doc.id);
                         localStorage.removeItem("iddocumentupdate");
-                        // Store
                         localStorage.setItem("iddocumentupdate", doc.id);
+                        localStorage.removeItem("nombreusuario");
+                        localStorage.setItem("nombreusuario", doc.data().nombre+" "+doc.data().apellido);
                         if (navigator.geolocation) {
                             iniciaMapa();
                         intervalIniciarsesion= setInterval(function() {
@@ -425,6 +427,8 @@
                 })
                 .then(function(docRef) {
                     document.getElementById('txtProfilename').innerHTML = docRef.data().nombre+" "+docRef.data().apellido;
+                    localStorage.removeItem("nombreusuario");
+                    localStorage.setItem("nombreusuario", doc.data().nombre+" "+doc.data().apellido);
                     console.log("Document written with ID: ", docRef.id);
                     $('#contendorusuario').show();
                     $("#registroModal").modal('hide');
@@ -433,7 +437,6 @@
                     document.getElementById('txtApellidoregistro').value = "";
 
                     localStorage.removeItem("iddocumentupdate");
-                    // Store
                     localStorage.setItem("iddocumentupdate", docRef.id);
                     if (navigator.geolocation) {
                         iniciaMapa();
@@ -462,6 +465,7 @@
                     }).then(function() {
                     console.log("Document successfully updated!");
                     localStorage.removeItem("iddocumentupdate");
+                    localStorage.removeItem("nombreusuario");
                     location.reload();
 
                     }).catch(function(error) {
