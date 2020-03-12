@@ -251,7 +251,7 @@
             };
             var id = localStorage.getItem("idusuarioseleccionado");
             if(id!=null){
-            db.collection("productos").doc(id).where("estado", "==",1).get()
+            db.collection("personamovil").doc(id).where("estado", "==",1).get()
                     .then(function(querySnapshot) {
                         querySnapshot.forEach(function (doc) {
                             pos.lat=doc.data().coordenadas.Latitud;
