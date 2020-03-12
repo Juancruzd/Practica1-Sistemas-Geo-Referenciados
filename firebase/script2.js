@@ -1,7 +1,6 @@
 document.getElementById("mapapanel").classList.add("active");
     document.getElementById("editarpanel").style.display = "none";
     document.getElementById("mapapanel").style.display = "block";
-
 	function tab1(){
 		$('#li2').removeClass('active');
 		$('#li1').addClass('active');
@@ -19,6 +18,7 @@ document.getElementById("mapapanel").classList.add("active");
         $('#editarpanel').show();
 	};
   
+
        // Your web app's Firebase configuration
        var firebaseConfig = {
             apiKey: "AIzaSyAehJe1oQZOYjOWxWoMSAI1bASKm5uM7IY",
@@ -60,6 +60,8 @@ document.getElementById("mapapanel").classList.add("active");
         $(document).ready(function () {
             var id = localStorage.getItem("iddocumentupdate");
             if(id!=null){
+                var nombreusuario=localStorage.getItem("nombreusuario");
+                document.getElementById('txtProfilename').innerHTML = nombreusuario;
                 if (navigator.geolocation) {
                     if(intervalload!=null){
                         clearInterval(intervalload);
@@ -81,6 +83,7 @@ document.getElementById("mapapanel").classList.add("active");
                 } 
             }
             else{
+            document.getElementById("contendorusuario").style.display = "none";
             $("#loginModal").modal({backdrop: 'static', keyboard: false});
             }
         });
@@ -92,17 +95,20 @@ document.getElementById("mapapanel").classList.add("active");
             db.collection("personamovil").where("usuario", "==", usuario).where("contrasena", "==",contrasena).get()
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
+                        $('#contendorusuario').show();
                        $("#loginModal").modal('hide');
                         document.getElementById('txtUsuariologin').value = "";
                         document.getElementById('txtContrasenalogin').value = "";
+                        
+                        document.getElementById('txtProfilename').innerHTML = doc.data().nombre+" "+doc.data().apellido;
                         // doc.data() is never undefined for query doc snapshots
                         
                         ///imprimir objeto en consola
                         //console.log(doc.id, " => ", doc.data());
-                        console.log(doc.id);
                         localStorage.removeItem("iddocumentupdate");
-                        // Store
                         localStorage.setItem("iddocumentupdate", doc.id);
+                        localStorage.removeItem("nombreusuario");
+                        localStorage.setItem("nombreusuario", doc.data().nombre+" "+doc.data().apellido);
                         if (navigator.geolocation) {
                             iniciaMapa();
                         intervalIniciarsesion= setInterval(function() {
@@ -169,14 +175,17 @@ document.getElementById("mapapanel").classList.add("active");
                     coordenadas:coordenadas
                 })
                 .then(function(docRef) {
+                    document.getElementById('txtProfilename').innerHTML = nombre+" "+apellido;
+                    localStorage.removeItem("nombreusuario");
+                    localStorage.setItem("nombreusuario", nombre+" "+apellido);
                     console.log("Document written with ID: ", docRef.id);
+                    $('#contendorusuario').show();
                     $("#registroModal").modal('hide');
                     document.getElementById('txtUsuarioregistro').value = "";
                     document.getElementById('txtNombreregistro').value = "";
                     document.getElementById('txtApellidoregistro').value = "";
 
                     localStorage.removeItem("iddocumentupdate");
-                    // Store
                     localStorage.setItem("iddocumentupdate", docRef.id);
                     if (navigator.geolocation) {
                         iniciaMapa();
@@ -195,39 +204,38 @@ document.getElementById("mapapanel").classList.add("active");
                 console.log("Error getting documents: ", error);
             });
             }else{
-                console.error("Ingrese Codigo y Nombre ");
+                console.error("todos los datos para registro");
             }
         }
-        
-        function saveidlocalstorage(id){
-            ///delete
-            localStorage.removeItem("iddocumentupdate");
-            // Store
-            localStorage.setItem("iddocumentupdate", id);
-            document.getElementById('txtCodigoupdate').value = "";
-            document.getElementById('txtNombreupdate').value = "";
-            
+        function cerrarsesion(){
+                    var id = localStorage.getItem("iddocumentupdate");
+                    db.collection("personamovil").doc(id).update({
+                    "estado":parseInt(0)
+                    }).then(function() {
+                    console.log("Document successfully updated!");
+                    localStorage.removeItem("iddocumentupdate");
+                    localStorage.removeItem("nombreusuario");
+                    location.reload();
+
+                    }).catch(function(error) {
+                        console.error("Error updating document: ", error);
+                    });
         }
-        function cancelarActualizacion(){
-            ///delete
-            localStorage.removeItem("iddocumentupdate");
-        }
-        function ActualizarRegistro(){
+        function ActualizarContrasena(){
                 var id = localStorage.getItem("iddocumentupdate");
-                var codigo = $('#txtCodigoupdate').val();
-                var nombre = $('#txtNombreupdate').val();
-                if(parseInt(codigo) >0 && nombre!="" && id != ""){
-                    db.collection("productos").doc(id).update({
-                "codigo": parseInt(codigo),
-                "nombre": nombre
+                var contrasenanueva = $('#txtContrasenaUpdate').val();
+                if( contrasenanueva!="" && id != null){
+
+                    db.collection("personamovil").doc(id).update({
+                "contrasena": sha256(contrasenanueva)
                 }).then(function() {
                 console.log("Document successfully updated!");
-                $("#myModal").modal('hide');
+                document.getElementById('txtContrasenaUpdate').value = ""; 
                 }).catch(function(error) {
                     console.error("Error updating document: ", error);
                 });
                 }else{
-                    console.error("Ingrese codigo y nombre valido y el id");
+                    console.error("Ingrese la contrasena");
                 }
                 
         } 
@@ -292,3 +300,4 @@ document.getElementById("mapapanel").classList.add("active");
         });
 
         }
+    
