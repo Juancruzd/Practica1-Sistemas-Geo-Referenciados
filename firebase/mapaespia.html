@@ -136,7 +136,7 @@
                     listOfObjects.push(singleObj);
                 });
                 iniciaMapa();
-                
+
             })
             .catch(function (error) {
                 console.log("Error getting documents: ", error);
@@ -164,7 +164,8 @@
                 anchor: new google.maps.Point(0,0) // anchor
             };
         varlistOfMarkers=[];
-        
+        var infowindow = new google.maps.InfoWindow();
+
         listOfObjects.forEach(function(entry) {
             var marker = new google.maps.Marker({
             position: { lat: entry.lat, lng: entry.lng },
@@ -181,8 +182,26 @@
             marker.setPosition( new google.maps.LatLng( entry.lat,entry.lng ) );
             map.panTo( new google.maps.LatLng( entry.lat, entry.lng ) );
 
-            map.setCenter(pos);
+            //map.setCenter(pos);
+
+            google.maps.event.addListener(marker, 'click', (function(marker) {
+                return function() {
+                infowindow.setContent(entry.nombre+" "+entry.apellido);
+                infowindow.open(map, marker);
+                }
+            }));
+
         });
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) {  
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            map: map
+        });
+
+            
+        }
       }
  
     </script>
