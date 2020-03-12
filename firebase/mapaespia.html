@@ -266,8 +266,12 @@
                             map.setCenter(pos);
                         }
                         else{
-                            map.panTo( new google.maps.LatLng( pos.lat, pos.lng) );
-                            map.setCenter(pos);
+                            var def = {
+                            lat: 0,
+                            lng: 0
+                            };
+                            map.panTo( new google.maps.LatLng(0,0) );
+                            map.setCenter(def);
                         }
                         }).catch(function(error) {
                             console.error("Error getting document: ", error);
