@@ -477,11 +477,12 @@
                 var id = localStorage.getItem("iddocumentupdate");
                 var contrasenanueva = $('#txtContrasenaUpdate').val();
                 if( contrasenanueva!="" && id != null){
-                    
+
                     db.collection("personamovil").doc(id).update({
                 "contrasena": sha256(contrasenanueva)
                 }).then(function() {
                 console.log("Document successfully updated!");
+                document.getElementById('txtContrasenaUpdate').value = ""; 
                 }).catch(function(error) {
                     console.error("Error updating document: ", error);
                 });
