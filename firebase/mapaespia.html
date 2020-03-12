@@ -197,6 +197,7 @@
                 console.log("Error getting documents: ", error);
             });
         }
+        
         var coordenadasiniciales = {
         lat: 0, 
         lng: 0
@@ -241,31 +242,28 @@
 
         }
 
-    function moverPosicion(marker) {
-        var pos = {
-        lat: 0,
-        lng: 0
-        };
-        var id = localStorage.getItem("idusuarioseleccionado");
-        if(id!=null){
-        db.collection("productos").doc(id).where("estado", "==",1).get()
-                .then(function(querySnapshot) {
-                    querySnapshot.forEach(function (doc) {
-                        pos.lat=doc.data().coordenadas.Latitud;
-                        pos.lng=doc.data().coordenadas.Longitud;
-                    });
-                    
-                    }).catch(function(error) {
-                        console.error("Error removing document: ", error);
-                    });
+        function moverPosicion(marker) {
+            var pos = {
+            lat: 0,
+            lng: 0
+            };
+            var id = localStorage.getItem("idusuarioseleccionado");
+            if(id!=null){
+            db.collection("productos").doc(id).where("estado", "==",1).get()
+                    .then(function(querySnapshot) {
+                        querySnapshot.forEach(function (doc) {
+                            pos.lat=doc.data().coordenadas.Latitud;
+                            pos.lng=doc.data().coordenadas.Longitud;
+                        });
+                        
+                        }).catch(function(error) {
+                            console.error("Error getting document: ", error);
+                        });
+            }
+            marker.setPosition( new google.maps.LatLng( pos.lat, pos.lng ) );
+            map.panTo( new google.maps.LatLng( pos.lat, pos.lng) );
+            map.setCenter(pos);
         }
-        marker.setPosition( new google.maps.LatLng( pos.lat, pos.lng ) );
-        map.panTo( new google.maps.LatLng( pos.lat, pos.lng) );
-
-        map.setCenter(pos);
-
-
-    }
 
 
     </script>
