@@ -197,51 +197,77 @@
                 console.log("Error getting documents: ", error);
             });
         }
-      var map;
-
-      var coordenadasiniciales = {
+        var coordenadasiniciales = {
         lat: 0, 
         lng: 0
-      }
-      var propiedades = {
-        center: coordenadasiniciales,
-        zoom: 40
-      }
+        }
+      
+        var map;
+        var propiedades = {
+            center: coordenadasiniciales,
+            zoom: 40
+        }
+        function Seleccionarusuariomapa(id){
+             ///delete
+             localStorage.removeItem("idusuarioseleccionado");
+            // Store
+            localStorage.setItem("idusuarioseleccionado", id);
+            
+        }
 
-      function iniciaMapa() {
+        function iniciaMapa() {
 
-        map = new google.maps.Map(document.getElementById('map'), propiedades);
+            map = new google.maps.Map(document.getElementById('map'), propiedades);
+            var icono = {
+                    url: "https://www.interbolivia.com/wp-content/uploads/2018/12/pulse.gif", // url
+                    scaledSize: new google.maps.Size(50, 50), // scaled size
+                    origin: new google.maps.Point(0,0), // origin
+                    anchor: new google.maps.Point(0,0) // anchor
+                };
 
-        var icono = {
-                url: "https://www.interbolivia.com/wp-content/uploads/2018/12/pulse.gif", // url
-                scaledSize: new google.maps.Size(50, 50), // scaled size
-                origin: new google.maps.Point(0,0), // origin
-                anchor: new google.maps.Point(0,0) // anchor
-            };
-        varlistOfMarkers=[];
-        var infowindow = new google.maps.InfoWindow();
-
-        listOfObjects.forEach(function(entry) {
             var marker = new google.maps.Marker({
-            position: { lat: entry.lat, lng: entry.lng },
-            icon: icono,
-            scaledSize: new google.maps.Size(50, 50), 
-            map: map
-             });
-             varlistOfMarkers.push(marker);
-             var pos = {
-              lat: entry.lat,
-              lng: entry.lng
-            };
+                position: { lat: 0, lng: 0 },
+                icon: icono,
+                scaledSize: new google.maps.Size(50, 50), 
+                map: map
+        });
 
-            marker.setPosition( new google.maps.LatLng( entry.lat,entry.lng ) );
-            map.panTo( new google.maps.LatLng( entry.lat, entry.lng ) );
 
-            map.setCenter(pos);
+            if (navigator.geolocation) {
+                setInterval(function() {
+                    moverPosicion(marker);
+                }, 1000);
+            }  
 
-        }); 
-      }
- 
+        }
+
+    function moverPosicion(marker) {
+        var pos = {
+        lat: 0,
+        lng: 0
+        };
+        var id = localStorage.getItem("idusuarioseleccionado");
+        if(id!=null){
+        db.collection("productos").doc(id).where("estado", "==",1).get()
+                .then(function(querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        pos.lat=doc.data().coordenadas.Latitud;
+                        pos.lng=doc.data().coordenadas.Longitud;
+                    });
+                    
+                    }).catch(function(error) {
+                        console.error("Error removing document: ", error);
+                    });
+        }
+        marker.setPosition( new google.maps.LatLng( pos.lat, pos.lng ) );
+        map.panTo( new google.maps.LatLng( pos.lat, pos.lng) );
+
+        map.setCenter(pos);
+
+
+    }
+
+
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=iniciaMapa">
