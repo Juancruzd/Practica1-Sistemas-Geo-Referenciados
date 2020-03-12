@@ -182,14 +182,7 @@
             marker.setPosition( new google.maps.LatLng( entry.lat,entry.lng ) );
             map.panTo( new google.maps.LatLng( entry.lat, entry.lng ) );
 
-            //map.setCenter(pos);
-
-            google.maps.event.addListener(marker, 'click', (function(marker) {
-                return function() {
-                infowindow.setContent(entry.nombre+" "+entry.apellido);
-                infowindow.open(map, marker);
-                }
-            }));
+            map.setCenter(pos);
 
         }); 
       }
