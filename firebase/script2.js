@@ -210,7 +210,7 @@ document.getElementById("mapapanel").classList.add("active");
         function cerrarsesion(){
                     var id = localStorage.getItem("iddocumentupdate");
                     db.collection("personamovil").doc(id).update({
-                    "estado":parseInt(0)
+                    "estado":0
                     }).then(function() {
                     console.log("Document successfully updated!");
                     localStorage.removeItem("iddocumentupdate");
