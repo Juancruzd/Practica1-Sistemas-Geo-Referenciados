@@ -267,12 +267,7 @@
                             map.setCenter(pos);
                         }
                         else{
-                            var def = {
-                            lat: 0,
-                            lng: 0
-                            };
-                            map.panTo( new google.maps.LatLng(0,0) );
-                            map.setCenter(def);
+                            marker.setMap(null);
                         }
                         }).catch(function(error) {
                             console.error("Error getting document: ", error);
