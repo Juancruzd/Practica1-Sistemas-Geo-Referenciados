@@ -135,7 +135,7 @@
                     singleObj.lng = doc.data().coordenadas.Longitud;
                     listOfObjects.push(singleObj);
                 });
-
+                iniciaMapa();
             })
             .catch(function (error) {
                 console.log("Error getting documents: ", error);
