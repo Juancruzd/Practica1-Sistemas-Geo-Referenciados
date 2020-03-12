@@ -258,11 +258,17 @@
                         lat: 0,
                         lng: 0
                         };
+                        if(doc.data().estao==1){
                             pos.lat=doc.data().coordenadas.Latitud;
                             pos.lng=doc.data().coordenadas.Longitud;
                             marker.setPosition( new google.maps.LatLng( pos.lat, pos.lng ) );
                             map.panTo( new google.maps.LatLng( pos.lat, pos.lng) );
                             map.setCenter(pos);
+                        }
+                        else{
+                            map.panTo( new google.maps.LatLng( pos.lat, pos.lng) );
+                            map.setCenter(pos);
+                        }
                         }).catch(function(error) {
                             console.error("Error getting document: ", error);
                         });
