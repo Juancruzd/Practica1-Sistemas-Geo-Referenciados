@@ -337,6 +337,7 @@
             db.collection("personamovil").where("usuario", "==", usuario).where("contrasena", "==",contrasena).get()
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
+                        $('#contendorusuario').show();
                        $("#loginModal").modal('hide');
                         document.getElementById('txtUsuariologin').value = "";
                         document.getElementById('txtContrasenalogin').value = "";
@@ -415,6 +416,7 @@
                 })
                 .then(function(docRef) {
                     console.log("Document written with ID: ", docRef.id);
+                    $('#contendorusuario').show();
                     $("#registroModal").modal('hide');
                     document.getElementById('txtUsuarioregistro').value = "";
                     document.getElementById('txtNombreregistro').value = "";
