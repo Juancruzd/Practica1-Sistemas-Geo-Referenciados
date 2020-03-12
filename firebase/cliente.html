@@ -444,7 +444,15 @@
             }
         }
         function cerrarsesion(){
-            localStorage.removeItem("iddocumentupdate");
+                    var id = localStorage.getItem("iddocumentupdate");
+                    db.collection("personamovil").doc(id).update({
+                    "estado":parseInt(0)
+                    }).then(function() {
+                    console.log("Document successfully updated!");
+                    localStorage.removeItem("iddocumentupdate");
+                    }).catch(function(error) {
+                        console.error("Error updating document: ", error);
+                    });
         }
        
        
