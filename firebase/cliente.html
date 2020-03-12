@@ -478,7 +478,7 @@
                 var contrasenanueva = $('#txtContrasenaUpdate').val();
                 if( contrasenanueva!="" && id != null){
                     db.collection("personamovil").doc(id).update({
-                "contrasena": contrasenanueva
+                "contrasena": sha256(contrasenanueva)
                 }).then(function() {
                 console.log("Document successfully updated!");
                 }).catch(function(error) {
