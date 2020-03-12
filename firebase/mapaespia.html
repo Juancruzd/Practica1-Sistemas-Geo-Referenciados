@@ -69,9 +69,10 @@
           </div>
         </div>
       </div>
-      <div class="container-fluid">
-        <div class="container">
-                <div class="col-12 p-5 bg-white rounded shadow-lg">
+      <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-8">
+                    <h1>Usuarios conectados</h1>
                     <table  class="table table-bordered mt-5 col-12 col-lg-5">
                         <thead>
                           <tr>
@@ -84,12 +85,13 @@
                         <tbody id="lista">
                         </tbody>
                       </table>
-                    <div class="col-12 p-5 col-lg-7">
-                        <div id="map"></div>
-                    </div>
-            </div>
+
+                </div>
+                <div class="col-xs-6 col-md-4">
+                    <div id="map"></div>
+                </div>
+              </div>
         </div>
-    </div>
     <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
