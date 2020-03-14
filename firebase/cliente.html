@@ -285,7 +285,10 @@
 $('.liimageneditar').click(function () {
   $('.liimageneditar.selected').removeClass('selected');
   $(this).toggleClass('selected');
-  $('.select').addClass('selected');
+  if ($('li.selected').length == 0)
+    $('.select').removeClass('selected');
+  else
+    $('.select').addClass('selected');
 });
 // number of selected items
 function counter() {
