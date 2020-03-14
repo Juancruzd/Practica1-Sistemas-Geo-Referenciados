@@ -22,7 +22,10 @@
     line-height: 40px;
     color: #555;
   }
-  
+  modal-dialog {
+    width: 800px;
+    margin: 30px auto;
+}
   .imgeneditar {
     position: absolute;
     margin: auto;
