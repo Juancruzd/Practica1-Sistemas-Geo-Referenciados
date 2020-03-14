@@ -284,11 +284,11 @@
       // item selection
 $('.liimageneditar').click(function () {
   $(this).toggleClass('selected');
+
   if ($('.liimageneditar.selected').length == 0)
     $('.select').removeClass('selected');
   else
     $('.select').addClass('selected');
-  counter();
 });
 // number of selected items
 function counter() {
