@@ -283,11 +283,7 @@
     <script>
       // item selection
 $('.liimageneditar').click(function () {
-  
-  if ($('liimageneditar.selected').length > 0)
-    //$('.select').removeClass('selected');
-    $('.liimageneditar.selected').removeClass('selected');
-  else
+  $('.liimageneditar.selected').removeClass('selected');
   $(this).toggleClass('selected');
     //$('.select').addClass('selected');
 });
