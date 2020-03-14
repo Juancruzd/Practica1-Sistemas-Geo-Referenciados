@@ -288,6 +288,11 @@ $('.liimageneditar').click(function () {
   $('.liimageneditar.selected').removeClass('selected');
     $('.select').removeClass('selected');
   if (count == 1){
+    count=$('.liimageneditar.selected').length ;
+    if (count == 0){
+      $(this).toggleClass('selected');
+      $('.select').addClass('selected');
+    }
     }
     else{
       $(this).toggleClass('selected');
