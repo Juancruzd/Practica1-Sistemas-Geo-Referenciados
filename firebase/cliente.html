@@ -285,9 +285,11 @@
 $('.liimageneditar').click(function () {
   //$('.liimageneditar.selected').removeClass('selected');
   var count=$('.liimageneditar.selected').length ;
-  if ($('.liimageneditar.selected').length > 0){
-    $('.liimageneditar.selected').removeClass('selected');
+  $('.liimageneditar.selected').removeClass('selected');
     $('.select').removeClass('selected');
+  if (count == 1){
+    $(this).toggleClass('selected');
+      $('.select').addClass('selected');
     }
     else{
       $(this).toggleClass('selected');
