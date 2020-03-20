@@ -50,7 +50,7 @@ class Registro{
                     var botonactualizar = document.createElement("button");
                     botonactualizar.setAttribute("value", "Actualizar");
                     botonactualizar.setAttribute("class", "btn btn-success m-1");
-                    botonactualizar.setAttribute("OnClick", "saveidlocalstorage(" + JSON.stringify( doc.id )+ ")");
+                    botonactualizar.setAttribute("OnClick", "saveidlocalstorage(" + JSON.stringify( doc.id )+","+JSON.stringify( doc.data().codigo )+","+JSON.stringify( doc.data().nombre )+ ")");
                     botonactualizar.setAttribute("id", "botonactualizar" + doc.id);
                     td3.appendChild(botonactualizar);
 

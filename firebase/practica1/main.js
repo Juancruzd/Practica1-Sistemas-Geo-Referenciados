@@ -32,13 +32,15 @@ $(document).ready(function () {
             console.error("Ingrese codigo y nombre valido y el id");
         }
     }
-    function saveidlocalstorage(id){
+    function saveidlocalstorage(id,codigo,nombre){
         ///delete
         localStorage.removeItem("iddocumentupdate");
         // Store
         localStorage.setItem("iddocumentupdate", id);
         document.getElementById('txtCodigoupdate').value = "";
         document.getElementById('txtNombreupdate').value = "";
+        document.getElementById('txtCodigoupdate').value =codigo;
+        document.getElementById('txtNombreupdate').value = nombre;
         $("#myModal").modal('show');
     }
     function cancelarActualizacion(){
