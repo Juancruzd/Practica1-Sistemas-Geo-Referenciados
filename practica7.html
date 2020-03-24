@@ -178,7 +178,7 @@
         .then(response => {
             response.json().then(function(datos) {
 
-            console.log(datos);
+            console.log(datos[0].confirmed);
             datos.forEach( dato => {
                 document.getElementById('txtconfirmedglobal').value = "";
                 document.getElementById('txtrecoveredglobal').value = "";
