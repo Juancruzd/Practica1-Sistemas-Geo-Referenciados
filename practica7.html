@@ -85,8 +85,8 @@
                                         map: map,
                                         position: new google.maps.LatLng(marcador.CapitalLatitude, marcador.CapitalLongitude),
                                         title: marcador.CountryName + registro.cases,
-                                        icon: { url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg), scaledSize: new google.maps.Size(20, 20) },optimized: false}
-                                    );
+                                        icon: icono
+                                    });
 
                                     marker.addListener('click', function() {
                                         infowindow.open(map, marker);
