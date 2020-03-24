@@ -85,21 +85,22 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="contact-info">
                     <i class="ti-location-pin"></i>
-                    <p>60-49 Road 11378<br>New York</p>	
+                    <p>Casos confirmados:</p>	
+                    <p id="txtconfirmedglobal"></p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="contact-info">
                     <i class="ti-email"></i>
-                    <p><span>Phone:</span> +65 11.188.888</p>	
-                    <p><span>Mail:</span> colorlib@gmail.com</p>	
+                    <p>Recuperados:</p>		
+                    <p id="txtrecoveredglobal"></p>	
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="contact-info">
                     <i class="ti-timer"></i>
-                    <p><span>Week Days:</span> 10:00 – 22:00</p>	
-                    <p><span>Sunday:</span> Close</p>	
+                    <p>Muertes:</p>		
+                    <p id="txtdeathsglobal"></p>	
                 </div>
             </div>
         </div>
@@ -185,7 +186,16 @@
         })
         .then(response => {
             response.json().then(function(datos) {
+
             console.log(datos);
+            datos.forEach( dato => {
+                document.getElementById('txtconfirmedglobal').value = "";
+                document.getElementById('txtrecoveredglobal').value = "";
+                document.getElementById('txtdeathsglobal').value = "";
+                document.getElementById('txtconfirmedglobal').value =dato.confirmed;
+                document.getElementById('txtrecoveredglobal').value = dato.recovered;
+                document.getElementById('txtdeathsglobal').value = dato.deaths;
+            });
             });
         })
         .catch(err => {
