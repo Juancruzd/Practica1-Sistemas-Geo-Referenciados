@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fecht1</title>
+</head>
+<body>
+
+    <div id="paises"></div>
+    <script>
+
+        var paises = document.getElementById("paises");
+        fetch('datos.json')
+        .then( function(response){
+
+            response.json().then( function(datos){
+
+                datos.forEach( registro => {
+                    console.log(registro.country);
+                    let nombre = document.createElement("p");
+                    nombre.textContent = "País: " + registro.country + ", casos:" + registro.cases;
+                    paises.appendChild(nombre);
+                });
+                
+
+            });
+
+        });
+
+    </script>
+    
+</body>
+</html>
