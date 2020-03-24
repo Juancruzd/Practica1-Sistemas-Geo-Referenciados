@@ -180,12 +180,12 @@
 
             console.log(datos[0].confirmed);
             datos.forEach( dato => {
-                document.getElementById('txtconfirmedglobal').value = "";
-                document.getElementById('txtrecoveredglobal').value = "";
-                document.getElementById('txtdeathsglobal').value = "";
-                document.getElementById('txtconfirmedglobal').value =dato.confirmed;
-                document.getElementById('txtrecoveredglobal').value = dato.recovered;
-                document.getElementById('txtdeathsglobal').value = dato.deaths;
+                document.getElementById('txtconfirmedglobal').innerHTML = "";
+                document.getElementById('txtrecoveredglobal').innerHTML = "";
+                document.getElementById('txtdeathsglobal').innerHTML = "";
+                document.getElementById('txtconfirmedglobal').innerHTML =dato.confirmed;
+                document.getElementById('txtrecoveredglobal').innerHTML= dato.recovered;
+                document.getElementById('txtdeathsglobal').innerHTML = dato.deaths;
             });
             });
         })
