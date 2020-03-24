@@ -23,8 +23,52 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Barlow Condensed' rel='stylesheet'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
     <style>
- 
+ .sticky-container{
+    padding:0px;
+    margin:0px;
+    position:fixed;
+    right:-130px;
+    top:230px;
+    width:210px;
+    z-index: 1100;
+}
+.sticky li{
+    list-style-type:none;
+    background-color:#fff;
+    color:#efefef;
+    height:43px;
+    padding:0px;
+    margin:0px 0px 1px 0px;
+    -webkit-transition:all 0.25s ease-in-out;
+    -moz-transition:all 0.25s ease-in-out;
+    -o-transition:all 0.25s ease-in-out;
+    transition:all 0.25s ease-in-out;
+    cursor:pointer;
+}
+.sticky li:hover{
+    margin-left:-115px;
+}
+.sticky li img{
+    float:left;
+    margin:5px 4px;
+    margin-right:5px;
+}
+.sticky li p{
+    padding-top:5px;
+    margin:0px;
+    line-height:16px;
+    font-size:11px;
+}
+.sticky li p span{
+    text-decoration:none;
+    color:rgb(0, 0, 0);
+}
+.sticky li p a:hover{
+    text-decoration:underline;
+}
       #map {
         height: 100%;
       }
@@ -34,67 +78,26 @@
         margin: 0;
         padding: 0;
       }
-      .contact-box {
-	padding-top: 40px;
-	position: absolute;
-	background: #fff;
-	max-width: 1120px;
-	width: 100%;
-	bottom: 87px;
-	text-align: center;
-	border-radius: 8px;
-}
-
-.contact-info {
-	margin-bottom: 35px;
-}
-
-.contact-info i {
-	display: block;
-	font-size: 48px;
-	color: #2916e0;
-	margin-bottom: 20px;
-}
-
-.contact-info p {
-	margin-bottom: 0;
-	font-size: 18px;
-	color: #252525;
-	font-weight: 500;
-}
-
-.contact-info p span {
-	color: #b2b2b2;
-	font-weight: 400;
-}
     </style>
   </head>
   <body>
     <div id="map"></div>
-    <div class="contact-box">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="contact-info">
-                    <i class="ti-location-pin"></i>
-                    <p>Casos confirmados:</p>	
-                    <p id="txtconfirmedglobal"></p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="contact-info">
-                    <i class="ti-email"></i>
-                    <p>Recuperados:</p>		
-                    <p id="txtrecoveredglobal"></p>	
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="contact-info">
-                    <i class="ti-timer"></i>
-                    <p>Muertes:</p>		
-                    <p id="txtdeathsglobal"></p>	
-                </div>
-            </div>
-        </div>
+    <div class="sticky-container">
+        <ul class="sticky">
+            <li>
+
+                <img class="fas fa-biohazard" width="32" height="32">
+                <p><span>Casos confirmados:</span><br><span id="txtconfirmedglobal"></span></p>
+            </li>
+            <li>
+                <img class="fas fa-biohazard" width="32" height="32">
+                <p><span>Recuperados:</span><br><span id="txtrecoveredglobal"></span></p>
+            </li>
+            <li>
+                <img class="fas fa-biohazard" width="32" height="32">
+                <p><span>Muertes::</span><br><span id="txtdeathsglobal"></span></p>
+            </li>
+        </ul>
     </div>
     <script>
  
