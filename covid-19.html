@@ -186,8 +186,6 @@
         .then(function(respuesta) {
                         respuesta.json().then(function(datospaises) {
                             const map = new google.maps.Map(document.getElementById('map'), propiedades);
-                            
-                            
                             datospaises.forEach( registro => {
                                 if(registro.countryInfo.lat==0 && registro.countryInfo.long==0){
                                     lista.forEach( element => {
