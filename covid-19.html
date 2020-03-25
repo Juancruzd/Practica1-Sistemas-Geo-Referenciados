@@ -183,7 +183,7 @@
                                 var flag="";
 
                                 if(registro.countryInfo.lat==0 && registro.countryInfo.long==0){
-                                    if(listapaises!= null){
+                                    if(listapaises != null){
 
                                         listapaises.forEach( element => {
                                         if(registro.country==element.CountryName){
@@ -199,11 +199,13 @@
                                     .then(function(response) {
                                         response.json().then(function(datos) {
                                             listapaises=datos;
+                                            console.log(listapaises);
                                         });
                                     })
                                     .catch(function(error) {
                                         console.log('Hubo un problema con la petición Fetch:' + error.message);
                                     });
+
                                     }
                                     
                                 }else{
