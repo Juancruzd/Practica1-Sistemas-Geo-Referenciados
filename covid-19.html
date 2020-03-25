@@ -176,16 +176,16 @@
         .then(function(respuesta) {
                         respuesta.json().then(function(datospaises) {
                             const map = new google.maps.Map(document.getElementById('map'), propiedades);
-                            var listapaises00=null;
+                            var listapaises=null;
                             datospaises.forEach( registro => {
                                 
                                 var latitud=0,longitud=0;
                                 var flag="";
 
                                 if(registro.countryInfo.lat==0 && registro.countryInfo.long==0){
-                                    if(listapaises00!=null){
+                                    if(listapaises!= null){
 
-                                        listapaises00.forEach( element => {
+                                        listapaises.forEach( element => {
                                         if(registro.country==element.CountryName){
                                             longitud=element.CapitalLongitude;
                                             latitud=element.CapitalLatitude;
@@ -198,7 +198,7 @@
                                     fetch('paises.json')
                                     .then(function(response) {
                                         response.json().then(function(datos) {
-                                        listapaises00=datos;
+                                            listapaises=datos;
                                         });
                                     })
                                     .catch(function(error) {
