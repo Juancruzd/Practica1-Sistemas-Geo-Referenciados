@@ -178,6 +178,9 @@
                             const map = new google.maps.Map(document.getElementById('map'), propiedades);
                             datospaises.forEach( registro => {
 
+                                if(registro.country=="USA"){
+                                    console.log("lat"+registro.countryInfo.lat+"long"+registro.countryInfo.long);
+                                }
                                     var información = "<img width="+60+" height="+40+" src="+registro.countryInfo.flag+">"+"<br><strong>País:</strong> "+ registro.country +"<br><strong>Casos:</strong> " + registro.cases + "<br><strong>Nuevos hoy:</strong> " + registro.todayCases + "<br><strong>Muertes:</strong> " + registro.deaths + "<br><strong>Muertes Hoy:</strong> " + registro.todayDeaths + "<br><strong>Recuperados:</strong> " + registro.recovered + "<br><strong>Activos:</strong> " + registro.active + "<br><strong>Críticos:</strong> " + registro.critical + "<br><strong>Casos por millón:</strong> " + registro.casesPerOneMillion;
                                    
                                     var infowindow = new google.maps.InfoWindow({
