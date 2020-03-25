@@ -112,7 +112,12 @@
 
     var propiedades = {
         center: coordenadas,
-        zoom: 2
+        zoom: 2,
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+            mapTypeIds: ['roadmap', 'terrain']
+        }
         }
 
  
