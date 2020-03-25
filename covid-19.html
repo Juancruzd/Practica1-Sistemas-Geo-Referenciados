@@ -26,7 +26,7 @@
     <link href='screen.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/b23a88639a.js" crossorigin="anonymous"></script>
     <style>
-        svg:hover {
+        svg {
   fill: red;
 }
         .sticky-container{
@@ -39,22 +39,27 @@
             z-index: 1100;
         }
         .sticky li{
+            border-radius: 4px 0 0 4px;
             list-style-type:none;
             background-color:#fff;
             color:#efefef;
             height:46px;
             padding:0px;
-            margin:0px 0px 1px 0px;
+            
+            margin-top: 20px;
+            /*margin:0px 0px 1px 0px;*/
             -webkit-transition:all 0.25s ease-in-out;
             -moz-transition:all 0.25s ease-in-out;
             -o-transition:all 0.25s ease-in-out;
             transition:all 0.25s ease-in-out;
             cursor:pointer;
+            -webkit-box-shadow: 0px 10px 23px -13px grey;
+            box-shadow: 0px 10px 23px -13px grey;
         }
         .sticky li:hover{
             margin-left:-115px;
         }
-        .sticky li img{
+        .sticky li svg{
             float:left;
             margin:5px 4px;
             margin-right:5px;
@@ -106,17 +111,17 @@
     <div class="sticky-container">
         <ul class="sticky">
             <li>
-                <img src="img/covid/confimed.svg"  width="32" height="32">
+                <svg width="32" height="32" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="head-side-virus" class="svg-inline--fa fa-head-side-virus fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#B40404" d="M272,240a16,16,0,1,0,16,16A16,16,0,0,0,272,240Zm-64-64a16,16,0,1,0,16,16A16,16,0,0,0,208,176Zm301.2,99c-20.93-47.12-48.43-151.73-73.07-186.75A207.9,207.9,0,0,0,266.09,0H192C86,0,0,86,0,192A191.23,191.23,0,0,0,64,334.81V512H320V448h64a64,64,0,0,0,64-64V320H480A32,32,0,0,0,509.2,275ZM368,240H355.88c-28.51,0-42.79,34.47-22.63,54.63l8.58,8.57a16,16,0,1,1-22.63,22.63l-8.57-8.58C290.47,297.09,256,311.37,256,339.88V352a16,16,0,0,1-32,0V339.88c0-28.51-34.47-42.79-54.63-22.63l-8.57,8.58a16,16,0,0,1-22.63-22.63l8.58-8.57c20.16-20.16,5.88-54.63-22.63-54.63H112a16,16,0,0,1,0-32h12.12c28.51,0,42.79-34.47,22.63-54.63l-8.58-8.57a16,16,0,0,1,22.63-22.63l8.57,8.58c20.16,20.16,54.63,5.88,54.63-22.63V96a16,16,0,0,1,32,0v12.12c0,28.51,34.47,42.79,54.63,22.63l8.57-8.58a16,16,0,0,1,22.63,22.63l-8.58,8.57C313.09,173.53,327.37,208,355.88,208H368a16,16,0,0,1,0,32Z"></path></svg>
                 <p><span>Casos: </span><span id="txtconfirmedglobal"></span>
                 <br>
                 <span>Nuevos: </span><span id="txtnewcasesglobal"></span></p>
             </li>
             <li>
-                <img src="img/covid/recoverd.svg" width="32" height="32">
+                <svg width="32" height="32" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heartbeat" class="svg-inline--fa fa-heartbeat fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#088A08" d="M320.2 243.8l-49.7 99.4c-6 12.1-23.4 11.7-28.9-.6l-56.9-126.3-30 71.7H60.6l182.5 186.5c7.1 7.3 18.6 7.3 25.7 0L451.4 288H342.3l-22.1-44.2zM473.7 73.9l-2.4-2.5c-51.5-52.6-135.8-52.6-187.4 0L256 100l-27.9-28.5c-51.5-52.7-135.9-52.7-187.4 0l-2.4 2.4C-10.4 123.7-12.5 203 31 256h102.4l35.9-86.2c5.4-12.9 23.6-13.2 29.4-.4l58.2 129.3 49-97.9c5.9-11.8 22.7-11.8 28.6 0l27.6 55.2H481c43.5-53 41.4-132.3-7.3-182.1z"></path></svg>
                 <p><span>Recuperados:</span><br><span id="txtrecoveredglobal"></span></p>
             </li>
             <li>
-                <img src="img/covid/deaths.svg" width="32" height="32">
+                <svg width="32" height="32" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="skull-crossbones" class="svg-inline--fa fa-skull-crossbones fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="black" d="M439.15 453.06L297.17 384l141.99-69.06c7.9-3.95 11.11-13.56 7.15-21.46L432 264.85c-3.95-7.9-13.56-11.11-21.47-7.16L224 348.41 37.47 257.69c-7.9-3.95-17.51-.75-21.47 7.16L1.69 293.48c-3.95 7.9-.75 17.51 7.15 21.46L150.83 384 8.85 453.06c-7.9 3.95-11.11 13.56-7.15 21.47l14.31 28.63c3.95 7.9 13.56 11.11 21.47 7.15L224 419.59l186.53 90.72c7.9 3.95 17.51.75 21.47-7.15l14.31-28.63c3.95-7.91.74-17.52-7.16-21.47zM150 237.28l-5.48 25.87c-2.67 12.62 5.42 24.85 16.45 24.85h126.08c11.03 0 19.12-12.23 16.45-24.85l-5.5-25.87c41.78-22.41 70-62.75 70-109.28C368 57.31 303.53 0 224 0S80 57.31 80 128c0 46.53 28.22 86.87 70 109.28zM280 112c17.65 0 32 14.35 32 32s-14.35 32-32 32-32-14.35-32-32 14.35-32 32-32zm-112 0c17.65 0 32 14.35 32 32s-14.35 32-32 32-32-14.35-32-32 14.35-32 32-32z"></path></svg>
                 <p><span>Muertes: </span><span id="txtdeathsglobal"></span>
                 <br>
                 <span>Nuevas: </span><span id="txtnewdeathsglobal"></span></p>
