@@ -176,12 +176,37 @@
         .then(function(respuesta) {
                         respuesta.json().then(function(datospaises) {
                             const map = new google.maps.Map(document.getElementById('map'), propiedades);
+                            var listapaises00=null;
                             datospaises.forEach( registro => {
-
+                                
                                 var latitud=0,longitud=0;
+
                                 if(registro.countryInfo.lat==0 && registro.countryInfo.long==0){
-                                    console.log(registro.country);
+                                    if(listapaises00!=null){
+
+                                        listapaises00.forEach( element => {
+                                        if(registro.country==element.CountryName){
+                                            longitud=element.CapitalLongitude;
+                                            latitud=element.CapitalLatitude;
+                                        }
+                                        });
+
+                                    }
+                                    else{
+                                    fetch('paises.json')
+                                    .then(function(response) {
+                                        response.json().then(function(datos) {
+                                        listapaises00=datos;
+                                        });
+                                    })
+                                    .catch(function(error) {
+                                        console.log('Hubo un problema con la petición Fetch:' + error.message);
+                                    });
+                                    }
+                                    
                                 }
+                                    latitud=registro.countryInfo.lat;
+                                    longitud=registro.countryInfo.long;
                                     var información = "<img width="+60+" height="+40+" src="+registro.countryInfo.flag+">"+"<br><strong>País:</strong> "+ registro.country +"<br><strong>Casos:</strong> " + registro.cases + "<br><strong>Nuevos hoy:</strong> " + registro.todayCases + "<br><strong>Muertes:</strong> " + registro.deaths + "<br><strong>Muertes Hoy:</strong> " + registro.todayDeaths + "<br><strong>Recuperados:</strong> " + registro.recovered + "<br><strong>Activos:</strong> " + registro.active + "<br><strong>Críticos:</strong> " + registro.critical + "<br><strong>Casos por millón:</strong> " + registro.casesPerOneMillion;
                                    
                                     var infowindow = new google.maps.InfoWindow({
@@ -195,7 +220,7 @@
 
                                     let marker = new google.maps.Marker({
                                         map: map,
-                                        position: new google.maps.LatLng(registro.countryInfo.lat,registro.countryInfo.long),
+                                        position: new google.maps.LatLng(latitud,longitud),
                                         title: registro.country,
                                         icon: {
                                             scaledSize: new google.maps.Size(20,20),
