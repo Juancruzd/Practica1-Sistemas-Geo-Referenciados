@@ -180,6 +180,7 @@
                             datospaises.forEach( registro => {
                                 
                                 var latitud=0,longitud=0;
+                                var flag="";
 
                                 if(registro.countryInfo.lat==0 && registro.countryInfo.long==0){
                                     if(listapaises00!=null){
@@ -188,6 +189,7 @@
                                         if(registro.country==element.CountryName){
                                             longitud=element.CapitalLongitude;
                                             latitud=element.CapitalLatitude;
+                                            flag="https://www.countryflags.io/"+element.CountryCode +"/flat/64.png";
                                         }
                                         });
 
@@ -204,10 +206,13 @@
                                     });
                                     }
                                     
-                                }
+                                }else{
                                     latitud=registro.countryInfo.lat;
                                     longitud=registro.countryInfo.long;
-                                    var información = "<img width="+60+" height="+40+" src="+registro.countryInfo.flag+">"+"<br><strong>País:</strong> "+ registro.country +"<br><strong>Casos:</strong> " + registro.cases + "<br><strong>Nuevos hoy:</strong> " + registro.todayCases + "<br><strong>Muertes:</strong> " + registro.deaths + "<br><strong>Muertes Hoy:</strong> " + registro.todayDeaths + "<br><strong>Recuperados:</strong> " + registro.recovered + "<br><strong>Activos:</strong> " + registro.active + "<br><strong>Críticos:</strong> " + registro.critical + "<br><strong>Casos por millón:</strong> " + registro.casesPerOneMillion;
+                                    flag=registro.countryInfo.flag;
+                                }
+                                    
+                                    var información = "<img width="+60+" height="+40+" src="+flag+">"+"<br><strong>País:</strong> "+ registro.country +"<br><strong>Casos:</strong> " + registro.cases + "<br><strong>Nuevos hoy:</strong> " + registro.todayCases + "<br><strong>Muertes:</strong> " + registro.deaths + "<br><strong>Muertes Hoy:</strong> " + registro.todayDeaths + "<br><strong>Recuperados:</strong> " + registro.recovered + "<br><strong>Activos:</strong> " + registro.active + "<br><strong>Críticos:</strong> " + registro.critical + "<br><strong>Casos por millón:</strong> " + registro.casesPerOneMillion;
                                    
                                     var infowindow = new google.maps.InfoWindow({
                                         content: información
