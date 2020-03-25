@@ -179,27 +179,9 @@
                             datospaises.forEach( registro => {
 
                                     var información = "<img width="+60+" height="+40+" src="+registro.countryInfo.flag+">"+"<br><strong>País:</strong> "+ registro.country +"<br><strong>Casos:</strong> " + registro.cases + "<br><strong>Nuevos hoy:</strong> " + registro.todayCases + "<br><strong>Muertes:</strong> " + registro.deaths + "<br><strong>Muertes Hoy:</strong> " + registro.todayDeaths + "<br><strong>Recuperados:</strong> " + registro.recovered + "<br><strong>Activos:</strong> " + registro.active + "<br><strong>Críticos:</strong> " + registro.critical + "<br><strong>Casos por millón:</strong> " + registro.casesPerOneMillion;
-                                   var content = "<div class='map_info_wrapper'><a href="+registro.country+"><div class='img_wrapper'><img src="+registro.countryInfo.flag+"></div>"+
-    "<div class='property_content_wrap'>"+
-    "<div class='property_title'>"+
-    "<span>"+registro.country+"</span>"+
-    "</div>"+
-
-    "<div class='property_price'>"+
-    "<span>"+registro.cases+"</span>"+
-    "</div>"+
-
-    "<div class='property_bed_type'>"+
-    "<span>"+registro.todayCases+"</span>"+
-    "<ul><li>"+registro.todayCases+"</li></ul>"+
-    "</div>"+
-
-    "<div class='property_listed_date'>"+
-    "<span>Listed on "+registro.todayCases+"</span>"+
-    "</div>"+
-    "</div></a></div>";
+                                   
                                     var infowindow = new google.maps.InfoWindow({
-                                        content: content
+                                        content: información
                                     });
 
                                     var icono = {
