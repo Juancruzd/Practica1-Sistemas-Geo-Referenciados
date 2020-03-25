@@ -176,11 +176,11 @@
         .then(function(respuesta) {
                         respuesta.json().then(function(datospaises) {
                             const map = new google.maps.Map(document.getElementById('map'), propiedades);
-                            
+                            const latitud,longitud,flag;
+
                             datospaises.forEach( registro => {
                                 
-                                const latitud=0,longitud=0;
-                                const flag="";
+                                
                                 if(registro.countryInfo.lat==0 && registro.countryInfo.long==0){
                                     fetch('paises.json')
                                     .then(function(response) {
