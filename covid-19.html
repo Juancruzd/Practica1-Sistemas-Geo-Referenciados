@@ -176,32 +176,32 @@
         .then(function(respuesta) {
                         respuesta.json().then(function(datospaises) {
                             const map = new google.maps.Map(document.getElementById('map'), propiedades);
-                            var latitud,longitud,flag;
-
-                            datospaises.forEach( registro => {
-                                
-                                
-                                if(registro.countryInfo.lat==0 && registro.countryInfo.long==0){
-                                    fetch('paises.json')
+                            var lista;
+                            fetch('paises.json')
                                     .then(function(response) {
                                         response.json().then(function(datos) {
-                                            datos.forEach( element => {
+                                            lista=datos;
+                                        });
+                                    })
+                                .catch(function(error) {
+                                        console.log('Hubo un problema con la petición Fetch:' + error.message);
+                                });
+                            datospaises.forEach( registro => {
+                            var latitud=0,longitud=0,flag="";
+                                if(registro.countryInfo.lat==0 && registro.countryInfo.long==0){
+                                    lista.forEach( element => {
                                             if(registro.country==element.CountryName){
                                                 longitud=element.CapitalLongitude;
                                                 latitud=element.CapitalLatitude;
                                                 flag="https://www.countryflags.io/"+element.CountryCode +"/flat/64.png";
                                             }
                                             });
-                                        });
-                                    })
-                                    .catch(function(error) {
-                                        console.log('Hubo un problema con la petición Fetch:' + error.message);
-                                    });
                                 }else{
                                     latitud=registro.countryInfo.lat;
                                     longitud=registro.countryInfo.long;
                                     flag=registro.countryInfo.flag;
                                 }
+
                                 if(registro.countryInfo.lat==0 && registro.countryInfo.long==0){
                                     console.log(latitud+","+longitud+","+flag);
                                 }
