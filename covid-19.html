@@ -136,8 +136,8 @@
 
                                     let marker = new google.maps.Marker({
                                         map: map,
-                                        position: new google.maps.LatLng(registro.lat,registro.long),
-                                        title: registro.countryInfo.country + registro.countryInfo.cases,
+                                        position: new google.maps.LatLng(registro.countryInfo.lat,registro.countryInfo.long),
+                                        title: registro.country + registro.cases,
                                         icon: icono
                                     });
 
