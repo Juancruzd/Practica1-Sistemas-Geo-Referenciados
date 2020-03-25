@@ -172,21 +172,22 @@
         
                     
         var lista;
+        fetch('paises.json')
+        .then(function(response) {
+        response.json().then(function(datos) {
+        lista=datos;
+        });
+        })
+        .catch(function(error) {
+                console.log('Hubo un problema con la petición Fetch:' + error.message);
+        });
         var latitud=0,longitud=0,flag="";     
-    fetch('https://corona.lmao.ninja/countries')
+        fetch('https://corona.lmao.ninja/countries')
         .then(function(respuesta) {
                         respuesta.json().then(function(datospaises) {
                             const map = new google.maps.Map(document.getElementById('map'), propiedades);
                             
-                            fetch('paises.json')
-                                    .then(function(response) {
-                                        response.json().then(function(datos) {
-                                            lista=datos;
-                                        });
-                                    })
-                                .catch(function(error) {
-                                        console.log('Hubo un problema con la petición Fetch:' + error.message);
-                                });
+                            
                             datospaises.forEach( registro => {
                                 if(registro.countryInfo.lat==0 && registro.countryInfo.long==0){
                                     lista.forEach( element => {
