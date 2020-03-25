@@ -1,11 +1,11 @@
 
 [
     {
-        "Country":"Jamaica","cases":"2000"
+        "country":"Jamaica","cases":"2000"
     }
     ,
     {
-        "Country":"Mexico","cases":"5000"
+        "country":"Mexico","cases":"5000"
     }
     
 ]
