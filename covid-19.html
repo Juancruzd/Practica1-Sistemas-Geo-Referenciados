@@ -41,7 +41,7 @@
             list-style-type:none;
             background-color:#fff;
             color:#efefef;
-            height:43px;
+            height:46px;
             padding:0px;
             margin:0px 0px 1px 0px;
             -webkit-transition:all 0.25s ease-in-out;
@@ -89,9 +89,10 @@
     <div class="sticky-container">
         <ul class="sticky">
             <li>
-
                 <img src="img/covid/confimed.svg"  width="32" height="32">
-                <p><span>Confirmados:</span><br><span id="txtconfirmedglobal"></span></p>
+                <p><span>Casos: </span><span id="txtconfirmedglobal"></span>
+                <br>
+                <span>Nuevos: </span><span id="txtnewcasesglobal"></span></p>
             </li>
             <li>
                 <img src="img/covid/recoverd.svg" width="32" height="32">
@@ -99,7 +100,9 @@
             </li>
             <li>
                 <img src="img/covid/deaths.svg" width="32" height="32">
-                <p><span>Muertes::</span><br><span id="txtdeathsglobal"></span></p>
+                <p><span>Muertes: </span><span id="txtdeathsglobal"></span>
+                <br>
+                <span>Nuevas: </span><span id="txtnewdeathsglobal"></span></p>
             </li>
         </ul>
     </div>
@@ -201,31 +204,36 @@
 
 
 
-        fetch("https://covid-19-data.p.rapidapi.com/totals?format=json", {
+        
+        fetch("https://coronavirus-monitor.p.rapidapi.com/coronavirus/worldstat.php", {
             "method": "GET",
             "headers": {
-                "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
+                "x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
                 "x-rapidapi-key": "32e27eda20msh4d6db7d143a67c6p155a35jsn03c763a6fb2d"
             }
         })
         .then(response => {
-            response.json().then(function(datos) {
-
-            console.log(datos[0].confirmed);
-            datos.forEach( dato => {
+           
+            response.json().then(function(dato) {
+                console.log(dato);
+                
+                
                 document.getElementById('txtconfirmedglobal').innerHTML = "";
+                document.getElementById('txtnewcasesglobal').innerHTML = "";
                 document.getElementById('txtrecoveredglobal').innerHTML = "";
                 document.getElementById('txtdeathsglobal').innerHTML = "";
-                document.getElementById('txtconfirmedglobal').innerHTML =dato.confirmed;
-                document.getElementById('txtrecoveredglobal').innerHTML= dato.recovered;
-                document.getElementById('txtdeathsglobal').innerHTML = dato.deaths;
-            });
+                document.getElementById('txtnewdeathsglobal').innerHTML = "";
+                document.getElementById('txtconfirmedglobal').innerHTML =dato.total_cases;
+                document.getElementById('txtnewcasesglobal').innerHTML = dato.new_cases;
+                document.getElementById('txtrecoveredglobal').innerHTML= dato.total_recovered;
+                document.getElementById('txtdeathsglobal').innerHTML = dato.total_deaths;
+                document.getElementById('txtnewdeathsglobal').innerHTML = dato.new_deaths;
+            
             });
         })
         .catch(err => {
             console.log(err);
         });
-
         
     }
  
