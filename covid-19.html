@@ -89,8 +89,15 @@
         height: 100%;
         margin: 0;
         padding: 0;
+    overflow-y: hidden !important;
       }
-
+      #div-mostrar{
+	margin: auto;
+	height: 0px;
+	transition: height .4s;
+    text-align: center;
+    z-index: 1100;
+        }
     </style>
   </head>
   <body >
@@ -99,16 +106,24 @@
                 <header class="header header-menu header--fixed header--home header--scroll-links">
                     <div class="container">
                         <div class="header__container">
-                            <a href="javascript:void(0)" onclick="console.log('abriendo busqueda')" class="btn-hamburger">
+                            <a href="javascript:void(0)" onclick="divAuto()" class="btn-hamburger">
                                  <!--//*background-color:#000;content:'';*/-->
-                                <span class="fas fa-search"></span>
+                                <span class="fas fa-search" id="btnsearch"></span>
                             </a>
                             <h1 class="logo logo--site"><a ></a></h1>
                         </div>
                         <!--/header__container-->
                     </div>
+
                     <!--/container-->
                 </header>
+                <!--/header-->
+            <div class="menu_container" id="div-mostrar">
+                <nav class="menubar" role="menubar">
+                             
+                </nav>
+            </div>
+            <!--/menu_container-->
             </div>
         </div>
     <!--/header__nav-->
@@ -134,7 +149,20 @@
         </ul>
     </div>
     <script>
- 
+ var clic = 1;
+function divAuto(){ 
+   if(clic==1){
+   document.getElementById("btnsearch").className ="";
+  document.getElementById("btnsearch").className ='fas fa-times';
+   document.getElementById("div-mostrar").style.height = "600px";
+   clic = clic + 1;
+   } else{
+   document.getElementById("btnsearch").className ="";
+  document.getElementById("btnsearch").className ='fas fa-search';   
+    document.getElementById("div-mostrar").style.height = "0px";   
+    clic = 1;
+   }   
+}
     var coordenadas = {
         lat: 0, 
         lng: 0
