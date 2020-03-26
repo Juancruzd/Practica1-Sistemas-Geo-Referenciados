@@ -99,7 +99,7 @@
                 <header class="header header-menu header--fixed header--home header--scroll-links">
                     <div class="container">
                         <div class="header__container">
-                            <a href="#" class="btn-hamburger">
+                            <a href="#" onclick="console.log('abriendo busqueda')" class="btn-hamburger">
                                  <!--//*background-color:#000;content:'';*/-->
                                 <span class="fas fa-search"></span>
                             </a>
@@ -183,7 +183,7 @@
                                 }
 
                                 if(registro.countryInfo.lat==0 && registro.countryInfo.long==0){
-                                    console.log(latitud+","+longitud+","+flag);
+                                   // console.log(latitud+","+longitud+","+flag);
                                 }
                                     
                                     var información = flag +"<br><br><strong>País:</strong> "+ registro.country +"<br><strong>Casos:</strong> " + registro.cases + "<br><strong>Nuevos hoy:</strong> " + registro.todayCases + "<br><strong>Muertes:</strong> " + registro.deaths + "<br><strong>Muertes Hoy:</strong> " + registro.todayDeaths + "<br><strong>Recuperados:</strong> " + registro.recovered + "<br><strong>Activos:</strong> " + registro.active + "<br><strong>Críticos:</strong> " + registro.critical + "<br><strong>Casos por millón:</strong> " + registro.casesPerOneMillion;
