@@ -26,6 +26,25 @@
     <link href='screen.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/b23a88639a.js" crossorigin="anonymous"></script>
     <style>
+        .float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:white;
+	color:black;
+	border-radius: 4px 0 0 4px;
+	text-align:center;
+    -webkit-box-shadow: 0px 10px 23px -13px grey;
+    box-shadow: 0px 10px 23px -13px grey;
+
+}
+
+.my-float{
+	margin-top:22px;
+}
+
         svg {
   fill: red;
 }
@@ -100,6 +119,7 @@
     </style>
   </head>
   <body >
+    
         <div class="container">
             <div class="header__nav__list__container">
                 <header class="header header-menu header--fixed header--home header--scroll-links">
@@ -117,7 +137,7 @@
                     <!--/container-->
                 </header>
                 <!--/header-->
-            <div class="menu_container" id="div-mostrar">
+            <div class="menu_container" id="div-mostrar" style="display:none;">
                 <div class="row" style="height: 100px;width: 100%;">
                     <div class="col-xs-12 col-md-12"></div>
                 </div>
@@ -210,6 +230,10 @@
             </li>
         </ul>
     </div>
+    <a href="javascript:void(0)" class="float">
+        <i class="fas fa-search my-float"></i>
+        </a>
+
     <script>
  var clic = 1;
 function divAuto(){ 
@@ -217,6 +241,8 @@ function divAuto(){
    document.getElementById("btnsearch").className ="";
   document.getElementById("btnsearch").className ='fas fa-times';
    document.getElementById("div-mostrar").style.height = "100%";
+   
+   document.getElementById("div-mostrar").style.display = 'block';
    clic = clic + 1;
    } else{
    document.getElementById("btnsearch").className ="";
@@ -233,6 +259,9 @@ function divAuto(){
     document.getElementById('cs').innerHTML = "";
     document.getElementById('trs').innerHTML = "";
     document.getElementsByName("provincia")[0].value = "Seleccione un pais...";
+
+    
+    document.getElementById("div-mostrar").style.display = 'none';
     clic = 1;
    }   
 }
