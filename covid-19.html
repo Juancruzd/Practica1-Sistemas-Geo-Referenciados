@@ -25,7 +25,7 @@
     <link href='https://fonts.googleapis.com/css?family=Barlow Condensed' rel='stylesheet'>
     <link href='screen.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/b23a88639a.js" crossorigin="anonymous"></script>
-    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <style>
         .float{
 	position:fixed;
@@ -145,6 +145,7 @@
                               <div id="alertsearch" class="alert alert-warning mt-5" role="alert" style="display:none;">
                                 Seleccione un  pais!
                               </div>
+                              <div style="min-height: 400px; display: none;" id="chart_div"></div>
                     </div>
                     <div class="col-xs-4 col-md-4  mt-10" >
                         <ul class="list-group mt-5">
@@ -227,58 +228,124 @@ function divAuto(){
     clic = 1;
    }   
 }
+
 function search(){
     let element = document.getElementsByName("provincia")[0];
     if(element.value!="Seleccione un pais..."){
+
   document.getElementById("alertsearch").style.display = 'none';
+  document.getElementById("chart_div").style.display = 'block';
     var country=element.value;
-    fetch("https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php?country="+country, {
+     fetch("https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php?country="+country, {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
 		"x-rapidapi-key": "32e27eda20msh4d6db7d143a67c6p155a35jsn03c763a6fb2d"
 	}
 })
-.then(response => {
-    response.json().then(function(datos) {
-        console.log(datos);
-        var pais=datos.country;
-        var array=datos.latest_stat_by_country;
-        
-        document.getElementById('record_dates').innerHTML = "Seleccione un pais...";
-        document.getElementById('record_dates').innerHTML = array[0].record_date;
+    .then(response => {
+        response.json().then(function(datos) { 
+            var pais=datos.country;
+            var array=datos.latest_stat_by_country;
+            
+            document.getElementById('record_dates').innerHTML = "Seleccione un pais...";
+            document.getElementById('record_dates').innerHTML = array[0].record_date;
 
-        document.getElementById('paiss').innerHTML = "";
-        document.getElementById('paiss').innerHTML = pais;
+            document.getElementById('paiss').innerHTML = "";
+            document.getElementById('paiss').innerHTML = pais;
 
-        document.getElementById('tcs').innerHTML = "";
-        document.getElementById('tcs').innerHTML =(array[0].total_cases == '') ? 0 : array[0].total_cases;
+            document.getElementById('tcs').innerHTML = "";
+            document.getElementById('tcs').innerHTML =(array[0].total_cases == '') ? 0 : array[0].total_cases;
 
-        document.getElementById('ncs').innerHTML = "";
-        document.getElementById('ncs').innerHTML = (array[0].new_cases == '') ? 0 : array[0].new_cases;
+            document.getElementById('ncs').innerHTML = "";
+            document.getElementById('ncs').innerHTML = (array[0].new_cases == '') ? 0 : array[0].new_cases;
 
-        document.getElementById('cas').innerHTML = "";
-        document.getElementById('cas').innerHTML = (array[0].active_cases == '') ? 0 : array[0].active_cases;
+            document.getElementById('cas').innerHTML = "";
+            document.getElementById('cas').innerHTML = (array[0].active_cases == '') ? 0 : array[0].active_cases;
 
-        document.getElementById('tms').innerHTML = "";
-        document.getElementById('tms').innerHTML = (array[0].total_deaths == '') ? 0 : array[0].total_deaths;
+            document.getElementById('tms').innerHTML = "";
+            document.getElementById('tms').innerHTML = (array[0].total_deaths == '') ? 0 : array[0].total_deaths;
 
-        document.getElementById('nms').innerHTML = "";
-        document.getElementById('nms').innerHTML =  (array[0].new_deaths == '') ? 0 : array[0].new_deaths;
+            document.getElementById('nms').innerHTML = "";
+            document.getElementById('nms').innerHTML =  (array[0].new_deaths == '') ? 0 : array[0].new_deaths;
 
-        document.getElementById('trs').innerHTML = "";
-        document.getElementById('trs').innerHTML = (array[0].total_recovered == '') ? 0 : array[0].total_recovered;
+            document.getElementById('trs').innerHTML = "";
+            document.getElementById('trs').innerHTML = (array[0].total_recovered == '') ? 0 : array[0].total_recovered;
 
-        document.getElementById('cs').innerHTML = "";
-        document.getElementById('cs').innerHTML = (array[0].serious_critical == '') ? 0 : array[0].serious_critical;
+            document.getElementById('cs').innerHTML = "";
+            document.getElementById('cs').innerHTML = (array[0].serious_critical == '') ? 0 : array[0].serious_critical;
+        });
+    })
+    .catch(err => {
+        console.log(err);
     });
-})
-.catch(err => {
-	console.log(err);
-});
-    }else{
-  document.getElementById("alertsearch").style.display = 'block';
 
+    fetch("https://covid-193.p.rapidapi.com/history?country="+country, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "covid-193.p.rapidapi.com",
+		"x-rapidapi-key": "32e27eda20msh4d6db7d143a67c6p155a35jsn03c763a6fb2d"
+	}
+    })
+    .then(response => { 
+        response.json().then(function(p) {
+
+            var array=p.response.reverse(); 
+
+        google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Fecha');
+        data.addColumn('number', 'Casos');
+
+          
+        var dataChart = [];
+        for(var i=0;i<array.length;i++){ 
+                   
+                    let date =array[i].day;
+                    var splitDate = date.split('-');
+                    var year = splitDate[0];
+                    var month = splitDate[1];
+                    var day = splitDate[2]; 
+                    dataChart.push( [new Date(year,parseInt(month)-1,parseInt(day)),array[i].cases.total] );
+                }
+        data.addRows(dataChart);
+
+
+        var options = {
+          title: 'Historial de '+p.parameters.country,
+          width: 400,
+          height: 200,
+          hAxis: {
+            format: 'yy/M/d',
+            gridlines: {count: 15}
+          },
+          vAxis: {
+            gridlines: {color: 'none'},
+            minValue: 0
+          }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        
+          chart.draw(data, options); 
+      }
+            
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    });
+
+
+
+    }
+    else{
+  document.getElementById("alertsearch").style.display = 'block';
+  document.getElementById("chart_div").style.display = 'none';
 
     document.getElementById('record_dates').innerHTML = "";
     document.getElementById('paiss').innerHTML = "Seleccione un pais...";
