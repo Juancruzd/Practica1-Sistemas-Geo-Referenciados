@@ -62,7 +62,7 @@
       }
       #chart { 
           width: 97%; 
-        min-height: 200px;
+        min-height: 300px;
          }
       #div-mostrar{
 	margin: auto;
@@ -323,10 +323,27 @@ function search(){
 
         var options = {
           title: 'Historial de '+p.parameters.country, 
-          height: 200,
+          height: 300,
+          animation:{
+						duration: 1000,
+						easing: 'linear',
+						startup: true
+					},
+          colors: ['#B40404'],
+          pointSize: 5,
+          pointShape: 'square', 
+          explorer: { 
+                    actions: ['dragToZoom', 'rightClickToReset'],
+                    axis: 'horizontal',
+                    keepInBounds: true,
+                    maxZoomIn: 4.0
+                    },
           hAxis: {
             format: 'yy/M/d',
-            gridlines: {count: 15}
+            gridlines: {count: 15},
+            title: 'Dia',  titleTextStyle: {color: '#333'},
+            slantedText:true, 
+            slantedTextAngle:80
           },
           vAxis: {
             gridlines: {color: 'none'},
