@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mapa de información por país Covid-19, en colaboración con los Alumnos de 6o Semestre de Sistemas de la Universidad DeLasalle Bajío hemos creado un mapa mundial con los casos de Covid-19 en tiempo real</title>
+    <title>
+        Mapa de información por país Covid-19, en colaboración con los Alumnos de 6o Semestre de Ingeniería de Software y Sistemas Computacionales de la Universidad De Lasalle Bajío hemos creado un mapa mundial con los casos de Covid-19 en tiempo real.
+    </title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
@@ -57,7 +59,27 @@
         }
     </style>
   </head>
-  <body >  
+  <body >   
+      <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-info-circle"> Sobre el mapa </i></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            Mapa de información por país #covid-19, en colaboración con los Alumnos de 6o Semestre de Ingeniería de Software y Sistemas Computacionales de la Universidad De Lasalle Bajío hemos creado un mapa mundial con los casos de Covid-19 en tiempo real.
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> 
+        </div>
+      </div>
+    </div>
+  </div>
         <div class="container">
             <div class="header__nav__list__container">
                 <header class="header header-menu header--fixed header--home header--scroll-links">
@@ -81,7 +103,9 @@
                 <div class="row " style="height: 100px;width: 100%;">
                     <div class="col-xs-12 col-md-12">
                         <div class="row" style="height: 100px;width: 100%;">
-                        <div class="col-xs-6 col-md-6 mt-10 pb-5" style="width: 100%;"></div>
+                        <div class="col-xs-6 col-md-6 mt-10 pb-5" style="width: 100%;">
+                            
+                        </div>
                         <div class="col-xs-2 col-md-2 mt-10 pb-5" style="padding-top: 40px;">
                             
                         </div>
@@ -113,7 +137,21 @@
                                     <br>
                                     <span>Nuevas: </span><span id="txtnewdeathsglobal"></span></p>
                             <hr>
-                            <p class="mb-0"><a href="https://rapidapi.com/astsiatsko/api/coronavirus-monitor/details" target="_blank">coronavirus-monitor</a></p>
+                            
+                            <p class="mb-0">
+                                <i class="fas fa-info-circle"> 
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter"> Sobre el mapa</a> 
+                                </i>
+                            </p>
+                            
+                            <hr>
+                            <p class="mb-0">
+                                <i class="fas fa-link">
+                                    <a href="https://rapidapi.com/astsiatsko/api/coronavirus-monitor/details" target="_blank"> coronavirus-monitor</a>
+                                </i>
+                                </p>
+                            <br>
+
                           </div>
                     </div>
                     <div class="col-xs-4 col-md-4 mt-10">
