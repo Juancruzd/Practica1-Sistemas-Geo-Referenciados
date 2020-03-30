@@ -210,12 +210,15 @@ function divAuto(){
    
    document.getElementById("div-mostrar").style.display = 'block';
    document.getElementById("map").style.display = 'none';
+   document.getElementById("chart_div").innerHTML = "";
    clic = clic + 1;
    } else{
    document.getElementById("btnsearch").className ="";
   document.getElementById("btnsearch").className ='fas fa-search';   
     document.getElementById("div-mostrar").style.height = "0px";   
 
+    document.getElementById("chart").style.display = 'none'; 
+    document.getElementById("chart_div").innerHTML = "";
     document.getElementById('record_dates').innerHTML = "";
     document.getElementById('paiss').innerHTML = "Seleccione un pais...";
     document.getElementById('tcs').innerHTML = "";
@@ -239,6 +242,7 @@ function search(){
     if(element.value!="Seleccione un pais..."){
 
   document.getElementById("alertsearch").style.display = 'none';
+  document.getElementById("chart_div").innerHTML = "";
   document.getElementById("chart").style.display = 'block';
     var country=element.value;
      fetch("https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php?country="+country, {
@@ -370,6 +374,7 @@ function search(){
     else{
   document.getElementById("alertsearch").style.display = 'block';
   document.getElementById("chart").style.display = 'none';
+  document.getElementById("chart_div").innerHTML = "";
 
     document.getElementById('record_dates').innerHTML = "";
     document.getElementById('paiss').innerHTML = "Seleccione un pais...";
