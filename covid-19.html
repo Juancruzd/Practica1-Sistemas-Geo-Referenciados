@@ -60,15 +60,18 @@
         padding: 0; 
     /*overflow-y: hidden !important;*/
       }
+      #chart { 
+          width: 97%; 
+        min-height: 200px;
+         }
       #div-mostrar{
 	margin: auto;
 	height: 0px;
 	transition: height .4s;
     text-align: center; 
         }
-        .imagenpin{
-            webkit-box-shadow: 0px 10px 23px -13px grey;
-    box-shadow: 0px 10px 23px -13px grey;
+        .imagenpin{ 
+         border:1px solid #AAA;
         }
     </style>
   </head>
@@ -144,9 +147,11 @@
                               </form>
                               <div id="alertsearch" class="alert alert-warning mt-5" role="alert" style="display:none;">
                                 Seleccione un  pais!
+                              </div> 
+                              <div class="mt-10" id="chart" style="display: none;margin-top: 40px;">
+                                <div id="chart_div"></div> 
                               </div>
-                              <div style="min-height: 400px; display: none;" id="chart_div"></div>
-                    </div>
+                               </div>
                     <div class="col-xs-4 col-md-4  mt-10" >
                         <ul class="list-group mt-5">
                             <li class="list-group-item d-flex justify-content-between align-items-center disabled" id="paiss">
@@ -234,7 +239,7 @@ function search(){
     if(element.value!="Seleccione un pais..."){
 
   document.getElementById("alertsearch").style.display = 'none';
-  document.getElementById("chart_div").style.display = 'block';
+  document.getElementById("chart").style.display = 'block';
     var country=element.value;
      fetch("https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php?country="+country, {
 	"method": "GET",
@@ -295,7 +300,8 @@ function search(){
         google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
+      function drawChart() 
+      {
 
         var data = new google.visualization.DataTable();
         data.addColumn('date', 'Fecha');
@@ -316,8 +322,7 @@ function search(){
 
 
         var options = {
-          title: 'Historial de '+p.parameters.country,
-          width: 400,
+          title: 'Historial de '+p.parameters.country, 
           height: 200,
           hAxis: {
             format: 'yy/M/d',
@@ -332,8 +337,10 @@ function search(){
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
         
           chart.draw(data, options); 
+          window.addEventListener('resize', drawChart, false);
       }
-            
+      
+
         });
     })
     .catch(err => {
@@ -345,7 +352,7 @@ function search(){
     }
     else{
   document.getElementById("alertsearch").style.display = 'block';
-  document.getElementById("chart_div").style.display = 'none';
+  document.getElementById("chart").style.display = 'none';
 
     document.getElementById('record_dates').innerHTML = "";
     document.getElementById('paiss').innerHTML = "Seleccione un pais...";
