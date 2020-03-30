@@ -292,15 +292,27 @@ function search(){
         data.addColumn('number', 'Casos');
 
           
+        
+               
+            arr=array; 
+            var nuevoArray = [];
+            var lookup  = {}; 
+            for (var i in arr) {
+                lookup[arr[i].day] = arr[i];
+            } 
+            for (i in lookup) {
+                nuevoArray.push(lookup[i]);
+            }  
+            array=nuevoArray;
+
         var dataChart = [];
-        for(var i=0;i<array.length;i++){ 
-                   
+        for(var i=0;i<array.length;i++){  
                     let date =array[i].day;
                     var splitDate = date.split('-');
                     var year = splitDate[0];
                     var month = splitDate[1];
                     var day = splitDate[2]; 
-                    dataChart.push( [new Date(year,parseInt(month)-1,parseInt(day)),array[i].cases.total] );
+                    dataChart.push( [new Date(year,parseInt(month)-1,parseInt(day)),array[i].cases.total] ); 
                 }
         data.addRows(dataChart);
 
