@@ -402,12 +402,7 @@ function search(){
     
     showloader('loaderchart');
     setTimeout(grafica(country),10000);
-  document.getElementById("chart").style.display = 'block';
-
-
-
-
-
+  document.getElementById("chart").style.display = 'block'; 
     function grafica(country){
     fetch("https://covid-193.p.rapidapi.com/history?country="+country, {
 	"method": "GET",
@@ -421,9 +416,11 @@ function search(){
 
             var array=p.response.reverse(); 
             var tam=array.length-1; 
+            if(tam>0){
             var pais=array[tam].country;
+            
             document.getElementById('record_dates').innerHTML = "Seleccione un pais...";
-            document.getElementById('record_dates').innerHTML = array[tam].time;
+            document.getElementById('record_dates').innerHTML =   new Date(array[tam].time).toLocaleString('es-us', { hour12: true });;
 
             document.getElementById('paiss').innerHTML = "";
             document.getElementById('paiss').innerHTML = pais;
@@ -524,7 +521,11 @@ function search(){
           window.addEventListener('resize', drawChart, false);
       } 
       hideloader('loaderchart');
-
+            }
+            else{
+                document.getElementById('paiss').innerHTML = "Este pais no tiene casos";
+                hideloader('loaderchart');
+            }
         });
     })
     .catch(err => {
@@ -656,8 +657,7 @@ function search(){
         fetch("https://corona.lmao.ninja/all")
         .then(response => {
            
-            response.json().then(function(dato) {
-                console.log(dato);
+            response.json().then(function(dato) { 
                 
                 
                 document.getElementById('txtconfirmedglobal').innerHTML = "";
@@ -679,6 +679,21 @@ function search(){
         });
         
         affected();
+
+        fetch("https://corona.lmao.ninja/all")
+        .then(response => {
+           
+            response.json().then(function(dato) {
+                console.log(dato);
+                
+                
+                 
+            
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
         
     }
     function affected(){
