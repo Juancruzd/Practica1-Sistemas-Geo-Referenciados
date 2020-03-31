@@ -233,19 +233,25 @@
                         <div class="alert alert-info" role="alert">
                             <h4 class="alert-heading" style="text-transform: uppercase;">Nivel global</h4>
                             <hr>
-                            <p><span>Casos: </span><span id="txtconfirmedglobal"></span><br>
-                                <span>Nuevos: </span><span id="txtnewcasesglobal"></span></p>
-
+                            <p>
+                                <span>ÚLTIMA ACTUALIZACIÓN: </span><span id="txtfechaglobal"></span>
+                            </p>
+                            <br>
+                            <p>
+                                <span>CASOS CONFIRMADOS: </span><span id="txtconfirmedglobal"></span>
+                            </p> 
                                 <br>
+                                <p>
+                                    <span>CASOS ACTIVOS:</span><br><span id="txtrecoveredglobal"></span>
+                                </p>
+                                <br> 
+                                <p>
+                                    <span>Recuperados: </span><span id="txtactivedglobal"></span>
+                                </p>
                                 <br>
-                                <p><span>Recuperados:</span><br><span id="txtrecoveredglobal"></span></p>
-
-                                <br>
-                                <br>
-
-                                <p><span>Muertes: </span><span id="txtdeathsglobal"></span>
-                                    <br>
-                                    <span>Nuevas: </span><span id="txtnewdeathsglobal"></span></p>
+                                <p> 
+                                    <span>Muertes: </span><span id="txtdeathsglobal"></span>
+                                </p>
                             <hr>
                             
                             <p class="mb-0">
@@ -645,32 +651,26 @@ function search(){
 
 
 
-
-
+ 
         
-        fetch("https://coronavirus-monitor.p.rapidapi.com/coronavirus/worldstat.php", {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
-                "x-rapidapi-key": "32e27eda20msh4d6db7d143a67c6p155a35jsn03c763a6fb2d"
-            }
-        })
+        fetch("https://corona.lmao.ninja/all")
         .then(response => {
            
             response.json().then(function(dato) {
-                //console.log(dato);
+                console.log(dato);
                 
                 
                 document.getElementById('txtconfirmedglobal').innerHTML = "";
-                document.getElementById('txtnewcasesglobal').innerHTML = "";
+                document.getElementById('txtfechaglobal').innerHTML = "";
                 document.getElementById('txtrecoveredglobal').innerHTML = "";
                 document.getElementById('txtdeathsglobal').innerHTML = "";
-                document.getElementById('txtnewdeathsglobal').innerHTML = "";
-                document.getElementById('txtconfirmedglobal').innerHTML =dato.total_cases;
-                document.getElementById('txtnewcasesglobal').innerHTML = dato.new_cases;
-                document.getElementById('txtrecoveredglobal').innerHTML= dato.total_recovered;
-                document.getElementById('txtdeathsglobal').innerHTML = dato.total_deaths;
-                document.getElementById('txtnewdeathsglobal').innerHTML = dato.new_deaths;
+                document.getElementById('txtactivedglobal').innerHTML = "";
+
+                document.getElementById('txtconfirmedglobal').innerHTML =dato.cases.toLocaleString();
+                document.getElementById('txtfechaglobal').innerHTML = new Date(dato.updated).toLocaleString('es-us', { hour12: true });
+                document.getElementById('txtrecoveredglobal').innerHTML= dato.recovered.toLocaleString();
+                document.getElementById('txtdeathsglobal').innerHTML = dato.deaths.toLocaleString();
+                document.getElementById('txtactivedglobal').innerHTML = dato.active.toLocaleString(); 
             
             });
         })
