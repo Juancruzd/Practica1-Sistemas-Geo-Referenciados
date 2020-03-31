@@ -399,10 +399,55 @@ function search(){
     
     document.getElementById("chart_div").innerHTML = "";
     var country=element.value; 
-    
+    datospais(country);
+    function datospais(country){
+        fetch("https://corona.lmao.ninja/countries/"+country)
+        .then(response => {
+           
+           
+            response.json().then(function(dato) {
+                var array=dato;
+                var pais=array.country;
+            
+            document.getElementById('record_dates').innerHTML = "Seleccione un pais...";
+            document.getElementById('record_dates').innerHTML =   new Date(array.updated).toLocaleString('es-us', { hour12: true });;
+
+            document.getElementById('paiss').innerHTML = "";
+            document.getElementById('paiss').innerHTML = pais;
+
+            document.getElementById('tcs').innerHTML = "";
+            document.getElementById('tcs').innerHTML =(array.cases == '') ? 0 : array.cases;
+
+            document.getElementById('ncs').innerHTML = "";
+            document.getElementById('ncs').innerHTML = (array.todayCases == '') ? 0 : array.todayCases;
+
+            document.getElementById('cas').innerHTML = "";
+            document.getElementById('cas').innerHTML = (array.active  == '') ? 0 : array.active;
+
+            document.getElementById('tms').innerHTML = "";
+            document.getElementById('tms').innerHTML = (array.deaths  == '') ? 0 : array.deaths;
+
+            document.getElementById('nms').innerHTML = "";
+            document.getElementById('nms').innerHTML =  (array.todayDeaths == '') ? 0 : array.todayDeaths;
+
+            document.getElementById('trs').innerHTML = "";
+            document.getElementById('trs').innerHTML = (array.recovered == '') ? 0 : array.recovered;
+
+            document.getElementById('cs').innerHTML = "";
+            document.getElementById('cs').innerHTML = (array.critical == '') ? 0 : array.critical;
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
     showloader('loaderchart');
     setTimeout(grafica(country),10000);
   document.getElementById("chart").style.display = 'block'; 
+
+
+
+
     function grafica(country){
     fetch("https://covid-193.p.rapidapi.com/history?country="+country, {
 	"method": "GET",
@@ -417,34 +462,7 @@ function search(){
             var array=p.response.reverse(); 
             var tam=array.length-1; 
             if(tam>0){
-            var pais=array[tam].country;
-            
-            document.getElementById('record_dates').innerHTML = "Seleccione un pais...";
-            document.getElementById('record_dates').innerHTML =   new Date(array[tam].time).toLocaleString('es-us', { hour12: true });;
-
-            document.getElementById('paiss').innerHTML = "";
-            document.getElementById('paiss').innerHTML = pais;
-
-            document.getElementById('tcs').innerHTML = "";
-            document.getElementById('tcs').innerHTML =(array[tam].cases.total == '') ? 0 : array[tam].cases.total;
-
-            document.getElementById('ncs').innerHTML = "";
-            document.getElementById('ncs').innerHTML = (array[tam].cases.new == '') ? 0 : array[tam].cases.new;
-
-            document.getElementById('cas').innerHTML = "";
-            document.getElementById('cas').innerHTML = (array[tam].cases.active  == '') ? 0 : array[tam].cases.active;
-
-            document.getElementById('tms').innerHTML = "";
-            document.getElementById('tms').innerHTML = (array[tam].deaths.total  == '') ? 0 : array[tam].deaths.total;
-
-            document.getElementById('nms').innerHTML = "";
-            document.getElementById('nms').innerHTML =  (array[tam].deaths.new == '') ? 0 : array[tam].deaths.new;
-
-            document.getElementById('trs').innerHTML = "";
-            document.getElementById('trs').innerHTML = (array[tam].cases.recovered == '') ? 0 : array[tam].cases.recovered;
-
-            document.getElementById('cs').innerHTML = "";
-            document.getElementById('cs').innerHTML = (array[tam].cases.critical == '') ? 0 : array[tam].cases.critical;
+           
 
 
 
@@ -680,15 +698,23 @@ function search(){
         
         affected();
 
-        fetch("https://corona.lmao.ninja/all")
+        
+
+
+        ///historial
+        fetch("https://corona.lmao.ninja/v2/historical/mexico")
         .then(response => {
            
             response.json().then(function(dato) {
-                console.log(dato);
+                var numbers=dato.timeline.cases;
+                var keys = [];
                 
-                
-                 
-            
+                const objectArray = Object.entries(numbers); 
+                //console.log(objectArray[0][1]);
+                objectArray.forEach(([key, value]) => {
+                //console.log(key); // 'one'
+                //console.log(value); // 1
+                }); 
             });
         })
         .catch(err => {
