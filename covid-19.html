@@ -29,7 +29,118 @@
     <script src="https://kit.fontawesome.com/b23a88639a.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <style> 
- 
+ .loader{
+    width: 150px;
+    height: 150px;
+    margin: 40px auto;
+    transform: rotate(-45deg);
+    font-size: 0;
+    line-height: 0;
+    animation: rotate-loader 5s infinite;
+    padding: 25px;
+    border: 1px solid #B40404;
+}
+.loader .loader-inner{
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    height: 50%;
+}
+.loader .loading{
+    position: absolute;
+    background: #B40404;
+}
+.loader .one{
+    width: 100%;
+    bottom: 0;
+    height: 0;
+    animation: loading-one 1s infinite;
+}
+.loader .two{
+    width: 0;
+    height: 100%;
+    left: 0;
+    animation: loading-two 1s infinite;
+    animation-delay: 0.25s;
+}
+.loader .three{
+    width: 0;
+    height: 100%;
+    right: 0;
+    animation: loading-two 1s infinite;
+    animation-delay: 0.75s;
+}
+.loader .four{
+    width: 100%;
+    top: 0;
+    height: 0;
+    animation: loading-one 1s infinite;
+    animation-delay: 0.5s;
+}
+@keyframes loading-one {
+    0% {
+        height: 0;
+        opacity: 1;
+    }
+    12.5% {
+        height: 100%;
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        height: 100%;
+        opacity: 0;
+    }
+}
+@keyframes loading-two {
+    0% {
+        width: 0;
+        opacity: 1;
+    }
+    12.5% {
+        width: 100%;
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        width: 100%;
+        opacity: 0;
+    }
+}
+@keyframes rotate-loader {
+    0% {
+        transform: rotate(-45deg);
+    }
+    20% {
+        transform: rotate(-45deg);
+    }
+    25% {
+        transform: rotate(-135deg);
+    }
+    45% {
+        transform: rotate(-135deg);
+    }
+    50% {
+        transform: rotate(-225deg);
+    }
+    70% {
+        transform: rotate(-225deg);
+    }
+    75% {
+        transform: rotate(-315deg);
+    }
+    95% {
+        transform: rotate(-315deg);
+    }
+    100% {
+        transform: rotate(-405deg);
+    }
+}
+
         a:hover{
             color: #B40404;
             text-decoration:underline;
@@ -167,6 +278,26 @@
                               <div id="alertsearch" class="alert alert-warning mt-5" role="alert" style="display:none;">
                                 Seleccione un  pais!
                               </div> 
+                              <div class="container" id="loaderchart" style="display:none; margin-top: 40px;">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="loader">
+                                            <div class="loader-inner">
+                                                <div class="loading one"></div>
+                                            </div>
+                                            <div class="loader-inner">
+                                                <div class="loading two"></div>
+                                            </div>
+                                            <div class="loader-inner">
+                                                <div class="loading three"></div>
+                                            </div>
+                                            <div class="loader-inner">
+                                                <div class="loading four"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                               <div class="mt-10" id="chart" style="display: none;margin-top: 40px;">
                                 <div id="chart_div"></div> 
                               </div>
@@ -259,53 +390,19 @@ function search(){
     if(element.value!="Seleccione un pais..."){
 
   document.getElementById("alertsearch").style.display = 'none';
-  document.getElementById("chart_div").innerHTML = "";
+    
+    document.getElementById("chart_div").innerHTML = "";
+    var country=element.value; 
+    
+    showloader('loaderchart');
+    setTimeout(grafica(country),10000);
   document.getElementById("chart").style.display = 'block';
-    var country=element.value;
-     fetch("https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php?country="+country, {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
-		"x-rapidapi-key": "32e27eda20msh4d6db7d143a67c6p155a35jsn03c763a6fb2d"
-	}
-})
-    .then(response => {
-        response.json().then(function(datos) { 
-            var pais=datos.country;
-            var array=datos.latest_stat_by_country;
-            
-            document.getElementById('record_dates').innerHTML = "Seleccione un pais...";
-            document.getElementById('record_dates').innerHTML = array[0].record_date;
 
-            document.getElementById('paiss').innerHTML = "";
-            document.getElementById('paiss').innerHTML = pais;
 
-            document.getElementById('tcs').innerHTML = "";
-            document.getElementById('tcs').innerHTML =(array[0].total_cases == '') ? 0 : array[0].total_cases;
 
-            document.getElementById('ncs').innerHTML = "";
-            document.getElementById('ncs').innerHTML = (array[0].new_cases == '') ? 0 : array[0].new_cases;
 
-            document.getElementById('cas').innerHTML = "";
-            document.getElementById('cas').innerHTML = (array[0].active_cases == '') ? 0 : array[0].active_cases;
 
-            document.getElementById('tms').innerHTML = "";
-            document.getElementById('tms').innerHTML = (array[0].total_deaths == '') ? 0 : array[0].total_deaths;
-
-            document.getElementById('nms').innerHTML = "";
-            document.getElementById('nms').innerHTML =  (array[0].new_deaths == '') ? 0 : array[0].new_deaths;
-
-            document.getElementById('trs').innerHTML = "";
-            document.getElementById('trs').innerHTML = (array[0].total_recovered == '') ? 0 : array[0].total_recovered;
-
-            document.getElementById('cs').innerHTML = "";
-            document.getElementById('cs').innerHTML = (array[0].serious_critical == '') ? 0 : array[0].serious_critical;
-        });
-    })
-    .catch(err => {
-        console.log(err);
-    });
-
+    function grafica(country){
     fetch("https://covid-193.p.rapidapi.com/history?country="+country, {
 	"method": "GET",
 	"headers": {
@@ -317,13 +414,42 @@ function search(){
         response.json().then(function(p) {
 
             var array=p.response.reverse(); 
+            var tam=array.length-1; 
+            var pais=array[tam].country;
+            document.getElementById('record_dates').innerHTML = "Seleccione un pais...";
+            document.getElementById('record_dates').innerHTML = array[tam].time;
+
+            document.getElementById('paiss').innerHTML = "";
+            document.getElementById('paiss').innerHTML = pais;
+
+            document.getElementById('tcs').innerHTML = "";
+            document.getElementById('tcs').innerHTML =(array[tam].cases.total == '') ? 0 : array[tam].cases.total;
+
+            document.getElementById('ncs').innerHTML = "";
+            document.getElementById('ncs').innerHTML = (array[tam].cases.new == '') ? 0 : array[tam].cases.new;
+
+            document.getElementById('cas').innerHTML = "";
+            document.getElementById('cas').innerHTML = (array[tam].cases.active  == '') ? 0 : array[tam].cases.active;
+
+            document.getElementById('tms').innerHTML = "";
+            document.getElementById('tms').innerHTML = (array[tam].deaths.total  == '') ? 0 : array[tam].deaths.total;
+
+            document.getElementById('nms').innerHTML = "";
+            document.getElementById('nms').innerHTML =  (array[tam].deaths.new == '') ? 0 : array[tam].deaths.new;
+
+            document.getElementById('trs').innerHTML = "";
+            document.getElementById('trs').innerHTML = (array[tam].cases.recovered == '') ? 0 : array[tam].cases.recovered;
+
+            document.getElementById('cs').innerHTML = "";
+            document.getElementById('cs').innerHTML = (array[tam].cases.critical == '') ? 0 : array[tam].cases.critical;
+
+
 
         google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
+        google.charts.setOnLoadCallback(drawChart);
       function drawChart() 
       {
-
+        
         var data = new google.visualization.DataTable();
         data.addColumn('date', 'Fecha');
         data.addColumn('number', 'Casos');
@@ -386,20 +512,19 @@ function search(){
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        //setTimeout(console.log.bind(null, 'Two second later'), 5000);
         
-          chart.draw(data, options); 
+         chart.draw(data, options); 
           window.addEventListener('resize', drawChart, false);
-      }
-      
+      } 
+      hideloader('loaderchart');
 
         });
     })
     .catch(err => {
         console.log(err);
     });
-
-
-
+    }
     }
     else{
   document.getElementById("alertsearch").style.display = 'block';
@@ -579,6 +704,16 @@ function search(){
         .catch(err => {
             console.log(err);
         });
+        }
+   
+
+
+         function showloader(Id) {
+            document.getElementById(Id).style.display = 'block';
+        }
+
+         function hideloader(Id) {
+            document.getElementById(Id).style.display = 'none'; 
         }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=iniciaMapa"></script>
