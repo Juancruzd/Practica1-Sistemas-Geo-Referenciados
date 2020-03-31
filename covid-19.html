@@ -444,10 +444,7 @@ function search(){
     showloader('loaderchart');
     setTimeout(grafica(country),10000);
   document.getElementById("chart").style.display = 'block'; 
-
-
-
-
+ 
     function grafica(country){
     fetch("https://corona.lmao.ninja/v2/historical/"+country )
     .then(response => { 
@@ -487,7 +484,8 @@ function search(){
                     var month = splitDate[0]; 
 
                 console.log(day +" "+month+" "+year+" cantidad"+value); // 'one' 
-                dataChart.push( [new Date(2020,month-1,day),value] );}
+                dataChart.push( [new Date(2020,month-1,day),value] );
+                }
         }); 
         data.addRows(dataChart);
 
