@@ -449,17 +449,20 @@ function search(){
 
 
     function grafica(country){
-    fetch("https://covid-193.p.rapidapi.com/history?country="+country, {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "covid-193.p.rapidapi.com",
-		"x-rapidapi-key": "32e27eda20msh4d6db7d143a67c6p155a35jsn03c763a6fb2d"
-	}
-    })
+    fetch("https://corona.lmao.ninja/v2/historical/"+country )
     .then(response => { 
         response.json().then(function(p) {
 
-            var array=p.response.reverse(); 
+            var numbers=p.timeline.cases;
+                var keys = []; 
+                const objectArray = Object.entries(numbers); 
+                //console.log(objectArray[0][1]);
+                ///objectArray.forEach(([key, value]) => {
+                //console.log(key); // 'one'
+                //console.log(value); // 1
+                //});  
+                p=objectArray;
+            var array=p; 
             var tam=array.length-1; 
             if(tam>0){
            
@@ -474,35 +477,23 @@ function search(){
         var data = new google.visualization.DataTable();
         data.addColumn('date', 'Fecha');
         data.addColumn('number', 'Casos');
-
-          
-        
-               
-            arr=array; 
-            var nuevoArray = [];
-            var lookup  = {}; 
-            for (var i in arr) {
-                lookup[arr[i].day] = arr[i];
-            } 
-            for (i in lookup) {
-                nuevoArray.push(lookup[i]);
-            }  
-            array=nuevoArray;
-
         var dataChart = [];
-        for(var i=0;i<array.length;i++){  
-                    let date =array[i].day;
-                    var splitDate = date.split('-');
-                    var year = splitDate[0];
-                    var month = splitDate[1];
-                    var day = splitDate[2]; 
-                    dataChart.push( [new Date(year,parseInt(month)-1,parseInt(day)),array[i].cases.total] ); 
-                }
+        array.forEach(([key, value]) => {
+            if(value>0){
+                    let date =key.toString();
+                    var splitDate = date.split('/');
+                    var year = splitDate[2];
+                    var day = splitDate[1];
+                    var month = splitDate[0]; 
+
+                console.log(day +" "+month+" "+year+" cantidad"+value); // 'one' 
+                dataChart.push( [new Date(2020,month-1,day),value] );}
+        }); 
         data.addRows(dataChart);
 
 
         var options = {
-          title: 'Historial de '+p.parameters.country, 
+          title: 'Historial de '+country, 
           height: 300,
           legend: 'none',
           animation:{
@@ -696,30 +687,7 @@ function search(){
             console.log(err);
         });
         
-        affected();
-
-        
-
-
-        ///historial
-        fetch("https://corona.lmao.ninja/v2/historical/mexico")
-        .then(response => {
-           
-            response.json().then(function(dato) {
-                var numbers=dato.timeline.cases;
-                var keys = [];
-                
-                const objectArray = Object.entries(numbers); 
-                //console.log(objectArray[0][1]);
-                objectArray.forEach(([key, value]) => {
-                //console.log(key); // 'one'
-                //console.log(value); // 1
-                }); 
-            });
-        })
-        .catch(err => {
-            console.log(err);
-        });
+        affected(); 
         
     }
     function affected(){
