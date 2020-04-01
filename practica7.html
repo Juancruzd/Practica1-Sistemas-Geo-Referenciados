@@ -81,18 +81,16 @@
 
     <script>
 
-        var coordenadas = {
-                    lat: -31.563910, lng: 147.154312
-            }
+         
 
 
         var localidades = [
-        { lat: 21.1101462, lng: -101.729329 }, //Mi casa
+        { lat: 21.1101462, lng: -101.729329 }, //Casa de dan
             { lat: 21.161068, lng: -101.6883536 }, //Casa de Marco
             { lat: 23.0761814, lng: -109.7253332 }, //Casa de Kevin
             { lat: 21.3519926, lng: -101.9409363 }, //Casa de Jonathan
             { lat: 19.432132, lng: -99.042158 }, //Casa de Yisus
-            { lat: 20.914836, lng: -101.738627 }, //Casa de Juan
+            { lat: 20.914836, lng: -101.738627 }, //Mi casa
             { lat: 21.1045876, lng: -101.6426239 }, //Casa de Sofia
             { lat: 21.1406536, lng: -101.6985011 }, //Casa de Jorge
             { lat: 21.1063827, lng: -101.6908361 }, //Casa de Luis
@@ -100,7 +98,9 @@
             { lat: 20.6910129, lng: -101.3172804} //Casa de Andrei
         ];
 
-
+        var coordenadas = {
+                    lat: coordenadas[0].lat, lng: coordenadas[0].lng
+            }
             
         function iniciaMapa() {
             var map = new google.maps.Map(
