@@ -365,6 +365,7 @@ function divAuto(){
    document.getElementById("div-mostrar").style.display = 'block';
    document.getElementById("map").style.display = 'none';
    document.getElementById("chart_div").innerHTML = "";
+   
    clic = clic + 1;
    } else{
    document.getElementById("btnsearch").className ="";
@@ -387,6 +388,7 @@ function divAuto(){
 
     document.getElementById("div-mostrar").style.display = 'none';
     document.getElementById("map").style.display = 'block';
+    hideloader('loaderchart');
     clic = 1;
    }   
 }
