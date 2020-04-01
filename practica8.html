@@ -56,7 +56,7 @@
             <div class="row m-5">
                 <div class="col-12 p-5">
                     <form action="" class="pb-5">  
-                        <select name="idioma" id="idioma" class="form-control" onchange="this.form.submit()"> 
+                        <select name="idioma" id="idioma" class="form-control" onchange="saveselected(this);this.form.submit();"> 
                         </select> 
                     </form>
                     <div id="mapa"></div>
@@ -66,6 +66,9 @@
     </div>
 
     <script>
+        function saveselected(sel) { 
+  sessionStorage.setItem('idioma',sel.options[sel.selectedIndex].value);
+}
 var SUPPORTED_LANGUAGES = {
   'af': 'AFRIKAANS',
   'sq': 'ALBANIAN',
@@ -154,22 +157,19 @@ var SUPPORTED_LANGUAGES = {
                     lat: -31.563910, lng: 147.154312
             }
 
-        const queryString = window.location.search;
-
-
+        const queryString = window.location.search; 
         const urlParams = new URLSearchParams(queryString);
-        const idioma = urlParams.get('idioma');
-
-
-        document.getElementById('idioma').value = idioma;
-
-
+        var idioma = urlParams.get('idioma'); 
         console.log(idioma);
+        
+        
 
         var script = document.createElement('script');
+        
 
         script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=iniciaMapa&language=' + idioma  ;
         document.head.appendChild(script);
+
         function iniciaMapa() {
             var select = document.getElementsByName("idioma")[0];
             const objectArray = Object.entries(SUPPORTED_LANGUAGES); 
@@ -179,6 +179,10 @@ var SUPPORTED_LANGUAGES = {
                     option.value=key;
                     select.add(option);
             });
+            if(sessionStorage.getItem("idioma")!=null){
+            console.log(sessionStorage.getItem("idioma")); 
+            document.getElementsByName("idioma")[0].value =  sessionStorage.getItem("idioma");
+            }
             var map = new google.maps.Map(
             document.getElementById('mapa'),
                 {
