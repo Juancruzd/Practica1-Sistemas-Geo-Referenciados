@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
@@ -20,7 +21,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <title>Práctica 7</title>
+    <title>Práctica 8</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href='https://fonts.googleapis.com/css?family=Barlow Condensed' rel='stylesheet'>
@@ -39,8 +40,7 @@
     </style>
 
 </head>
-<body>
-
+<body> 
     <div class="w3-top">
         <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
           <a href="index.html" class="w3-bar-item w3-button">Inicio</a>
@@ -54,108 +54,139 @@
         <div class="container bg-white rounded shadow-lg">
                 
             <div class="row m-5">
-                <div class="col-12 p-5"> 
+                <div class="col-12 p-5">
+                    <form action="" class="pb-5">  
+                        <select name="idioma" id="idioma" class="form-control" onchange="this.form.submit()"> 
+                        </select> 
+                    </form>
                     <div id="mapa"></div>
-                    <div class="row p-2 pb-5">
-                        <div class="col-3 text-center">
-                            <button class="btn btn-primary" id="btnroadmap">roadmap</button>
-                        </div>
-                        <div class="col-3 text-center">
-                            <button class="btn btn-warning" id="btnsatellite">satellite</button>
-                        </div>
-                        <div class="col-3 text-center">
-                            <button class="btn btn-danger" id="btnhybrid">hybrid</button>
-                        </div>
-                        <div class="col-3 text-center">
-                            <button class="btn btn-success" id="btnterrain">terrain</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-    
-
-
     <script>
-
+var SUPPORTED_LANGUAGES = {
+  'af': 'AFRIKAANS',
+  'sq': 'ALBANIAN',
+  'am': 'AMHARIC',
+  'ar': 'ARABIC',
+  'hy': 'ARMENIAN',
+  'az': 'AZERBAIJANI',
+  'eu': 'BASQUE',
+  'be': 'BELARUSIAN',
+  'bn': 'BENGALI',
+  'bs': 'BOSNIAN',
+  'bg': 'BULGARIAN',
+  'my': 'BURMESE',
+  'ca': 'CATALAN',
+  'zh': 'CHINESE',
+  'zh-CN': 'CHINESE (SIMPLIFIED)',
+  'zh-HK': 'CHINESE (HONG KONG)',
+  'zh-TW': 'CHINESE (TRADITIONAL)',
+  'hr': 'CROATIAN',
+  'cs': 'CZECH',
+  'da': 'DANISH',
+  'nl': 'DUTCH',
+  'en': 'ENGLISH',
+  'en-AU': 'ENGLISH (AUSTRALIAN)',
+  'en-GB': 'ENGLISH (GREAT BRITAIN)',
+  'et': 'ESTONIAN',
+  'fa': 'FARSI',
+  'fi': 'FINNISH',
+  'fil': 'FILIPINO',
+  'fr': 'FRENCH',
+  'fr-CA': 'FRENCH (CANADA)',
+  'gl': 'GALICIAN',
+  'ka': 'GEORGIAN',
+  'de': 'GERMAN',
+  'el': 'GREEK',
+  'gu': 'GUJARATI',
+  'iw': 'HEBREW',
+  'hi': 'HINDI',
+  'hu': 'HUNGARIAN',
+  'is': 'ICELANDIC',
+  'id': 'INDONESIAN',
+  'it': 'ITALIAN',
+  'ja': 'JAPANESE',
+  'kn': 'KANNADA',
+  'kk': 'KAZAKH',
+  'km': 'KHMER',
+  'ko': 'KOREAN',
+  'ky': 'KYRGYZ',
+  'lo': 'LAO',
+  'lv': 'LATVIAN',
+  'lt': 'LITHUANIAN',
+  'mk': 'MACEDONIAN',
+  'ms': 'MALAY',
+  'ml': 'MALAYALAM',
+  'mr': 'MARATHI',
+  'mn': 'MONGOLIAN',
+  'ne': 'NEPALI',
+  'no': 'NORWEGIAN',
+  'pl': 'POLISH',
+  'pt': 'PORTUGUESE',
+  'pt-BR': 'PORTUGUESE (BRAZIL)',
+  'pt-PT': 'PORTUGUESE (PORTUGAL)',
+  'pa': 'PUNJABI',
+  'ro': 'ROMANIAN',
+  'ru': 'RUSSIAN',
+  'sr': 'SERBIAN',
+  'si': 'SINHALESE',
+  'sk': 'SLOVAK',
+  'sl': 'SLOVENIAN',
+  'es': 'SPANISH',
+  'es-419': 'SPANISH (LATIN AMERICA)',
+  'sw': 'SWAHILI',
+  'sv': 'SWEDISH',
+  'ta': 'TAMIL',
+  'te': 'TELUGU',
+  'th': 'THAI',
+  'tr': 'TURKISH',
+  'uk': 'UKRAINIAN',
+  'ur': 'URDU',
+  'uz': 'UZBEK',
+  'vi': 'VIETNAMESE',
+  'zu': 'ZULU',
+};
+        
         var coordenadas = {
                     lat: -31.563910, lng: 147.154312
             }
 
-
-        var localidades = [
-        { lat: 21.1101462, lng: -101.729329 }, //Mi casa
-            { lat: 21.161068, lng: -101.6883536 }, //Casa de Marco
-            { lat: 23.0761814, lng: -109.7253332 }, //Casa de Kevin
-            { lat: 21.3519926, lng: -101.9409363 }, //Casa de Jonathan
-            { lat: 19.432132, lng: -99.042158 }, //Casa de Yisus
-            { lat: 20.914836, lng: -101.738627 }, //Casa de Juan
-            { lat: 21.1045876, lng: -101.6426239 }, //Casa de Sofia
-            { lat: 21.1406536, lng: -101.6985011 }, //Casa de Jorge
-            { lat: 21.1063827, lng: -101.6908361 }, //Casa de Luis
-            { lat: 20.5089011, lng: -100.4035122 }, //Casa de Josue
-            { lat: 20.6910129, lng: -101.3172804} //Casa de Andrei
-        ];
+        const queryString = window.location.search;
 
 
-            
+        const urlParams = new URLSearchParams(queryString);
+        const idioma = urlParams.get('idioma');
+
+
+        document.getElementById('idioma').value = idioma;
+
+
+        console.log(idioma);
+
+        var script = document.createElement('script');
+
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=iniciaMapa&language=' + idioma  ;
+        document.head.appendChild(script);
         function iniciaMapa() {
+            var select = document.getElementsByName("idioma")[0];
+            const objectArray = Object.entries(SUPPORTED_LANGUAGES); 
+            objectArray.forEach(([key, value]) => { 
+                    var option = document.createElement("option");
+                    option.text = value;
+                    option.value=key;
+                    select.add(option);
+            });
             var map = new google.maps.Map(
             document.getElementById('mapa'),
                 {
                     center: coordenadas,
                     zoom: 3
                 }
-            );
-
-            var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-            var marcadores = [];
-
-            var cuenta = 1;
-
-            localidades.forEach( localidad => {
-
-                console.log(localidad);
-
-                let marcador = new google.maps.Marker({
-                    map : map,
-                    position: localidad,
-                    label: labels[ cuenta % labels.length ]
-                });
-
-                marcadores.push(marcador);
-
-                cuenta++;
-
-            });
-
-            var makerCluster = new MarkerClusterer(map, marcadores, {
-                imagePath : 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
-                maxZoom: 10
-
-            });
-
-            document.getElementById('btnroadmap').addEventListener('click', function(){
-                map.setMapTypeId('roadmap');
-            });
-
-            document.getElementById('btnsatellite').addEventListener('click', function(){
-                map.setMapTypeId('satellite');
-            });
-
-            document.getElementById('btnhybrid').addEventListener('click', function(){
-                map.setMapTypeId('hybrid');
-            });
-
-            document.getElementById('btnterrain').addEventListener('click', function(){
-                map.setMapTypeId('terrain');
-            });
-
-        }
+            ); 
+        } 
 
     </script>
     
@@ -164,7 +195,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
-    <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=iniciaMapa" async defer></script>
 </body>
 </html>
