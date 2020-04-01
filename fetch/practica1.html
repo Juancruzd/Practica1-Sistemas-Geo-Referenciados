@@ -21,10 +21,37 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="../img/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href='https://fonts.googleapis.com/css?family=Barlow Condensed' rel='stylesheet'>
+    <stile>
+        #paises {
+            width: 100%;
+            height: 640px;
+        }
+    </stile>
 </head>
 <body>
 
-    <div id="paises"></div>
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+          <a href="../index.html" class="w3-bar-item w3-button">Inicio</a>
+          <!-- Right-sided navbar links. Hide them on small screens -->
+          <div class="w3-right w3-hide-small">
+            <a href="#" class="w3-bar-item w3-button">Juan de Dios Guadalupe Cruz Delgado</a>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="container bg-white rounded shadow-lg">
+                
+            <div class="row m-5">
+                <div class="col-12 p-5"> 
+                    
+                <div id="paises"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
 
         var paises = document.getElementById("paises");
