@@ -30,8 +30,10 @@ const formaingresar =  document.getElementById('formaingresar');
 
 formaingresar.addEventListener('submit',(e)=>{
     e.preventDefault();
-    console.log(formaregistrate['correo'].value
-    +"  "+formaregistrate['contrasena'].value );
+    console.log(formaingresar['correo'].value
+    +"  "+formaingresar['contrasena'].value );
+
+    
     let correo = formaingresar['correo'].value;
     let contrasena = formaingresar['contrasena'].value;
 

@@ -12,45 +12,158 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-top-fixed/">
 
     <!-- Bootstrap core CSS -->
+    <link href="../practica2/css/navbar-top-fixed.css" rel="stylesheet"> 
+    <link href="../practica2/css/carouselcards.css" rel="stylesheet">
     <link href="../practica2/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../practica2/css/navbar-top-fixed.css" rel="stylesheet">
   </head>
   <style>
-    img {
+    .imglogo {
         width: 80%;
     } 
 </style>
   <body>
 
-    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top" style="background: #FFFFFF;">
-      <a class="navbar-brand" href="#">
-        <img alt="Página de inicio de Uber&nbsp;Eats" role="img"   src="../practica2//img/logo/ee037401cb5d31b23cf780808ee4ec1f.svg" style="width:146px ;height:24px;">
-      </a>
-      
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <nav class="navbar navbar-expand-md navbar-light  fixed-top" style="background: #FFFFFF;color: #000000;border-bottom: 2px solid #c8cacc;">
+      <div class="container">
+        <div class="row">
+          <a class="navbar-brand" href="#" style="padding: 0 80px;">
+            <img style="margin-right: 20px;" alt="Página de inicio de Uber&nbsp;Eats" role="img"   src="../practica2//img/logo/ee037401cb5d31b23cf780808ee4ec1f.svg" style="width:146px ;height:24px;">
+             
+              <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button> 
+            
+          </a>
+        </div>
+      </div>  
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">  
-          <li class="nav-item" id="linkmicuenta" style="display: none;">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#micuentamodal">Mi Cuenta</a>
+        <style>
+          ul#menu li {
+            display:inline;
+            width: 90px;
+          }
+        </style>
+        <ul class="navbar-nav mr-auto" id="menu">   
+          <li class="nav-item" id="linkmicuenta" >
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#micuentamodal"  style="display: none;">Mi cuenta</a>
           </li>
-          <li class="nav-item" id="linksalir" style="display: none;">
-            <a class="nav-link" href="#" id="salir">Salir</a>
+          <li class="nav-item" id="linksalir" >
+            <a class="nav-link" href="#" id="salir" style="display: none;">Salir</a>
           </li>  
         </ul> 
       </div>
     </nav>
 
-    <main role="main" class="container">
-      <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser's viewport.</p>
-        <a class="btn btn-lg btn-primary" href="#" role="button">View navbar docs &raquo;</a>
+    <main role="main" >
+      <div style="box-sizing: border-box;margin: 0 auto;position: relative;">
+      <div style="background-color: #F4FCDE;    margin: 0 auto;height: 415px;overflow: hidden;    position: relative;">
+        <img alt="" role="presentation" src="../practica2/img/banner/317b14d7b051b7e496c9f1ba4db156b4.svg" style="position: absolute;height: 100%;bottom: 0;left: 0;">
+        <img alt="" role="presentation" src="../practica2/img/banner/2d72424dcc82f116a7d8850d1f44ec09.svg" style="position: absolute;height: 100%;bottom: 0;right: 0;">
+      </div> 
+      <div style="transform: translate(-50%, -50%);left: 50%;top: 50%;position: absolute;">
+        <h2 id="home-enter-address-title" style="text-align: center;margin-bottom:4px;
+        line-height: 44px;font-size: 36px;color: #000000;">Tu comida favorita, a la velocidad de&nbsp;la luz
+        </h2> 
+    </div>
       </div>
+      <div class="container" style="margin-top: 60px;">
+        <div class="row">
+          <div class="container-fluid">
+            <div style="text-align: left;">
+              <h2 class="mb-3" style="font-size: 26px;">Menu</h2> 
+            </div>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner row w-100 mx-auto">
+          <div class="carousel-item col-md-4 active">
+            <div class="card">
+              <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Card 1</h4>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item col-md-4">
+            <div class="card">
+              <img class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Card 2</h4>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item col-md-4">
+            <div class="card">
+              <img class="card-img-top img-fluid" src="http://placehold.it/800x600/3ed846/fff" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Card 3</h4>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item col-md-4">
+            <div class="card">
+              <img class="card-img-top img-fluid" src="http://placehold.it/800x600/42ebf4/fff" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Card 4</h4>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item col-md-4">
+            <div class="card">
+              <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f49b41/fff" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Card 5</h4>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item col-md-4">
+            <div class="card">
+              <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f4f141/fff" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Card 6</h4>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item col-md-4">
+            <div class="card">
+              <img class="card-img-top img-fluid" src="http://placehold.it/800x600/8e41f4/fff" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Card 7</h4>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+          </div> 
+        </div>
+      </div>
+      
     </main>
+    <footer>
+
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

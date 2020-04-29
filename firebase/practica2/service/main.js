@@ -16,8 +16,8 @@
     else
     {
        ///datosdelacuenta.innerHTML = '';
-       document.getElementById("linksalir").style.display = 'none';
-        document.getElementById("linkmicuenta").style.display = 'none';
+      document.getElementById("linksalir").style.display = 'none';
+     document.getElementById("linkmicuenta").style.display = 'none';
     } 
     
 const salir = document.getElementById('salir');
