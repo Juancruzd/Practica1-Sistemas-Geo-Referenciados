@@ -2,10 +2,9 @@ var userlogin;
 
 const url=window.location.href;
 auth.onAuthStateChanged( user =>{  
-    console.log(window.location.href);
+    console.log(JSON.stringify(url));
     if(user){
-        userlogin=user;
-        console.log('Usuario entró va para home');
+        userlogin=user; 
 
         db.collection('platillos').onSnapshot(snapshot =>{
             console.log(snapshot.docs); 
@@ -22,20 +21,23 @@ auth.onAuthStateChanged( user =>{
         console.log(name,email,photoUrl,emailVerified,uid);
         
         
-        if(url=="https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/home.html"){ 
+        if(JSON.stringify(url)=="https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/home.html"){ 
+            
         }
         else{
             console.log('Usuario login home'); 
-            ///location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/home.html")
+            location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/home.html")
+            
         }
     }
     else{
         
-        if(url=="https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html"){ 
+        if(JSON.stringify(url)=="https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html"){ 
+
         }
         else{
-            console.log('Usuario logout index login register'); 
-            //location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html")
+            console.log('Usuario logout index login register');  
+            location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html")
         }
     }
 

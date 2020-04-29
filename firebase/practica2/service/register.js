@@ -17,12 +17,7 @@ formaregistrate.addEventListener('submit',(e)=>{
             nombre: formaregistrate['rnombre'].value,
             telefono: formaregistrate['rtelefono'].value,
             direccion: formaregistrate['rdireccion'].value
-        }).then(function(docRef) {
-            console.log("Document written with ID: ", docRef.id);
-        })
-        .catch(function(error) {
-            console.error("Error adding document: ", error);
-        }); 
+        });
     }).then( ()=>{ 
         formaregistrate.reset();
         document.getElementById('errorregistrar').innerHTML = '';
