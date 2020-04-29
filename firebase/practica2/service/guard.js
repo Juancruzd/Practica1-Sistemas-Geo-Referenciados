@@ -1,10 +1,15 @@
+var userlogin;
+
+
 auth.onAuthStateChanged( user =>{ 
+    const queryString = window.location.search; 
+    console.log(queryString);
     if(user){
+        userlogin=user;
         console.log('Usuario entró va para home');
 
         db.collection('platillos').onSnapshot(snapshot =>{
-            console.log(snapshot.docs);
-            //configuraMenu(user);
+            console.log(snapshot.docs); 
         }, err => {
             console.log(err.message);
         }); 
@@ -16,11 +21,11 @@ auth.onAuthStateChanged( user =>{
         emailVerified = user.emailVerified;
         uid = user.uid;   
         console.log(name,email,photoUrl,emailVerified,uid);
-        ///location.replace("https://www.w3schools.com")
+        ///location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/home.html")
     }
     else{
         console.log('Usuario salió va para index login register'); 
-        //location.replace("/index.html")
+        //location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html")
     }
 
 });
