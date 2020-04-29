@@ -26,7 +26,7 @@ auth.onAuthStateChanged( user =>{
         }
         else{
             console.log('Usuario login home'); 
-            location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/home.html")
+            ///location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/home.html")
             
         }
     }
@@ -37,7 +37,7 @@ auth.onAuthStateChanged( user =>{
         }
         else{
             console.log('Usuario logout index login register');  
-            location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html")
+            //location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html")
         }
     }
 
