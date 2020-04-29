@@ -12,18 +12,17 @@ formaregistrate.addEventListener('submit',(e)=>{
     const contrasena = formaregistrate['rcontrasena'].value;
 
     auth.createUserWithEmailAndPassword(correo,contrasena).then( cred =>{
-
+        console.log(cred);
         return db.collection('usuarios').doc(cred.user.uid).set({
             nombre: formaregistrate['rnombre'].value,
             telefono: formaregistrate['rtelefono'].value,
             direccion: formaregistrate['rdireccion'].value
-        });
-
-
+        }); 
     }).then( ()=>{ 
         formaregistrate.reset();
         document.getElementById('errorregistrar').innerHTML = '';
     }).catch( err => {
+        console.log(err);
         document.getElementById('errorregistrar').innerHTML = mensajeError(err.code);
     });
 
