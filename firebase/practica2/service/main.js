@@ -11,11 +11,15 @@ if(user){
            datosdelacuenta.innerHTML = html;
        }); 
        document.getElementById("linkmicuenta").style.display = 'block';
+       document.getElementById("linkingresar").style.display = 'none';
+       document.getElementById("linkregistro").style.display = 'none';
     }
     else
     {
      datosdelacuenta.innerHTML = '';  
      document.getElementById("linkmicuenta").style.display = 'none';
+     document.getElementById("linkingresar").style.display = 'block';
+     document.getElementById("linkregistro").style.display = 'block';
     } 
 });
 const salir = document.getElementById('linksalir');
