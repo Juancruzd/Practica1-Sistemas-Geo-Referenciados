@@ -416,9 +416,28 @@
       <div class="container" style="margin-top: 60px;">
         <div class="row">
           <div class="container-fluid">
-            <div style="text-align: left;">
+            <div style="text-align: left;margin-bottom: 10px;">
               <h2 class="mb-3" style="font-size: 26px;">Menu</h2> 
-            </div>
+              <style>
+                .btn-controls-carousel{background: #EEEEEE;border-radius: 50%;width: 40px;height: 40px;    
+              -webkit-box-pack: center;
+              justify-content: center; line-height: 24px;font-size: 16px;-webkit-box-align: center;
+    align-items: center;    box-sizing: border-box;outline:none;border: 0px;}
+              </style>
+
+
+              <button class="btn-controls-carousel" style="outline:none;" href="#myCarousel" role="button" data-slide="prev">
+              <div style="line-height: 1;width: 24px;height: 24px;cursor: pointer;">
+                <svg width="24px" height="24px" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true" focusable="false"><path d="M18.6666 13H8.19995L11.8666 18H9.53328L5.19995 12L9.53328 6H11.8666L8.19995 11H18.6666V13Z" fill="#000000"></path></svg>
+              </div> 
+              </button>
+              
+              <button class="btn-controls-carousel" style="outline:none;"  href="#myCarousel" role="button" data-slide="next">
+              <div style="line-height: 1;width: 24px;height: 24px;cursor: pointer;">
+                <svg width="24px" height="24px" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true" focusable="false"><path d="M18.6666 13H8.19995L11.8666 18H9.53328L5.19995 12L9.53328 6H11.8666L8.19995 11H18.6666V13Z" fill="#000000" transform="rotate(180, 12, 12)"></path></svg>
+            </div> 
+              </button>
+              </div>
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner row w-100 mx-auto">
           <div class="carousel-item col-md-4 active">
@@ -495,14 +514,14 @@
 
 
 
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <!--<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
         <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
-        </a>
+        </a>-->
       </div>
           </div> 
         </div>
