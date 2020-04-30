@@ -1,0 +1,82 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresa | Salle Eats</title>
+    <link rel="icon" type="image/x-icon" href="../practica2/img/favicon/ca02b85500152d5d47faae4e261ba1e0.ico">
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="css/formloginregister.css">
+    <style>
+      html { 
+        background: url('img/background/background.png') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+         } 
+    </style>
+</head>
+<body>  
+    <div id="login-box">
+        
+        <div class="left" style="display: block;" id="login">
+          <h1>Ingresar</h1> 
+        <form id="formaingresar">
+          <input type="text" name="email" id="correo" placeholder="Ingrese su correo electrónico" required/>
+          <input type="password" name="password"  id="contrasena" placeholder="Ingrese su contraseña" required/>  
+          <input type="submit" name="Ingresar" value="Iniciar" /> 
+          <p id="erroringrear"></p>
+        </form>
+          <br />
+          <a  href="javascript:void(0)" onclick="showregister()" >no tienes una cuenta? registrate</a>
+        </div>
+
+        <div class="left" style="display: none;" id="register">
+            <h1>Regístrate</h1> 
+            <form id="formaregistrate">
+            <input type="text" name="username" id="rnombre" required placeholder="Ingrese su nombre completo" />
+            <input type="text" name="email" id="rcorreo" required placeholder="Ingrese su correo electrónico" />
+            <input type="password" name="password" id="rcontrasena" required placeholder="Ingrese su contraseña" />
+            <input type="text" name="phone" id="rtelefono" required placeholder="Ingrese su teléfono" />
+            <input type="text" name="direccion" id="rdireccion" required placeholder="Ingrese su dirección"> 
+            <input type="submit" name="Regístrate" value="Registrar" />
+            <p id="errorregistrar"></p>
+            </form>
+            <br />
+            <a  href="javascript:void(0)" onclick="showlogin()" >Tengo una cuenta</a>
+        </div>
+
+        
+        <div class="right">
+          <span class="loginwith">Ingresa con tus <br />redes sociales</span>
+          
+          <button  class="social-signin facebook">Ingresa con facebook</button>
+          <button class="social-signin twitter">Ingresa con Twitter</button>
+          <button onclick="entrarGoogle()" class="social-signin google">Ingresa con Google+</button>
+        </div>
+        <div class="or"></div>
+      </div>
+
+
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>  
+    <script src="service/bd.js"></script> 
+    <script src="js/formloginregister.js"></script>
+    <script src="service/guard.js"></script>
+    <script src="service/login.js"></script>
+    <script src="service/register.js"></script>
+    
+
+</body>
+</html>
