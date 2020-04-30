@@ -14,7 +14,7 @@ if(user){
     }
     else
     {
-       ///datosdelacuenta.innerHTML = '';  
+     datosdelacuenta.innerHTML = '';  
      document.getElementById("linkmicuenta").style.display = 'none';
     } 
 });
@@ -22,7 +22,7 @@ const salir = document.getElementById('linksalir');
 salir.addEventListener('click', (e)=>{
     e.preventDefault();
     auth.signOut().then(()=>{
-        alert("El usuario ha salido del sistema");
+        
     });
 
 });
