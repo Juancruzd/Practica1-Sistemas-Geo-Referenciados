@@ -1,8 +1,7 @@
 var userlogin;
 
 const url=window.location.href;
-auth.onAuthStateChanged( user =>{  
-    console.log(url);
+auth.onAuthStateChanged( user =>{   
     if(user){
         userlogin=user; 
 
