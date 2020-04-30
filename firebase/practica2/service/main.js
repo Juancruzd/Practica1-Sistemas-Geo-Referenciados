@@ -1,27 +1,24 @@
-///const datosdelacuenta = document.querySelector('.datosdelacuenta'); 
+const datosdelacuenta = document.getElementById('listaccount'); 
 auth.onAuthStateChanged( user =>{     
 if(user){  
        db.collection('usuarios').doc(user.uid).get().then( doc =>{
            const html = `
-               <p>Nombre: ${ doc.data().nombre }</p>
-               <p>Correo: ${ user.email}</p>
-               <p>Teléfono: ${ doc.data().telefono }</p>
-               <p>Dirección: ${ doc.data().direccion }</p>
+               <p class="hint-text">Nombre: ${ doc.data().nombre }</p>
+               <p class="hint-text">Correo: ${ user.email}</p>
+               <p class="hint-text">Teléfono: ${ doc.data().telefono }</p>
+               <p class="hint-text">Dirección: ${ doc.data().direccion }</p>
            `; 
-           ////datosdelacuenta.innerHTML = html;
-       });
-       
-       document.getElementById("linksalir").style.display = 'block';
+           datosdelacuenta.innerHTML = html;
+       }); 
        document.getElementById("linkmicuenta").style.display = 'block';
     }
     else
     {
-       ///datosdelacuenta.innerHTML = ''; 
-      document.getElementById("linksalir").style.display = 'none';
+       ///datosdelacuenta.innerHTML = '';  
      document.getElementById("linkmicuenta").style.display = 'none';
     } 
 });
-const salir = document.getElementById('salir');
+const salir = document.getElementById('linksalir');
 salir.addEventListener('click', (e)=>{
     e.preventDefault();
     auth.signOut().then(()=>{
