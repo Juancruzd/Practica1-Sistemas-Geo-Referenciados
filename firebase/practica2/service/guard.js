@@ -1,10 +1,6 @@
-var userlogin;
-
 const url=window.location.href;
 auth.onAuthStateChanged( user =>{   
-    if(user){
-        userlogin=user; 
-
+    if(user){ 
         db.collection('platillos').onSnapshot(snapshot =>{
             console.log(snapshot.docs); 
         }, err => {

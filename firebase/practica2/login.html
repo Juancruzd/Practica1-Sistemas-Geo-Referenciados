@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="../practica2/img/favicon/ca02b85500152d5d47faae4e261ba1e0.ico">
+
+    <title>Ingresa | Salle Eats</title> 
+    <!-- Bootstrap core CSS -->
+    <link href="../practica2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="../practica2/css/signin.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center"> 
+
+    <form class="form-signin" id="formaingresar">
+        <img class="mb-4" src="../practica2/img/logo/ee037401cb5d31b23cf780808ee4ec1f.svg" alt="" width="200" height="72">
+        <p class="hint-text">Ingresa con una de tus redes sociales</p>
+                <div class="form-group social-btn clearfix">
+                  <a href="#" class="btn btn-danger pull-left"><i class="fa fa-google"></i> Google</a>
+                  <a href="#" class="btn btn-primary pull-right"><i class="fa fa-facebook"></i> Facebook</a>
+                  <a href="#" class="btn btn-info pull-left mt-1"><i class="fa fa-twitter"></i> Twitter</a>
+                </div>
+                <style>
+                    .or-seperator {
+                        margin-top: 32px;
+                        text-align: center;
+                        border-top: 1px solid #e0e0e0;
+                    }
+                    .or-seperator b {
+                        color: #666;
+                        padding: 0 8px;
+                        width: 30px;
+                        height: 30px;
+                        font-size: 13px;
+                        text-align: center;
+                        line-height: 26px;
+                        background: #fff;
+                        display: inline-block;
+                        border: 1px solid #e0e0e0;
+                        border-radius: 50%;
+                        position: relative;
+                        top: -15px;
+                        z-index: 1;
+                    }
+                    .social-btn .btn,.social-btn .btn:hover {
+                        color: #fff;
+                        margin: 0;
+                        padding: 0 !important;
+                        font-size: 13px;
+                        border: none;
+                        transition: all 0.4s;
+                        text-align: center;
+                        line-height: 34px;
+                        width: 47%;
+                        text-decoration: none;
+                    }	
+                    .social-btn .btn-primary {
+                        background: #507cc0;
+                    }
+                    .social-btn .btn-primary:hover {
+                        background: #4676bd;
+                    }
+                    .social-btn .btn-info {
+                        background: #64ccf1;
+                    }
+                    .social-btn .btn-info:hover {
+                        background: #4ec7ef;
+                    }
+                    .social-btn .btn i {
+                        margin-right: 5px;
+                        font-size: 16px;
+                        position: relative;
+                        top: 2px;
+                    }
+                    .hint-text {
+                        text-align: left;
+                        margin-bottom: 15px;
+                        font-size: 13px;
+                    }
+                </style>
+                <div class="or-seperator"><b>O</b></div>
+        <h1 class="h3 mb-3 font-weight-normal"></h1>
+        <input type="text"class="form-control" name="email" id="correo" placeholder="Ingrese su correo electrónico" required autofocus/>
+        <input type="password" class="form-control" name="password"  id="contrasena" placeholder="Ingrese su contraseña" required/>  
+        <input type="submit" class="btn btn-lg btn-primary btn-block" name="Ingresar" value="Iniciar" /> 
+        <p id="erroringrear"></p>
+        <p class="mt-5 mb-3 text-muted">&copy; 2010-2020</p>
+    </form>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>  
+    <script src="service/bd.js"></script>  
+    <script src="service/guard-login-register.js"></script>
+    <script src="service/login.js"></script> 
+  </body>
+</html>

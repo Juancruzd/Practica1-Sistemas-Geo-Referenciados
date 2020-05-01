@@ -41,6 +41,7 @@ formaingresar.addEventListener('submit',(e)=>{
         formaingresar.reset(); 
         document.getElementById('erroringrear').innerHTML = '';
         console.log(cred);
+        window.location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html");
     }).catch( err => {  
         document.getElementById('erroringrear').innerHTML = mensajeError(err.code);
         console.log(err);

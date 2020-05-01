@@ -21,6 +21,7 @@ formaregistrate.addEventListener('submit',(e)=>{
     }).then( ()=>{ 
         formaregistrate.reset();
         document.getElementById('errorregistrar').innerHTML = '';
+        window.location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html");
     }).catch( err => {
         console.log(err);
         document.getElementById('errorregistrar').innerHTML = mensajeError(err.code);

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="../practica2/img/favicon/ca02b85500152d5d47faae4e261ba1e0.ico">
+
+    <title>Regístrate | Salle Eats</title> 
+
+    <!-- Bootstrap core CSS -->
+    <link href="../practica2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../practica2/css/signin.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center"> 
+    <form class="form-signin" id="formaregistrate">
+        <img class="mb-4" src="../practica2/img/logo/ee037401cb5d31b23cf780808ee4ec1f.svg" alt="" width="200" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">¡Complete este formulario para crear su cuenta!</h1>
+
+        <input type="text" class="form-control" name="username" id="rnombre" required placeholder="Ingrese su nombre completo" />
+        <input type="text" class="form-control" name="email" id="rcorreo" required placeholder="Ingrese su correo electrónico" />
+        <input type="password" class="form-control" name="password" id="rcontrasena" required placeholder="Ingrese su contraseña" />
+        <input type="text" class="form-control" name="phone" id="rtelefono" required placeholder="Ingrese su teléfono" />
+        <input type="text" class="form-control" name="direccion" id="rdireccion" required placeholder="Ingrese su dirección"/> 
+
+        <input type="submit" class="btn btn-lg btn-primary btn-block" name="Regístrate" value="Registrar" />
+        <p id="errorregistrar"></p>
+        <p class="mt-5 mb-3 text-muted">&copy; 2010-2020</p>
+        </form>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>  
+    <script src="service/bd.js"></script>  
+    <script src="service/guard-login-register.js"></script>
+    <script src="service/register.js"></script> 
+  </body>
+</html>
