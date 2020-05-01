@@ -105,7 +105,8 @@
 		background: #31bfb1;
 	}
 	.navbar .navbar-right li:first-child a {
-		padding-right: 30px;
+    padding-right: 30px;
+    padding-left: 15px;
 	}
 	.navbar .nav-item i {
 		font-size: 18px;
@@ -321,19 +322,42 @@ navbar-expand-xl {
           </ul>
         </li>
         <li class="nav-item active"><a href="#" class="nav-link">Pricing</a></li>-->
-        <li class="nav-item d-block d-lg-none"><a href="ingresar.html" class="nav-link">Registrate</a></li>
-        <li class="nav-item d-block d-lg-none"><a href="ingresar.html" class="nav-link">Ingresar</a></li>
+        <style>
+          .mostrar-movil{
+            display: block;
+          }
+          @media (min-width:992px){
+          .mostrar-movil{
+            display: none !important;
+          }  
+          }
+          .ocultar-desktop-tablet{
+              display: none;
+          }
+          @media (max-width: 768px){
+            .ocultar-desktop-tablet{
+              display: none !important;
+          }
+          }
+          @media (min-width:992px){
+          .ocultar-desktop-tablet{
+            display: block;
+          }  
+          } 
+        </style>
+        <li class="nav-item mostrar-movil" id="linkregistro2"><a href="ingresar.html" class="nav-link">Regístrate</a></li>
+        <li class="nav-item mostrar-movil" id="linkingresar2"><a href="ingresar.html" class="nav-link">Ingresar</a></li>
       </ul>
       <form class="navbar-form form-inline" style="margin: 10px;">
         <div class="input-group search-box">								
-          <input type="text" id="search" class="form-control" placeholder="Search here...">
+          <input type="text" id="search" class="form-control" placeholder="Buscar">
           <span class="input-group-addon"><i class="fa fa-search"></i></span>
         </div>
       </form>
-      <ul class="nav navbar-nav navbar-right ml-auto" >			
+      <ul class="nav navbar-nav navbar-right ml-auto" style="margin: 10px;">			
         <!---mi cuenta-->
-        <li class="nav-item " style="display: none;" id="linkmicuenta">
-          <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="javascript:void(0)">Mi cuenta</a>
+        <li class="nav-item " style="display: none;" id="linkmicuenta"> 
+          <a data-toggle="dropdown" class="dropdown-toggle get-started-btn mt-1 mb-1" href="javascript:void(0)">Mi cuenta</a>
           <ul class="dropdown-menu form-wrapper">					
             <li>
               <form>
@@ -354,8 +378,8 @@ navbar-expand-xl {
         <!---end mi cuenta-->
 
         <!---ingresar-->
-        <li class="nav-item d-none d-lg-block " style="display: block;" id="linkingresar">
-          <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Ingresar</a>
+        <li class="nav-item ocultar-desktop-tablet "  id="linkingresar"> 
+          <a data-toggle="dropdown" class=" dropdown-toggle  get-started-btn mt-1 mb-1" href="#">Ingresar</a>
           <ul class="dropdown-menu form-wrapper">					
             <li>
               <form id="formaingresar">
@@ -386,10 +410,12 @@ navbar-expand-xl {
           </ul>
         </li>
         <!---end ingresar-->
-
+<span class="ocultar-desktop-tablet" id="divisioningeso">
+  &nbsp;  / &nbsp;
+</span>
         <!---registro-->
-        <li class="nav-item d-none d-lg-block" style="display: block;" id="linkregistro">
-          <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Regístrate</a>
+        <li class="nav-item ocultar-desktop-tablet" style="display: block;" id="linkregistro">
+          <a href="#" data-toggle="dropdown" class=" dropdown-toggle get-started-btn mt-1 mb-1"> Regístrate</a>
           <ul class="dropdown-menu form-wrapper">					
             <li>
               <form id="formaregistrate">
