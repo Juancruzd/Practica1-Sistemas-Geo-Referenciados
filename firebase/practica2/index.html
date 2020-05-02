@@ -15,7 +15,6 @@
     <link href="../practica2/css/navbar-top-fixed.css" rel="stylesheet"> 
     <link href="../practica2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <!-- Custom styles for this template -->
   </head> 
   <body>
@@ -298,13 +297,29 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="../practica2/js/jquery-3.4.1.js"  ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>
     <script src="../practica2/js/popper.min.js"></script>
     <script src="../practica2/js/bootstrap.min.js"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script> 
+    <script>
+      $(document).ready(function() { 
+         $("#myCarousel").swipe({
+
+          swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+
+            if (direction == 'left') $(this).carousel('next');
+            if (direction == 'right') $(this).carousel('prev');
+
+          },
+          allowPageScroll:"vertical"
+
+          });
+      });
+      </script>
     <script src="service/bd.js"></script>
     <script src="service/guard.js"></script>
     <script src="service/main.js"></script> 
