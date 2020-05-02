@@ -1,0 +1,30 @@
+@media (max-width: 576px) {
+    .navbar-collapse {
+      max-height: calc(100vh - 125px);
+      overflow-y: auto;
+    }
+  }
+navbar-expand-md {
+  @media (max-width: 768px) {
+    .navbar-collapse {
+      max-height: calc(100vh - 125px);
+      overflow-y: auto;
+    }
+  }
+}
+navbar-expand-lg {
+  @media (max-width: 992px) {
+    .navbar-collapse {
+      max-height: calc(100vh - 125px);
+      overflow-y: auto;
+    }
+  }
+}
+navbar-expand-xl {
+  @media (max-width: 1200px) {
+    .navbar-collapse {
+      max-height: calc(100vh - 125px);
+      overflow-y: auto;
+    }
+  }
+}

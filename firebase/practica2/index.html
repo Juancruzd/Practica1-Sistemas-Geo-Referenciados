@@ -8,305 +8,34 @@
     <link rel="icon" type="image/x-icon" href="../practica2/img/favicon/ca02b85500152d5d47faae4e261ba1e0.ico">
 
     <title>Pide comida a domicilio a través de Salle Eats | México</title> 
-    <!-- Bootstrap core CSS -->
-    <link href="../practica2/css/navbar-top-fixed.css" rel="stylesheet"> 
+    <!-- Bootstrap core CSS --> 
+    
     <link href="../practica2/css/carouselcards.css" rel="stylesheet">
+    <link href="../practica2/css/indexcss.css" rel="stylesheet">
+    <link href="../practica2/css/navbar-top-fixed.css" rel="stylesheet"> 
     <link href="../practica2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Custom styles for this template -->
-  </head>
-  <style>
-    .imglogo {
-        width: 80%;
-    } 
-    .form-control {
-		box-shadow: none;		
-		font-weight: normal;
-		font-size: 13px;
-	}
-	.form-control:focus {
-		border-color: #33cabb;
-		box-shadow: 0 0 8px rgba(0,0,0,0.1);
-	}
-	.navbar-header.col {
-		padding: 0 !important;
-	}	
-	.navbar {
-		background: #fff;
-		padding-left: 16px;
-		padding-right: 16px;
-		border-bottom: 1px solid #dfe3e8;
-		border-radius: 0;
-	}
-	.nav-link img {
-		border-radius: 50%;
-		width: 36px;
-		height: 36px;
-		margin: -8px 0;
-		float: left;
-		margin-right: 10px;
-	}
-	.navbar .navbar-brand, .navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
-		padding-left: 0;
-		font-size: 20px;
-		padding-right: 50px;
-	}
-	.navbar .navbar-brand b {
-		font-weight: bold;
-		color: #33cabb;		
-	}
-	.navbar .form-inline {
-        display: inline-block;
-    }
-	.navbar .nav li {
-		position: relative;
-	}
-	.navbar .nav li a {
-		color: #888;
-	}
-	.search-box {
-        position: relative;
-    }	
-    .search-box input {
-        padding-right: 35px;
-		border-color: #dfe3e8;
-        border-radius: 4px !important;
-		box-shadow: none
-    }
-	.search-box .input-group-addon {
-        min-width: 35px;
-        border: none;
-        background: transparent;
-        position: absolute;
-        right: 0;
-        z-index: 9;
-        padding: 7px;
-		height: 100%;
-    }
-    .search-box i {
-        color: #a0a5b1;
-		font-size: 19px;
-    }
-	.navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
-		color: #fff;
-		background: #33cabb;
-		padding-top: 8px;
-		padding-bottom: 6px;
-		vertical-align: middle;
-		border: none;
-	}	
-	.navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {		
-		color: #fff;
-		outline: none;
-		background: #31bfb1;
-	}
-	.navbar .navbar-right li:first-child a {
-    padding-right: 30px;
-    padding-left: 15px;
-	}
-	.navbar .nav-item i {
-		font-size: 18px;
-	}
-	.navbar .dropdown-item i {
-		font-size: 16px;
-		min-width: 22px;
-	}
-	.navbar ul.nav li.active a, .navbar ul.nav li.open > a {
-		background: transparent !important;
-	}	
-	.navbar .nav .get-started-btn {
-		min-width: 120px;
-		margin-top: 8px;
-		margin-bottom: 8px;
-	}
-	.navbar ul.nav li.open > a.get-started-btn {
-		color: #fff;
-		background: #31bfb1 !important;
-	}
-	.navbar .dropdown-menu {
-		border-radius: 1px;
-		border-color: #e5e5e5;
-		box-shadow: 0 2px 8px rgba(0,0,0,.05);
-	}
-	.navbar .nav .dropdown-menu li {
-		color: #999;
-		font-weight: normal;
-	}
-	.navbar .nav .dropdown-menu li a, .navbar .nav .dropdown-menu li a:hover, .navbar .nav .dropdown-menu li a:focus {
-		padding: 8px 20px;
-		line-height: normal;
-	}
-	.navbar .navbar-form {
-		border: none;
-	}
-	.navbar .dropdown-menu.form-wrapper {
-		width: 280px;
-		padding: 20px;
-		left: auto;
-		right: 0;
-        font-size: 14px;
-	}
-	.navbar .dropdown-menu.form-wrapper a {		
-		color: #33cabb;
-		padding: 0 !important;
-	}
-	.navbar .dropdown-menu.form-wrapper a:hover{
-		text-decoration: underline;
-	}
-	.navbar .form-wrapper .hint-text {
-		text-align: left;
-		margin-bottom: 15px;
-		font-size: 13px;
-	}
-	.navbar .form-wrapper .social-btn .btn, .navbar .form-wrapper .social-btn .btn:hover {
-		color: #fff;
-        margin: 0;
-		padding: 0 !important;
-		font-size: 13px;
-		border: none;
-		transition: all 0.4s;
-		text-align: center;
-		line-height: 34px;
-		width: 47%;
-		text-decoration: none;
-    }	
-	.navbar .social-btn .btn-primary {
-		background: #507cc0;
-	}
-	.navbar .social-btn .btn-primary:hover {
-		background: #4676bd;
-	}
-	.navbar .social-btn .btn-info {
-		background: #64ccf1;
-	}
-	.navbar .social-btn .btn-info:hover {
-		background: #4ec7ef;
-	}
-	.navbar .social-btn .btn i {
-		margin-right: 5px;
-		font-size: 16px;
-		position: relative;
-		top: 2px;
-	}
-	.navbar .form-wrapper .form-footer {
-		text-align: center;
-		padding-top: 10px;
-		font-size: 13px;
-	}
-	.navbar .form-wrapper .form-footer a:hover{
-		text-decoration: underline;
-	}
-	.navbar .form-wrapper .checkbox-inline input {
-		margin-top: 3px;
-	}
-	.or-seperator {
-        margin-top: 32px;
-		text-align: center;
-		border-top: 1px solid #e0e0e0;
-    }
-    .or-seperator b {
-		color: #666;
-        padding: 0 8px;
-		width: 30px;
-		height: 30px;
-		font-size: 13px;
-		text-align: center;
-		line-height: 26px;
-		background: #fff;
-		display: inline-block;
-		border: 1px solid #e0e0e0;
-		border-radius: 50%;
-		position: relative;
-		top: -15px;
-		z-index: 1;
-    }
-
-
-  .navbar .checkbox-inline {
-		font-size: 13px;
-	}
-	.navbar .navbar-right .dropdown-toggle::after {
-		display: none;
-	}
-	@media (min-width: 1200px){
-		.form-inline .input-group {
-			width: 300px;
-			margin-left: 30px;
-		}
-	}
-	@media (max-width: 768px){
-		.navbar .dropdown-menu.form-wrapper {
-			width: 100%;
-			padding: 10px 15px;
-			background: transparent;
-			border: none;
-		}
-		.navbar .form-inline {
-			display: block;
-		}
-		.navbar .input-group {
-			width: 100%;
-		}
-		.navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
-			display: block;
-		}
-	}
-</style>
-<script type="text/javascript"> 
-</script>
+  </head> 
   <body>
-<header>
-  <style> 
-
-@media (max-width: 576px) {
-    .navbar-collapse {
-      max-height: calc(100vh - 125px);
-      overflow-y: auto;
-    }
-  }
-navbar-expand-md {
-  @media (max-width: 768px) {
-    .navbar-collapse {
-      max-height: calc(100vh - 125px);
-      overflow-y: auto;
-    }
-  }
-}
-navbar-expand-lg {
-  @media (max-width: 992px) {
-    .navbar-collapse {
-      max-height: calc(100vh - 125px);
-      overflow-y: auto;
-    }
-  }
-}
-navbar-expand-xl {
-  @media (max-width: 1200px) {
-    .navbar-collapse {
-      max-height: calc(100vh - 125px);
-      overflow-y: auto;
-    }
-  }
-}
-
-  </style>
+<header> 
   <nav class="navbar navbar-default navbar-expand-lg navbar-light fixed-top" style="height: 75px;">
     <div class="navbar-header d-flex col">
       <a class="navbar-brand" href="#">
       <img style="margin-right: 20px;" alt="Página de inicio de Uber&nbsp;Eats" role="img"   
       src="../practica2//img/logo/ee037401cb5d31b23cf780808ee4ec1f.svg" style="width:146px ;height:24px;"></a> 
                
-      <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
-        <span class="navbar-toggler-icon"></span>
+      <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto button-menu-mobile">
+        <span class="navbar-toggler-icon iconmenu" style="color: black;"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
     </div>
-    <!-- Collection of nav links, forms, and other content for toggling -->
-    <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start" style="background-color: white;">
-      <ul class="nav navbar-nav" style="margin: 10px;">
+    <!-- Collection of nav links, forms, and other content for toggling --> 
+    <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start border-botton-menu-collapsed" >
+      <ul class="nav navbar-nav divespaciomargin">
 
 
         <!--<li class="nav-item"><a href="#" class="nav-link">Home</a></li>
@@ -320,43 +49,21 @@ navbar-expand-xl {
             <li><a href="#" class="dropdown-item">Digital Marketing</a></li>
           </ul>
         </li>
-        <li class="nav-item active"><a href="#" class="nav-link">Pricing</a></li>-->
-        <style>
-          .mostrar-movil{
-            display: block;
-          }
-          @media (min-width:992px){
-          .mostrar-movil{
-            display: none !important;
-          }  
-          }
-          .ocultar-desktop-tablet{
-              display: none;
-          }
-          @media (max-width: 768px){
-            .ocultar-desktop-tablet{
-              display: none !important;
-          }
-          }
-          @media (min-width:992px){
-          .ocultar-desktop-tablet{
-            display: block;
-          }  
-          } 
-        </style>
-        <li class="nav-item mostrar-movil" id="linkregistro2"><a href="register.html" class="nav-link">Regístrate</a></li>
-        <li class="nav-item mostrar-movil" id="linkingresar2"><a href="login.html" class="nav-link">Ingresar</a></li>
+        <li class="nav-item active"><a href="#" class="nav-link">Pricing</a></li>--> 
+        <li class="nav-item mostrar-movil" id="linkregistro2"><a style="text-transform: uppercase;" href="register.html" class="nav-link">Regístrate</a></li>
+        <li class="nav-item mostrar-movil" id="linkingresar2"><a style="text-transform: uppercase;" href="login.html" class="nav-link">Ingresar</a></li>
       </ul>
       <form class="navbar-form form-inline" style="margin: 10px;">
-        <div class="input-group search-box">								
-          <input type="text" id="search" class="form-control" placeholder="Buscar">
-          <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        <div class="input-group search-box">	 
+            <input type="text" id="search" class="form-control" placeholder="Buscar">
+            <span class="input-group-addon"><i class="fa fa-map-marker"></i></span> 
+          
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right ml-auto" style="margin: 10px;">			
         <!---mi cuenta-->
         <li class="nav-item " style="display: none;" id="linkmicuenta"> 
-          <a data-toggle="dropdown" class="dropdown-toggle get-started-btn mt-1 mb-1" href="javascript:void(0)">Mi cuenta</a>
+          <a data-toggle="dropdown" class="dropdown-toggle get-started-btn mt-1 mb-1" href="javascript:void(0)" style="text-transform: uppercase;">Mi cuenta</a>
           <ul class="dropdown-menu form-wrapper">					
             <li>
               <form>
@@ -378,7 +85,7 @@ navbar-expand-xl {
 
         <!---ingresar-->
         <li class="nav-item ocultar-desktop-tablet "  id="linkingresar"> 
-          <a data-toggle="dropdown" class=" dropdown-toggle  get-started-btn mt-1 mb-1" href="#">Ingresar</a>
+          <a data-toggle="dropdown" class=" dropdown-toggle  get-started-btn mt-1 mb-1" href="#" style="padding-right: 10px;text-transform: uppercase;">Ingresar</a>
           <ul class="dropdown-menu form-wrapper">					
             <li>
               <form id="formaingresar">
@@ -408,13 +115,10 @@ navbar-expand-xl {
             </li>
           </ul>
         </li>
-        <!---end ingresar-->
-<span class="ocultar-desktop-tablet" id="divisioningeso">
-  &nbsp;  / &nbsp;
-</span>
+        <!---end ingresar--> 
         <!---registro-->
         <li class="nav-item ocultar-desktop-tablet" style="display: block;" id="linkregistro">
-          <a href="#" data-toggle="dropdown" class=" dropdown-toggle get-started-btn mt-1 mb-1"> Regístrate</a>
+          <a href="#" data-toggle="dropdown" class=" dropdown-toggle get-started-btn mt-1 mb-1" style="text-transform: uppercase;"> Regístrate</a>
           <ul class="dropdown-menu form-wrapper">					
             <li>
               <form id="formaregistrate">
@@ -446,60 +150,48 @@ navbar-expand-xl {
         <!---end registro-->
       </ul>
     </div>
-  </nav> 
-
+  </nav>  
 </header>
     
     
 
-    <main role="main" >
-
+<main role="main" > 
 <!-- Titulo Start -->
 <div class="d-none">
   <h1>Salle Eats | México</h1>
 </div>
-      <div style="box-sizing: border-box;margin: 0 auto;position: relative;">
-      <div style="background-color: #F4FCDE;    margin: 0 auto;height: 415px;overflow: hidden;    position: relative;">
+<!-- Titulo end -->
+
+<!-- Banner Promotional Start -->
+      <div class="banner">
+      <div class="banner-images">
         <img alt="" role="presentation" src="../practica2/img/banner/317b14d7b051b7e496c9f1ba4db156b4.svg" style="position: absolute;height: 100%;bottom: 0;left: 0;">
         <img class="d-none d-lg-block" alt="" role="presentation" src="../practica2/img/banner/2d72424dcc82f116a7d8850d1f44ec09.svg" style="position: absolute;height: 100%;bottom: 0;right: 0;">
       </div> 
-      <div style="transform: translate(-50%, -50%);left: 50%;top: 50%;position: absolute;">
-        <h2 id="home-enter-address-title" style="text-align: center;margin-bottom:4px;
-        line-height: 44px;font-size: 36px;color: #000000;">Tu comida favorita, a la velocidad de&nbsp;la luz
+      <div class="banner-text">
+        <h2 id="home-enter-address-title" >Tu comida favorita, a la velocidad de&nbsp;la luz
         </h2> 
     </div>
       </div>
+<!-- Banner Promotional End --> 
 
-
-      <style>
-        .carousel-control-prev,
-        .carousel-control-next{
-              bottom: 75%; 
-        }
-      </style>
-      <div class="container" style="margin-top: 60px;">
+<!-- Carrusel Menu Start -->
+      <div class="container mt-carousel" >
         <div class="row">
           <div class="container-fluid"> 
             <div class="row" style="margin-bottom: 10px;">
-              <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: left;"> 
+              <div class="col-lg-6 col-md-6 col-sm-6 title-carousel"> 
                 <h2 style="font-size: 26px;">Menu</h2> 
-              </div>
-              
-              <style>
-                .btn-controls-carousel{background: #EEEEEE;border-radius: 50%;width: 40px;height: 40px;    
-              -webkit-box-pack: center;
-              justify-content: center; line-height: 24px;font-size: 16px;-webkit-box-align: center;
-    align-items: center;    box-sizing: border-box;outline:none;border: 0px;}
-              </style>
-            <div  class="col-lg-6 col-md-6 col-sm-6" style="text-align: right;"> 
-              <button class="btn-controls-carousel" style="outline:none;" href="#myCarousel" role="button" data-slide="prev">
-                <div style="line-height: 1;width: 24px;height: 24px;cursor: pointer;">
+              </div> 
+            <div  class="col-lg-6 col-md-6 col-sm-6 div-buttons-carousel"> 
+              <button class="btn-controls-carousel" href="#myCarousel" role="button" data-slide="prev">
+                <div class="div-button-icon">
                   <svg width="24px" height="24px" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true" focusable="false"><path d="M18.6666 13H8.19995L11.8666 18H9.53328L5.19995 12L9.53328 6H11.8666L8.19995 11H18.6666V13Z" fill="#000000"></path></svg>
                 </div> 
                 </button>
                 
-                <button class="btn-controls-carousel" style="outline:none;"  href="#myCarousel" role="button" data-slide="next">
-                <div style="line-height: 1;width: 24px;height: 24px;cursor: pointer;">
+                <button class="btn-controls-carousel" href="#myCarousel" role="button" data-slide="next">
+                <div class="div-button-icon">
                   <svg width="24px" height="24px" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true" focusable="false"><path d="M18.6666 13H8.19995L11.8666 18H9.53328L5.19995 12L9.53328 6H11.8666L8.19995 11H18.6666V13Z" fill="#000000" transform="rotate(180, 12, 12)"></path></svg>
               </div> 
                 </button>
@@ -595,8 +287,10 @@ navbar-expand-xl {
           </div> 
         </div>
       </div>
-      
+<!-- Carrusel Menu End -->
     </main>
+
+
     <footer>
 
     </footer>
