@@ -234,19 +234,27 @@ padding-left: 15px;
     }
 }
 /*boton menu movil*/
+.fa-times:before{
+    content:"\f00d"
+}
+.fa-bars:before {
+    content: "\f0c9";
+}
 .button-menu-mobile{
     outline: none !important;
     border-color: transparent !important;
 }
 .button-menu-mobile .iconmenu{
-    display: inline-block;
+    /*display: inline-block;
     width: 1.5em;
     height: 1.5em;
     vertical-align: middle;
     content: "";
     background: no-repeat center center;
     background-size: 100% 100%;
-    /**background-image: url();**/
+    background-image: url(../img/icon/menu.svg) !important;*/
+    font-size: 30px;
+  color: black;
 }
 /*color menu colapsado movil barra de color final de lista espaciado o margen de la lista*/
 .border-botton-menu-collapsed{ 
@@ -262,6 +270,7 @@ padding-left: 15px;
     background-color: white;
   }  
   }
+  
 /*navbar end*/
 
 

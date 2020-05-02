@@ -26,11 +26,10 @@
       src="../practica2//img/logo/ee037401cb5d31b23cf780808ee4ec1f.svg" style="width:146px ;height:24px;"></a> 
                
       <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto button-menu-mobile">
-        <span class="navbar-toggler-icon iconmenu" style="color: black;"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="sr-only">Toggle navigation</span>
+        <i class="iconmenu fa fa-bars "></i>
       </button>
+     
     </div>
     <!-- Collection of nav links, forms, and other content for toggling --> 
     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start border-botton-menu-collapsed" >
@@ -319,6 +318,13 @@
 
           });
       });
+      </script>
+       <script>
+        $('.navbar-toggle').click(function() {
+$('.navbar-toggle i').toggleClass('fa-bars fa-times');
+console.log("si");
+});
+
       </script>
     <script src="service/bd.js"></script>
     <script src="service/guard.js"></script>
