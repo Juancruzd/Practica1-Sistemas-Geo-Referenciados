@@ -1,16 +1,20 @@
 /*navbar*/
+
 .form-control {
-    box-shadow: none;		
+    box-shadow: none;
     font-weight: normal;
     font-size: 13px;
 }
+
 .form-control:focus {
     border-color: #33cabb;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
+
 .navbar-header.col {
     padding: 0 !important;
-}	
+}
+
 .navbar {
     background: #fff;
     padding-left: 16px;
@@ -20,6 +24,7 @@
     border-radius: 0;
     height: 75px;
 }
+
 .nav-link img {
     border-radius: 50%;
     width: 36px;
@@ -28,39 +33,48 @@
     float: left;
     margin-right: 10px;
 }
+
 .navbar .navbar-brand, .navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
     padding-left: 0;
     font-size: 20px;
     padding-right: 50px;
 }
+
 .navbar .navbar-brand b {
     font-weight: bold;
-    color: #33cabb;		
+    color: #33cabb;
 }
+
 .navbar .navbar-brand img {
-    width:146px ;
-    height:24px;	
+    width: 146px;
+    height: 24px;
 }
+
 .navbar .form-inline {
     display: inline-block;
 }
+
 .navbar .nav li {
     position: relative;
 }
+
 .navbar .nav li a {
     color: #000 !important;
 }
+
 .search-box {
     position: relative;
     border: 1px solid #000;
-}	
+}
+
 .search-box input {
     padding-right: 35px;
     border-color: #000;
     border: 0;
     border-radius: 1px !important;
     box-shadow: none !important;
-} 
+}
+
 .search-box .input-group-addon {
     min-width: 35px;
     border: none;
@@ -71,10 +85,12 @@
     padding: 7px;
     height: 100%;
 }
+
 .search-box i {
     color: #000;
     font-size: 19px;
 }
+
 .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
     color: #fff;
     background: #33cabb;
@@ -82,52 +98,64 @@
     padding-bottom: 6px;
     vertical-align: middle;
     border: none;
-}	
-.navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {		
+}
+
+.navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {
     color: #fff;
     outline: none;
     background: #31bfb1;
 }
+
 .navbar .navbar-right li:first-child a {
-padding-right: 30px;
-padding-left: 15px;
+    padding-right: 30px;
+    padding-left: 15px;
 }
+
 .navbar .nav-item i {
     font-size: 18px;
 }
+
 .navbar .dropdown-item i {
     font-size: 16px;
     min-width: 22px;
 }
-.navbar ul.nav li.active a, .navbar ul.nav li.open > a {
+
+.navbar ul.nav li.active a, .navbar ul.nav li.open>a {
     background: transparent !important;
-}	
+}
+
 .navbar .nav .get-started-btn {
     min-width: 120px;
     margin-top: 8px;
     margin-bottom: 8px;
     text-decoration: none;
 }
-.navbar ul.nav li.open > a.get-started-btn {
+
+.navbar ul.nav li.open>a.get-started-btn {
     color: #fff;
     background: #31bfb1 !important;
 }
+
 .navbar .dropdown-menu {
     border-radius: 1px;
     border-color: #e5e5e5;
-    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
 }
+
 .navbar .nav .dropdown-menu li {
     color: #999;
     font-weight: normal;
 }
+
 .navbar .nav .dropdown-menu li a, .navbar .nav .dropdown-menu li a:hover, .navbar .nav .dropdown-menu li a:focus {
     padding: 8px 20px;
     line-height: normal;
 }
+
 .navbar .navbar-form {
     border: none;
 }
+
 .navbar .dropdown-menu.form-wrapper {
     width: 280px;
     padding: 20px;
@@ -135,18 +163,22 @@ padding-left: 15px;
     right: 0;
     font-size: 14px;
 }
-.navbar .dropdown-menu.form-wrapper a {		
+
+.navbar .dropdown-menu.form-wrapper a {
     color: #33cabb;
     padding: 0 !important;
 }
-.navbar .dropdown-menu.form-wrapper a:hover{
+
+.navbar .dropdown-menu.form-wrapper a:hover {
     text-decoration: underline;
 }
+
 .navbar .form-wrapper .hint-text {
     text-align: left;
     margin-bottom: 15px;
     font-size: 13px;
 }
+
 .navbar .form-wrapper .social-btn .btn, .navbar .form-wrapper .social-btn .btn:hover {
     color: #fff !important;
     margin: 0;
@@ -158,41 +190,51 @@ padding-left: 15px;
     line-height: 34px;
     width: 47%;
     text-decoration: none;
-}	
+}
+
 .navbar .social-btn .btn-primary {
     background: #507cc0;
 }
+
 .navbar .social-btn .btn-primary:hover {
     background: #4676bd;
 }
+
 .navbar .social-btn .btn-info {
     background: #64ccf1;
 }
+
 .navbar .social-btn .btn-info:hover {
     background: #4ec7ef;
 }
+
 .navbar .social-btn .btn i {
     margin-right: 5px;
     font-size: 16px;
     position: relative;
     top: 2px;
 }
+
 .navbar .form-wrapper .form-footer {
     text-align: center;
     padding-top: 10px;
     font-size: 13px;
 }
-.navbar .form-wrapper .form-footer a:hover{
+
+.navbar .form-wrapper .form-footer a:hover {
     text-decoration: underline;
 }
+
 .navbar .form-wrapper .checkbox-inline input {
     margin-top: 3px;
 }
+
 .or-seperator {
     margin-top: 32px;
     text-align: center;
     border-top: 1px solid #e0e0e0;
 }
+
 .or-seperator b {
     color: #666;
     padding: 0 8px;
@@ -209,19 +251,23 @@ padding-left: 15px;
     top: -15px;
     z-index: 1;
 }
+
 .navbar .checkbox-inline {
     font-size: 13px;
 }
+
 .navbar .navbar-right .dropdown-toggle::after {
     display: none;
 }
-@media (min-width: 1200px){
+
+@media (min-width: 1200px) {
     .form-inline .input-group {
         width: 300px;
         margin-left: 30px;
     }
 }
-@media (max-width: 768px){
+
+@media (max-width: 768px) {
     .navbar .dropdown-menu.form-wrapper {
         width: 100%;
         padding: 10px 15px;
@@ -238,18 +284,23 @@ padding-left: 15px;
         display: block;
     }
 }
+
 /*boton menu movil*/
-.fa-times:before{
-    content:"\f00d"
+
+.fa-times:before {
+    content: "\f00d"
 }
+
 .fa-bars:before {
     content: "\f0c9";
 }
-.button-menu-mobile{
+
+.button-menu-mobile {
     outline: none !important;
     border-color: transparent !important;
 }
-.button-menu-mobile .iconmenu{
+
+.button-menu-mobile .iconmenu {
     /*display: inline-block;
     width: 1.5em;
     height: 1.5em;
@@ -259,32 +310,39 @@ padding-left: 15px;
     background-size: 100% 100%;
     background-image: url(../img/icon/menu.svg) !important;*/
     font-size: 30px;
-  color: black;
+    color: black;
 }
+
 /*color menu colapsado movil barra de color final de lista espaciado o margen de la lista*/
-.border-botton-menu-collapsed{ 
+
+.border-botton-menu-collapsed {
     background-color: white;
     transition: all .4s ease-out 0s;
-  } 
-  .border-botton-menu-collapsed .divespaciomargin{ 
+}
+
+.border-botton-menu-collapsed .divespaciomargin {
     margin: 10px;
-  } 
-  @media (max-width:991px){
-  .border-botton-menu-collapsed{
-    border-bottom: 3px solid #000;
-    background-color: white;
-  }  
-  } 
-  .collapse {
+}
+
+@media (max-width:991px) {
+    .border-botton-menu-collapsed {
+        border-bottom: 3px solid #000;
+        background-color: white;
+    }
+}
+
+.collapse {
     visibility: hidden !important;
-  }
-  .collapse.show {
+}
+
+.collapse.show {
     visibility: visible !important;
     display: block !important;
     transition: height 0.80s ease !important;
-  }
-  .collapsing {
-   /** position: relative !important;
+}
+
+.collapsing {
+    /** position: relative !important;
     height: 0 !important;
     overflow: hidden !important;
     -webkit-transition-property: height, visibility !important;
@@ -294,93 +352,119 @@ padding-left: 15px;
     -webkit-transition-timing-function: ease !important;
     transition-timing-function: ease !important;**/
     transition: height 0.80s ease !important;
-  }
-  .collapsing.width {
+}
+
+.collapsing.width {
     -webkit-transition-property: width, visibility !important;
     transition-property: width, visibility !important;
     width: 0 !important;
     height: auto !important;
-  }
+}
+
 /*navbar end*/
 
-
-/*responsive menu expanded nav*/
-.mostrar-movil{
-    display: block;
-  }
-  @media (min-width:992px){
-  .mostrar-movil{
-    display: none !important;
-  }  
-  }
-  .ocultar-desktop-tablet{
-      display: none;
-  }
-  @media (max-width: 768px){
-    .ocultar-desktop-tablet{
-      display: none !important;
-  }
-  }
-  @media (min-width:992px){
-  .ocultar-desktop-tablet{
-    display: block;
-  }  
-  }
 /*responsive menu expanded nav*/
 
+.mostrar-movil {
+    display: block;
+}
+
+@media (min-width:992px) {
+    .mostrar-movil {
+        display: none !important;
+    }
+}
+
+.ocultar-desktop-tablet {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .ocultar-desktop-tablet {
+        display: none !important;
+    }
+}
+
+@media (min-width:992px) {
+    .ocultar-desktop-tablet {
+        display: block;
+    }
+}
+
+/*responsive menu expanded nav*/
 
 /*banner Promtional*/
-.banner{
-    box-sizing: border-box;margin: 0 auto;position: relative;
+
+.banner {
+    box-sizing: border-box;
+    margin: 0 auto;
+    position: relative;
 }
-.banner .banner-images{
-    background-color: #F4FCDE;    margin: 0 auto;height: 415px;overflow: hidden;    position: relative;
+
+.banner .banner-images {
+    background-color: #F4FCDE;
+    margin: 0 auto;
+    height: 415px;
+    overflow: hidden;
+    position: relative;
 }
-.banner .banner-text{
-    transform: translate(-50%, -50%);left: 50%;top: 50%;position: absolute;
+
+.banner .banner-text {
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    position: absolute;
 }
-.banner .banner-text h2{
-    text-align: center;margin-bottom:4px;
-        line-height: 44px;font-size: 36px;color: #000000;
+
+.banner .banner-text h2 {
+    text-align: center;
+    margin-bottom: 4px;
+    line-height: 44px;
+    font-size: 36px;
+    color: #000000;
 }
+
 /*banner Promtional end*/
 
 /*carousel*/
-.carousel-control-prev,
-.carousel-control-next{
-              bottom: 75%; 
+
+.carousel-control-prev, .carousel-control-next {
+    bottom: 75%;
 }
-.mt-carousel{
+
+.mt-carousel {
     margin-top: 60px;
 }
-.title-carousel{
+
+.title-carousel {
     text-align: left;
 }
-.btn-controls-carousel{
+
+.btn-controls-carousel {
     background: #EEEEEE;
     border-radius: 50%;
     width: 40px;
-    height: 40px;    
+    height: 40px;
     -webkit-box-pack: center;
-    justify-content: center; 
+    justify-content: center;
     line-height: 24px;
     font-size: 16px;
     -webkit-box-align: center;
-    align-items: center;    
+    align-items: center;
     box-sizing: border-box;
-    outline:none !important;
+    outline: none !important;
     border: 0px;
+}
 
+.div-buttons-carousel {
+    text-align: right;
 }
-.div-buttons-carousel{
-    text-align: right;   
-}
-.div-button-icon{
+
+.div-button-icon {
     line-height: 1;
     width: 24px;
     height: 24px;
     cursor: pointer;
 }
+
 /*carousel end*/
-
-
