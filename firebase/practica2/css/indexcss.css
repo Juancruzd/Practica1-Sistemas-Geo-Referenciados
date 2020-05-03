@@ -37,6 +37,10 @@
     font-weight: bold;
     color: #33cabb;		
 }
+.navbar .navbar-brand img {
+    width:146px ;
+    height:24px;	
+}
 .navbar .form-inline {
     display: inline-block;
 }
