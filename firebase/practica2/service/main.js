@@ -14,8 +14,7 @@ if(user){
        document.getElementById("linkingresar").style.display = 'none';
        document.getElementById("linkregistro").style.display = 'none';
        document.getElementById("linkingresar2").style.display = 'none';
-       document.getElementById("linkregistro2").style.display = 'none';
-       document.getElementById("divisioningeso").style.display = 'none';
+       document.getElementById("linkregistro2").style.display = 'none'; 
     }
     else
     {
@@ -25,9 +24,7 @@ if(user){
      document.getElementById("linkregistro").style.display = 'block';
      
      document.getElementById("linkingresar2").style.display = 'block';
-     document.getElementById("linkregistro2").style.display = 'block';
-
-     document.getElementById("divisioningeso").style.display = 'block';
+     document.getElementById("linkregistro2").style.display = 'block'; 
     } 
 });
 const salir = document.getElementById('linksalir');
