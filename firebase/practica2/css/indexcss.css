@@ -331,10 +331,6 @@
     }
 }
 
-.collapse {
-    visibility: hidden !important;
-}
-
 .collapse.show {
     visibility: visible !important;
     display: block !important;
