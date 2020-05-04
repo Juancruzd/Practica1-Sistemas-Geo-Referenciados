@@ -6,7 +6,6 @@ $(document).ready(function() {
         }
         else{
             document.getElementById("nav").setAttribute('style','border-bottom:1px solid #000');
-            console.log(scrollAmount); 
         }  
 
 
