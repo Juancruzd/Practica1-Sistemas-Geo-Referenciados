@@ -50,13 +50,24 @@
         <li class="nav-item mostrar-movil" id="linkregistro2"><a style="text-transform: uppercase;" href="register.html" class="nav-link">Regístrate</a></li>
         <li class="nav-item mostrar-movil" id="linkingresar2"><a style="text-transform: uppercase;" href="login.html" class="nav-link">Ingresar</a></li>
       </ul>
-      <form class="navbar-form form-inline" style="margin: 10px;
-      
-      opacity: 0;
-      visibility: hidden; 
-      -webkit-transition: opacity 600ms, visibility 600ms;
-            transition: opacity 600ms, visibility 600ms;
-            " id="formsearch">
+      <style>
+        .formsearchclass{
+          margin: 10px; 
+          opacity: 0;
+          visibility: hidden; 
+          -webkit-transition: opacity 600ms, visibility 600ms;
+          transition: opacity 600ms, visibility 600ms;
+        }
+        @keyframes fade {
+        0% {
+            opacity: 0;
+        } 
+        100% {
+            opacity: 1;
+        }
+        } 
+      </style>
+      <form class="navbar-form form-inline formsearchclass" id="formsearch">
         <div class="input-group search-box">	 
             <input type="text" id="search" class="form-control" placeholder="Buscar">
             <span class="input-group-addon"><i class="fa fa-map-marker"></i></span> 
