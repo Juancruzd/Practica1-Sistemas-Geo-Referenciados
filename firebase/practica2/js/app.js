@@ -10,9 +10,9 @@ $(document).ready(function() {
 
 
         if (scrollAmount >= 415) { 
-            document.getElementById("formsearch").setAttribute('style','visibility: visible;opacity: 1;animation: fade 1s;');
+            document.getElementById("formsearch").setAttribute('style','opacity: 1;animation: fade 1s;display: block;');
         }else{
-            document.getElementById("formsearch").setAttribute('style','visibility: hidden;opacity: 0;');
+            document.getElementById("formsearch").setAttribute('style','opacity: 0;display: none;');
         }
       });
  });
