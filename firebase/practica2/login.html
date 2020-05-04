@@ -11,6 +11,7 @@
     <!-- Bootstrap core CSS -->
     <link href="../practica2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 
     <!-- Custom styles for this template -->
     <link href="../practica2/css/loginregistercss.css" rel="stylesheet">
@@ -18,80 +19,191 @@
 
   <body class="text-center"> 
 
-    <form class="form-signin" id="formaingresar">
-        <img class="mb-4" src="../practica2/img/logo/ee037401cb5d31b23cf780808ee4ec1f.svg" alt="" width="200" height="72">
-        <p class="hint-text">Ingresa con una de tus redes sociales</p>
-                <div class="form-group social-btn clearfix">
-                  <a href="#" class="btn btn-danger pull-left"><i class="fa fa-google"></i> Google</a>
-                  <a href="#" class="btn btn-primary pull-right"><i class="fa fa-facebook"></i> Facebook</a>
-                  <a href="#" class="btn btn-info pull-left mt-1"><i class="fa fa-twitter"></i> Twitter</a>
-                </div>
-                <style>
-                    .or-seperator {
-                        margin-top: 32px;
-                        text-align: center;
-                        border-top: 1px solid #e0e0e0;
-                    }
-                    .or-seperator b {
-                        color: #666;
-                        padding: 0 8px;
-                        width: 30px;
-                        height: 30px;
-                        font-size: 13px;
-                        text-align: center;
-                        line-height: 26px;
-                        background: #fff;
-                        display: inline-block;
-                        border: 1px solid #e0e0e0;
-                        border-radius: 50%;
-                        position: relative;
-                        top: -15px;
-                        z-index: 1;
-                    }
-                    .social-btn .btn,.social-btn .btn:hover {
-                        color: #fff;
-                        margin: 0;
-                        padding: 0 !important;
-                        font-size: 13px;
-                        border: none;
-                        transition: all 0.4s;
-                        text-align: center;
-                        line-height: 34px;
-                        width: 47%;
-                        text-decoration: none;
-                    }	
-                    .social-btn .btn-primary {
-                        background: #507cc0;
-                    }
-                    .social-btn .btn-primary:hover {
-                        background: #4676bd;
-                    }
-                    .social-btn .btn-info {
-                        background: #64ccf1;
-                    }
-                    .social-btn .btn-info:hover {
-                        background: #4ec7ef;
-                    }
-                    .social-btn .btn i {
-                        margin-right: 5px;
-                        font-size: 16px;
-                        position: relative;
-                        top: 2px;
-                    }
-                    .hint-text {
-                        text-align: left;
-                        margin-bottom: 15px;
-                        font-size: 13px;
-                    }
-                </style>
-                <div class="or-seperator"><b>O</b></div>
-        <h1 class="h3 mb-3 font-weight-normal"></h1>
-        <input type="text"class="form-control" name="email" id="correo" placeholder="Ingrese su correo electrónico" required autofocus/>
-        <input type="password" class="form-control" name="password"  id="contrasena" placeholder="Ingrese su contraseña" required/>  
-        <input type="submit" class="btn btn-lg btn-primary btn-block" name="Ingresar" value="Iniciar" /> 
-        <p id="erroringrear"></p>
-        <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
-    </form>
+    
+    <main>
+        <form class="form-signin" id="formaingresar">
+            <img class="mb-4" src="../practica2/img/logo/ee037401cb5d31b23cf780808ee4ec1f.svg" alt="" width="200" height="72">
+            <p class="hint-text">Ingresa con una de tus redes sociales</p>
+                    <div class="form-group social-btn clearfix">
+                      <a href="#" class="btn btn-danger pull-left"><i class="fa fa-google"></i> Google</a>
+                      <a href="#" class="btn btn-primary pull-right"><i class="fa fa-facebook"></i> Facebook</a>
+                      <a href="#" class="btn btn-info pull-left mt-1"><i class="fa fa-twitter"></i> Twitter</a>
+                    </div>
+                    <style>
+                        /* Large desktop */
+                        @media (min-width: 1200px) { 
+                        body { 
+                            padding-top: 119px; 
+                        }
+                        }  
+                        @media (min-width: 768px) and (max-width: 1024px) { 
+                        body { 
+                            padding-top: 51px; 
+                        }
+                        }
+
+
+                        /* Landscape phone to portrait tablet */
+                        @media (max-width: 767px) {
+                        body { 
+                            padding-top: 51px; 
+                        }
+                        }
+                        /* Portrait tablet to landscape and desktop */
+                        @media (min-width: 768px) and (max-width: 979px) { 
+                        body { 
+                            padding-top: 51px; 
+                        }
+                        }
+                        .or-seperator {
+                            margin-top: 32px;
+                            text-align: center;
+                            border-top: 1px solid #e0e0e0;
+                        }
+                        .or-seperator b {
+                            color: #666;
+                            padding: 0 8px;
+                            width: 30px;
+                            height: 30px;
+                            font-size: 13px;
+                            text-align: center;
+                            line-height: 26px;
+                            background: #fff;
+                            display: inline-block;
+                            border: 1px solid #e0e0e0;
+                            border-radius: 50%;
+                            position: relative;
+                            top: -15px;
+                            z-index: 1;
+                        }
+                        .social-btn .btn,.social-btn .btn:hover {
+                            color: #fff;
+                            margin: 0;
+                            padding: 0 !important;
+                            font-size: 13px;
+                            border: none;
+                            transition: all 0.4s;
+                            text-align: center;
+                            line-height: 34px;
+                            width: 47%;
+                            text-decoration: none;
+                        }	
+                        .social-btn .btn-primary {
+                            background: #507cc0;
+                        }
+                        .social-btn .btn-primary:hover {
+                            background: #4676bd;
+                        }
+                        .social-btn .btn-info {
+                            background: #64ccf1;
+                        }
+                        .social-btn .btn-info:hover {
+                            background: #4ec7ef;
+                        }
+                        .social-btn .btn i {
+                            margin-right: 5px;
+                            font-size: 16px;
+                            position: relative;
+                            top: 2px;
+                        }
+                        .hint-text {
+                            text-align: left;
+                            margin-bottom: 15px;
+                            font-size: 13px;
+                        }
+                        .hint-text-title {
+                            text-align: left;
+                            margin-bottom: 15px;
+                        }
+                        .button-login{
+                            background: rgb(62, 153, 32);
+                            border-color: rgb(62, 153, 32);
+                            transition: all 400ms ease;
+                            outline: none;
+                            border-radius: 0px;
+                            text-transform: capitalize;
+                            border-style: solid;
+                            overflow: visible;
+                            height: 48px;
+                            position: relative;
+                            box-sizing: border-box;
+                            width: 100%;
+                            font-weight: normal;
+                            color: #ffffff;
+                            font-size: 16px;
+                            margin-top: 24px;
+                            line-height: 24px;
+                            text-align: center;
+                            text-decoration: none;
+                            display: inline-block; 
+                            cursor: pointer;
+                        }
+                        .input-login{
+                            margin-top: 10px;
+                            -webkit-appearance: none;
+                            outline: none;
+                            border-radius: 0px;
+                            border-color: #E0E0E0;
+                            border-style: solid;
+                            border-width: 1px;
+                            background: #ffffff;
+                            transition: all 400ms ease;
+                            height: 48px;
+                            box-sizing: border-box;
+                            padding: 8px 18px;
+                            width: 100%;
+                            line-height: 24px;
+                            font-size: 16px;
+                            color: #262626;
+                            font-weight: normal;
+                        }
+                        .footer-login{
+                            padding: 16px;
+                            box-sizing: border-box;
+                            background-color: #262626;
+                            width: 100%;
+                        }
+                        .footer-login .tile1{
+                            padding-bottom: 16px;
+                            line-height: 16px;
+                            font-size: 12px;
+                            color: #ffffff;
+                        }
+                        .footer-login .tile1 .link{
+                            color: #ffffff !important; 
+                            cursor: pointer;
+                            text-decoration: none !important;
+                        }
+                    </style>
+                    <div class="or-seperator"><b>O</b></div>
+            <h1 class="h3 mb-3 font-weight-normal hint-text-title">Comienza</h1>
+            <input type="text"class="input-login" name="email" id="correo" placeholder="Ingrese su correo electrónico" required autofocus/>
+            <input type="password" class="input-login" name="password"  id="contrasena" placeholder="Ingrese su contraseña" required/>  
+            <input type="submit" class="button-login" name="Ingresar" value="Iniciar" /> 
+            <p id="erroringrear"></p>
+            <div class="mt-1 mb-3 text-muted">
+                
+            </div>
+            <div style="color: #262626;">
+                No tienes una cuenta? 
+                <a href="https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/register.html"
+                 style="text-decoration: none;color: #4F9300;">Regístrate</a>
+            </div>
+        </form> 
+    </main> 
+    <footer>
+        <div class="footer-login">
+            <div class="tile1">©&nbsp;2020&nbsp;Salle Eats&nbsp;Technologies,&nbsp;Inc.</div> 
+            <div class="tile1">
+                <a href="https://www.uber.com/legal/privacy/users/en/" class="link">
+                Política de privacidad </a>
+                &nbsp;| &nbsp;
+                <a href="https://www.uber.com/legal/terms/us/" class="link">
+                    Términos de uso
+                </a>
+            </div>
+        </div>
+    </footer>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>

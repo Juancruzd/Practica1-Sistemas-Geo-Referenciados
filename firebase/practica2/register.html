@@ -20,17 +20,118 @@
     <form class="form-signin" id="formaregistrate">
         <img class="mb-4" src="../practica2/img/logo/ee037401cb5d31b23cf780808ee4ec1f.svg" alt="" width="200" height="72">
         <h1 class="h3 mb-3 font-weight-normal">¡Complete este formulario para crear su cuenta!</h1>
-
-        <input type="text" class="form-control" name="username" id="rnombre" required placeholder="Ingrese su nombre completo" />
-        <input type="text" class="form-control" name="email" id="rcorreo" required placeholder="Ingrese su correo electrónico" />
-        <input type="password" class="form-control" name="password" id="rcontrasena" required placeholder="Ingrese su contraseña" />
-        <input type="text" class="form-control" name="phone" id="rtelefono" required placeholder="Ingrese su teléfono" />
-        <input type="text" class="form-control" name="direccion" id="rdireccion" required placeholder="Ingrese su dirección"/> 
-
-        <input type="submit" class="btn btn-lg btn-primary btn-block" name="Regístrate" value="Registrar" />
+        <style>
+          /* Large desktop */
+          @media (min-width: 1200px) { 
+            body { 
+              padding-top: 50px; 
+            }
+          }  
+          @media (min-width: 768px) and (max-width: 1024px) { 
+            body { 
+              padding-top: 0px; 
+            }
+          } 
+          /* Landscape phone to portrait tablet */
+          @media (max-width: 767px) {
+            body { 
+              padding-top: 0px; 
+            }
+            }
+            /* Portrait tablet to landscape and desktop */
+          @media (min-width: 768px) and (max-width: 979px) { 
+            body { 
+              padding-top: 0px; 
+            }
+          }
+          .button-register{
+          background: rgb(62, 153, 32);
+          border-color: rgb(62, 153, 32);
+          transition: all 400ms ease;
+          outline: none;
+          border-radius: 0px;
+          text-transform: capitalize;
+          border-style: solid;
+          overflow: visible;
+          height: 48px;
+          position: relative;
+          box-sizing: border-box;
+          width: 100%;
+          font-weight: normal;
+          color: #ffffff;
+          font-size: 16px;
+          margin-top: 24px;
+          line-height: 24px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block; 
+          cursor: pointer;
+          }
+          .input-register{
+              margin-top: 10px;
+              -webkit-appearance: none;
+              outline: none;
+              border-radius: 0px;
+              border-color: #E0E0E0;
+              border-style: solid;
+              border-width: 1px;
+              background: #ffffff;
+              transition: all 400ms ease;
+              height: 48px;
+              box-sizing: border-box;
+              padding: 8px 18px;
+              width: 100%;
+              line-height: 24px;
+              font-size: 16px;
+              color: #262626;
+              font-weight: normal;
+          }
+          .footer-register{
+              padding: 16px;
+              box-sizing: border-box;
+              background-color: #262626;
+              width: 100%;
+          }
+          .footer-register .tile1{
+              padding-bottom: 16px;
+              line-height: 16px;
+              font-size: 12px;
+              color: #ffffff;
+          }
+          .footer-register .tile1 .link{
+              color: #ffffff !important; 
+              cursor: pointer;
+              text-decoration: none !important;
+          }
+    </style>
+        <input type="text" class="input-register" name="username" id="rnombre" required placeholder="Ingrese su nombre completo" />
+        <input type="text" class="input-register" name="email" id="rcorreo" required placeholder="Ingrese su correo electrónico" />
+        <input type="password" class="input-register" name="password" id="rcontrasena" required placeholder="Ingrese su contraseña" />
+        <input type="text" class="input-register" name="phone" id="rtelefono" required placeholder="Ingrese su teléfono" />
+        <input type="text" class="input-register" name="direccion" id="rdireccion" required placeholder="Ingrese su dirección"/> 
+                          
+        <input type="submit" class="button-register" name="Regístrate" value="Registrar" />
         <p id="errorregistrar"></p>
-        <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
+        <div style="color: #262626;">
+          Tienes una cuenta? 
+          <a href="https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/login.html"
+           style="text-decoration: none;color: #4F9300;">Ingresa</a>
+      </div>
         </form>
+        <footer>
+          <div class="footer-register">
+              <div class="tile1">©&nbsp;2020&nbsp;Salle Eats&nbsp;Technologies,&nbsp;Inc.</div> 
+              <div class="tile1">
+                  <a href="https://www.uber.com/legal/privacy/users/en/" class="link">
+                  Política de privacidad </a>
+                  &nbsp;| &nbsp;
+                  <a href="https://www.uber.com/legal/terms/us/" class="link">
+                      Términos de uso
+                  </a>
+              </div>
+          </div>
+      </footer>
+  
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
