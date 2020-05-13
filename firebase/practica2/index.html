@@ -996,10 +996,11 @@
                 } 
             navigator.geolocation.getCurrentPosition(function(position) {  
                 coordenadas.lat=position.coords.latitude;
-                coordenadas.lng=position.coords.longitude;
+                coordenadas.lng=position.coords.longitude; 
             }, function(error) { 
                 console.log(error);
             });
+            console.log(coordenadas);
           var map = new google.maps.Map(document.getElementById('map'), {
           center: coordenadas,
           zoom: 14,
