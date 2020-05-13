@@ -991,12 +991,12 @@
           );
           if (navigator.geolocation) {
             var coordenadas = {
-                    Latitud: 0, 
-                    Longitud: 0
+              lat: 0, 
+              lng: 0
                 } 
             navigator.geolocation.getCurrentPosition(function(position) {  
-                coordenadas.Latitud=position.coords.latitude;
-                coordenadas.Longitud=position.coords.longitude;
+                coordenadas.lat=position.coords.latitude;
+                coordenadas.lng=position.coords.longitude;
             }, function(error) { 
                 console.log(error);
             });
