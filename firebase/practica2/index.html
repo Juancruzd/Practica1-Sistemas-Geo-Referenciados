@@ -178,14 +178,152 @@
 
 <!-- Banner Promotional Start -->
       <div class="banner">
-      <div class="banner-images">
-        <img alt="" role="presentation" src="../practica2/img/banner/317b14d7b051b7e496c9f1ba4db156b4.svg" style="position: absolute;height: 100%;bottom: 0;left: 0;">
-        <img class="d-none d-lg-block" alt="" role="presentation" src="../practica2/img/banner/2d72424dcc82f116a7d8850d1f44ec09.svg" style="position: absolute;height: 100%;bottom: 0;right: 0;">
+      <div class="banner-images bannerimagenes" style="display: block;">
+        <img alt="" role="presentation" src="../practica2/img/banner/9a8cf89b930fe8af543bfb552753dd18.svg" style="position: absolute;height: 100%;bottom: 0;left: 0;">
+        <img class="d-none d-lg-block" alt="" role="presentation" src="../practica2/img/banner/4d4cbd8adfa11d1daa972a04461b9baa.svg" style="position: absolute;height: 100%;bottom: 0;right: 0;">
       </div> 
-      <div class="banner-text">
+      
+      <div class="banner-text bannerimagenes" style="display: block;" >
         <h2 id="home-enter-address-title" >Tu comida favorita, a la velocidad de&nbsp;la luz
         </h2> 
+        <style>
+          .demo a {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  z-index: 2;
+  display: inline-block;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  color: #fff;
+  font : normal 400 20px/1 'Josefin Sans', sans-serif;
+  letter-spacing: .1em;
+  text-decoration: none;
+  transition: opacity .3s;
+}
+.demo a:hover {
+  opacity: .5;
+}
+#buttonmap a {
+  padding-top: 60px;
+}
+#buttonmap a span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  box-sizing: border-box;
+  align-items: center;
+}
+#buttonmap a span::after {
+  font-family: FontAwesome;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  content: "\f279";
+  width: 16px;
+  height: 16px;
+  margin: -12px 0 0 -8px; 
+  box-sizing: border-box;
+}
+#buttonmap a span::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  content: '';
+  width: 44px;
+  height: 44px;
+  box-shadow: 0 0 0 0 rgba(255,255,255,.1);
+  border-radius: 100%;
+  opacity: 0;
+  -webkit-animation: sdb03 3s infinite;
+  animation: sdb03 3s infinite;
+  box-sizing: border-box;
+}
+@-webkit-keyframes sdb03 {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes sdb03 {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+#buttonexitmap a {
+  padding-top: 60px;
+}
+#buttonexitmap a span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  box-sizing: border-box;
+  align-items: center;
+}
+#buttonexitmap a span::after {
+  font-family: FontAwesome;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: "\f00d";
+  width: 16px;
+  height: 16px;
+  margin: -12px 0 0 -8px; 
+  box-sizing: border-box;
+}
+
+        </style>
+        <section id="buttonmap" class="demo" style="display: block;">  
+          <a  href="javascript:void(0)" onclick="consultarmapa()"><span data-toggle="popover"  id="popover" data-trigger="hover"></span></a>
+        </section> 
     </div>
+
+    <div class="banner-images bannermapactivedrestaurants" style="display: none;">  
+      <div id="map"></div>
+    </div>
+    <style>
+      .buttonclosemap{transform: translate(-50%, -50%);
+    left: 10%;
+    top: 30%;
+    position: absolute;}
+    </style>
+    <div class="buttonclosemap bannermapactivedrestaurants" style="display: none;" > 
+      </h2>  
+      <section id="buttonexitmap" class="demo" >  
+        <a  href="javascript:void(0)" onclick="consultarmapa()"><span></span></a>
+      </section> 
+    </div>
+
       </div>
 <!-- Banner Promotional End --> 
 
@@ -519,11 +657,295 @@
         });
 
       </script>
+      <script>
+        var popoverTemplate = ['<div class="alert alert-secondary" role="alert">',
+'Consulta los restaurantes activos o en servicio',
+'</div>'].join('');
+
+    var content = ['<button> Hola </button>', ].join('');
+        $("#popover").popover({ 
+          trigger: "hover", 
+        content: content,
+        template: popoverTemplate,
+        placement: "top",
+        html: true
+      });
+        
+      </script>
     <script src="service/bd.js"></script>
     <script src="service/guard.js"></script>
     <script src="service/main.js"></script> 
     <script src="service/login.js"></script>
     <script src="service/register.js"></script>
     <script src="js/app.js"></script>
+    <script>
+
+      function iniciaMapa(){ 
+          var styledMapType = new google.maps.StyledMapType(
+              [
+                  {
+                      "elementType": "geometry",
+                      "stylers": [
+                      {
+                          "color": "#1d2c4d"
+                      }
+                      ]
+                  },
+                  {
+                      "elementType": "labels.text.fill",
+                      "stylers": [
+                      {
+                          "color": "#8ec3b9"
+                      }
+                      ]
+                  },
+                  {
+                      "elementType": "labels.text.stroke",
+                      "stylers": [
+                      {
+                          "color": "#1a3646"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "administrative.country",
+                      "elementType": "geometry.stroke",
+                      "stylers": [
+                      {
+                          "color": "#4b6878"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "administrative.land_parcel",
+                      "elementType": "labels.text.fill",
+                      "stylers": [
+                      {
+                          "color": "#64779e"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "administrative.province",
+                      "elementType": "geometry.stroke",
+                      "stylers": [
+                      {
+                          "color": "#4b6878"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "landscape.man_made",
+                      "elementType": "geometry.stroke",
+                      "stylers": [
+                      {
+                          "color": "#334e87"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "landscape.natural",
+                      "elementType": "geometry",
+                      "stylers": [
+                      {
+                          "color": "#023e58"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "poi",
+                      "elementType": "geometry",
+                      "stylers": [
+                      {
+                          "color": "#283d6a"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "poi",
+                      "elementType": "labels.text.fill",
+                      "stylers": [
+                      {
+                          "color": "#6f9ba5"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "poi",
+                      "elementType": "labels.text.stroke",
+                      "stylers": [
+                      {
+                          "color": "#1d2c4d"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "poi.park",
+                      "elementType": "geometry.fill",
+                      "stylers": [
+                      {
+                          "color": "#023e58"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "poi.park",
+                      "elementType": "labels.text.fill",
+                      "stylers": [
+                      {
+                          "color": "#3C7680"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "poi.school",
+                      "elementType": "geometry",
+                      "stylers": [
+                      {
+                          "color": "#ff40ff"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "road",
+                      "elementType": "geometry",
+                      "stylers": [
+                      {
+                          "color": "#304a7d"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "road",
+                      "elementType": "labels.text.fill",
+                      "stylers": [
+                      {
+                          "color": "#98a5be"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "road",
+                      "elementType": "labels.text.stroke",
+                      "stylers": [
+                      {
+                          "color": "#1d2c4d"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "road.highway",
+                      "elementType": "geometry",
+                      "stylers": [
+                      {
+                          "color": "#2c6675"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "road.highway",
+                      "elementType": "geometry.stroke",
+                      "stylers": [
+                      {
+                          "color": "#255763"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "road.highway",
+                      "elementType": "labels.text.fill",
+                      "stylers": [
+                      {
+                          "color": "#b0d5ce"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "road.highway",
+                      "elementType": "labels.text.stroke",
+                      "stylers": [
+                      {
+                          "color": "#023e58"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "transit",
+                      "elementType": "labels.text.fill",
+                      "stylers": [
+                      {
+                          "color": "#98a5be"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "transit",
+                      "elementType": "labels.text.stroke",
+                      "stylers": [
+                      {
+                          "color": "#1d2c4d"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "transit.line",
+                      "elementType": "geometry.fill",
+                      "stylers": [
+                      {
+                          "color": "#283d6a"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "transit.station",
+                      "elementType": "geometry",
+                      "stylers": [
+                      {
+                          "color": "#3a4762"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "water",
+                      "elementType": "geometry",
+                      "stylers": [
+                      {
+                          "color": "#0e1626"
+                      }
+                      ]
+                  },
+                  {
+                      "featureType": "water",
+                      "elementType": "labels.text.fill",
+                      "stylers": [
+                      {
+                          "color": "#4e6d70"
+                      }
+                      ]
+                  }
+                  ],
+                      {name: 'Mapa Oscuro'}
+          );
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 21.152639, lng:  -101.711598},
+          zoom: 14,
+          mapTypeControlOptions: {
+              mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
+                      'styled_map']
+          }
+          });
+
+          //Associate the styled map with the MapTypeId and set it to display.
+          map.mapTypes.set('styled_map', styledMapType);
+          map.setMapTypeId('styled_map');
+      }
+
+
+  </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=iniciaMapa" async defer></script>
   </body>
 </html>

@@ -37,15 +37,34 @@ formaingresar.addEventListener('submit',(e)=>{
     let correo = formaingresar['correo'].value;
     let contrasena = formaingresar['contrasena'].value;
 
-    auth.signInWithEmailAndPassword(correo,contrasena).then( cred =>{ 
+    if (navigator.geolocation) {
+        auth.signInWithEmailAndPassword(correo,contrasena).then( cred =>{ 
+            uidcurrentusrer=cred.user.uid;
         formaingresar.reset(); 
         document.getElementById('erroringrear').innerHTML = '';
-        console.log(cred);
-        window.location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html");
+        console.log(cred); 
+            navigator.geolocation.getCurrentPosition(function(position) { 
+                var coordenadas = {
+                    Latitud: position.coords.latitude, 
+                    Longitud: position.coords.longitude
+                } 
+                return db.collection('usuarios').doc(cred.user.uid).update({
+                    "coordenadas":coordenadas,
+                    "estado":parseInt(1),
+                    "dateInOut":new Date().toLocaleString()
+                });
+            }, function(error) { 
+                console.log(error);
+            });
+        
+        ///window.location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html");
     }).catch( err => {  
         document.getElementById('erroringrear').innerHTML = mensajeError(err.code);
         console.log(err);
     });
+    } else {
+        console.log("error ubicacion");
+    }
     
 });
 

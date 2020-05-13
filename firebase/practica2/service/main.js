@@ -31,7 +31,20 @@ const salir = document.getElementById('linksalir');
 salir.addEventListener('click', (e)=>{
     e.preventDefault();
     auth.signOut().then(()=>{
-        
+        return db.collection('usuarios').doc(uidcurrentusrer).update({ 
+            "estado":parseInt(0),
+            "dateInOut":new Date().toLocaleString()
+        });
     });
 
 });
+function consultarmapa(){ 
+    var divsToHide = document.getElementsByClassName("bannerimagenes"); //divsToHide is an array
+    for(var i = 0; i < divsToHide.length; i++){ 
+        divsToHide[i].style.display = "none"; // depending on what you're doing
+    }
+    var divsToHide1 = document.getElementsByClassName("bannermapactivedrestaurants"); //divsToHide is an array
+    for(var i = 0; i < divsToHide1.length; i++){ 
+        divsToHide1[i].style.display = "block"; // depending on what you're doing
+    } 
+}
