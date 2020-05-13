@@ -43,8 +43,10 @@ function consultarmapa(){
     for(var i = 0; i < divsToHide.length; i++){ 
         divsToHide[i].style.display = "none"; 
     }
-    var divsToHide1 = document.getElementsByClassName("bannermapactivedrestaurants");
+    var divsToHide1 = document.getElementsByClassName("bannermapactivedrestaurants");  
     for(var i = 0; i < divsToHide1.length; i++){ 
+        divsToHide1[i].style.opacity = "1"; 
+        divsToHide1[i].style.animation = "fade 1s"; 
         divsToHide1[i].style.display = "block"; 
     } 
     var divbanner=document.getElementsByClassName("banner-images");
@@ -55,7 +57,9 @@ function consultarmapa(){
 function salirmapa(){ 
     var divsToHide = document.getElementsByClassName("bannermapactivedrestaurants");
     for(var i = 0; i < divsToHide.length; i++){ 
-        divsToHide[i].style.display = "none"; 
+        divsToHide[i].style.opacity = "1"; 
+        divsToHide[i].style.animation = "fade 1s"; 
+        divsToHide[i].style.display = "none";
     }
     var divsToHide1 = document.getElementsByClassName("bannerimagenes"); 
     for(var i = 0; i < divsToHide1.length; i++){ 

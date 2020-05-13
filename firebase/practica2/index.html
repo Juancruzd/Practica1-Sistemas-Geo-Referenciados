@@ -297,10 +297,7 @@
       letter-spacing: .1em;
       text-decoration: none;
       transition: opacity .3s;
-      }
-      .buttoclosewindowmap a:hover {
-            opacity: .5;
-      }
+      } 
       #buttonexitmap a {
   padding-top: 60px;
       }
@@ -330,34 +327,38 @@
       }
       .buttonclosemap{
         transform: translate(-50%, -50%);
-    left: 10%;
-    top: 30%;
-    position: absolute;}
-    /* Large desktop */
-@media (min-width: 1200px) {
-   .buttonclosemap{
-    left: 5%;
-    top: 20%;
-  }
-  }
-
-/* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) { 
-  .buttonclosemap{
-    left: 5%;
-    top: 18%;
-  }
- }
-
-/* Landscape phone to portrait tablet */
-@media (max-width: 767px) { 
-  .buttonclosemap{
-    left: 10%;
-    top: 18%;
-  }
- }
+      left: 10%;
+      top: 30%;
+      position: absolute;}
+      /* Large desktop */
+      @media (min-width: 1200px) {
+        .buttonclosemap{
+          left: 5%;
+          top: 20%;
+        }
+        }
+      /* Portrait tablet to landscape and desktop */
+      @media (min-width: 768px) and (max-width: 979px) { 
+        .buttonclosemap{
+          left: 5%;
+          top: 18%;
+        }
+      }
+      /* Landscape phone to portrait tablet */
+      @media (max-width: 767px) { 
+        .buttonclosemap{
+          left: 10%;
+          top: 18%;
+        }
+      }
+      .bannermapactivedrestaurants{ 
+          opacity: 0; 
+          -webkit-transition: opacity 600ms, visibility 600ms;
+          transition: opacity 600ms, visibility 600ms;
+          display: none;
+        } 
     </style>
-    <div class="banner-images bannermapactivedrestaurants" style="display: none;">  
+    <div class="banner-images bannermapactivedrestaurants" >  
       <style>
         #map { 
         position: absolute;
@@ -367,7 +368,7 @@
       </style>
       <div id="map"></div>
     </div> 
-    <div class="buttonclosemap bannermapactivedrestaurants" style="display: none;" > 
+    <div class="buttonclosemap bannermapactivedrestaurants"  > 
       </h2>  
       <section id="buttonexitmap" class="buttoclosewindowmap" >  
         <a  href="javascript:void(0)" onclick="salirmapa()"><span></span></a>
