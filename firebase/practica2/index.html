@@ -1014,9 +1014,18 @@
                                         content: informaciónusuario
                 });
                 var iconouser = {
-                url: "img/covid-icon.png", // url imagen
-                                        scaledSize: new google.maps.Size(50, 50)
+                url: "img/icons-map/user.png", // url imagen
+                                        scaledSize: new google.maps.Size(20, 20)
                 };
+                let markeruser = new google.maps.Marker({
+                map: map,
+                position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+                title: "user",
+                icon: iconouser
+                }); 
+                markeruser.addListener('click', function() {
+                  infowindowuser.open(map, markeruser);
+                });
 
             }, function(error) { 
                 console.log(error);
