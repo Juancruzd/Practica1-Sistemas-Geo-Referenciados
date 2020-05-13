@@ -39,30 +39,30 @@ salir.addEventListener('click', (e)=>{
 
 });
 function consultarmapa(){ 
-    var divsToHide = document.getElementsByClassName("bannerimagenes"); //divsToHide is an array
+    var divsToHide = document.getElementsByClassName("bannerimagenes"); 
     for(var i = 0; i < divsToHide.length; i++){ 
-        divsToHide[i].style.display = "none"; // depending on what you're doing
+        divsToHide[i].style.display = "none"; 
     }
-    var divsToHide1 = document.getElementsByClassName("bannermapactivedrestaurants"); //divsToHide is an array
+    var divsToHide1 = document.getElementsByClassName("bannermapactivedrestaurants");
     for(var i = 0; i < divsToHide1.length; i++){ 
-        divsToHide1[i].style.display = "block"; // depending on what you're doing
+        divsToHide1[i].style.display = "block"; 
     } 
     var divbanner=document.getElementsByClassName("banner-images");
     for(var i = 0; i < divbanner.length; i++){ 
-        divbanner[i].style.height= "715px"; // depending on what you're doing
+        divbanner[i].style.height= "715px"; 
     }
 }
 function salirmapa(){ 
-    var divsToHide = document.getElementsByClassName("bannermapactivedrestaurants"); //divsToHide is an array
+    var divsToHide = document.getElementsByClassName("bannermapactivedrestaurants");
     for(var i = 0; i < divsToHide.length; i++){ 
-        divsToHide[i].style.display = "none"; // depending on what you're doing
+        divsToHide[i].style.display = "none"; 
     }
-    var divsToHide1 = document.getElementsByClassName("bannerimagenes"); //divsToHide is an array
+    var divsToHide1 = document.getElementsByClassName("bannerimagenes"); 
     for(var i = 0; i < divsToHide1.length; i++){ 
-        divsToHide1[i].style.display = "block"; // depending on what you're doing
+        divsToHide1[i].style.display = "block"; 
     } 
     var divbanner=document.getElementsByClassName("banner-images");
     for(var i = 0; i < divbanner.length; i++){ 
-        divbanner[i].style.height= "415px"; // depending on what you're doing
+        divbanner[i].style.height= "415px"; 
     }
 }

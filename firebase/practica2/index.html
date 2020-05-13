@@ -178,16 +178,8 @@
 
 <!-- Banner Promotional Start -->
       <div class="banner">
-      <div class="banner-images bannerimagenes" style="display: block;">
-        <img alt="" role="presentation" src="../practica2/img/banner/9a8cf89b930fe8af543bfb552753dd18.svg" style="position: absolute;height: 100%;bottom: 0;left: 0;">
-        <img class="d-none d-lg-block" alt="" role="presentation" src="../practica2/img/banner/4d4cbd8adfa11d1daa972a04461b9baa.svg" style="position: absolute;height: 100%;bottom: 0;right: 0;">
-      </div> 
-      
-      <div class="banner-text bannerimagenes" style="display: block;" >
-        <h2 id="home-enter-address-title" class="d-none d-md-block d-lg-block d-xl-block">Tu comida favorita, a la velocidad de&nbsp;la luz
-        </h2> 
         <style>
-          .demo a {
+          .buttonopenmap a {
   position: absolute;
   bottom: 20px;
   left: 50%;
@@ -200,114 +192,171 @@
   letter-spacing: .1em;
   text-decoration: none;
   transition: opacity .3s;
-}
-.demo a:hover {
-  opacity: .5;
-}
-#buttonmap a {
-  padding-top: 60px;
-}
-#buttonmap a span {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 46px;
-  height: 46px;
-  margin-left: -23px;
-  border: 1px solid #fff;
-  border-radius: 100%;
-  box-sizing: border-box;
-  align-items: center;
-}
-#buttonmap a span::after {
-  font-family: FontAwesome;
-  position: absolute;
-  top: 50%;
-  left: 45%;
-  content: "\f279";
-  width: 16px;
-  height: 16px;
-  margin: -12px 0 0 -8px; 
-  box-sizing: border-box;
-}
-#buttonmap a span::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  content: '';
-  width: 44px;
-  height: 44px;
-  box-shadow: 0 0 0 0 rgba(255,255,255,.1);
-  border-radius: 100%;
-  opacity: 0;
-  -webkit-animation: sdb03 3s infinite;
-  animation: sdb03 3s infinite;
-  box-sizing: border-box;
-}
-@-webkit-keyframes sdb03 {
-  0% {
-    opacity: 0;
-  }
-  30% {
-    opacity: 1;
-  }
-  60% {
-    box-shadow: 0 0 0 60px rgba(255,255,255,.1);
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-@keyframes sdb03 {
-  0% {
-    opacity: 0;
-  }
-  30% {
-    opacity: 1;
-  }
-  60% {
-    box-shadow: 0 0 0 60px rgba(255,255,255,.1);
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-#buttonexitmap a {
-  padding-top: 60px;
-}
-#buttonexitmap a span {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 46px;
-  height: 46px;
-  margin-left: -23px;
-  border: 1px solid #fff;
-  border-radius: 100%;
-  box-sizing: border-box;
-  align-items: center;
-}
-#buttonexitmap a span::after {
-  font-family: FontAwesome;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  content: "\f00d";
-  width: 16px;
-  height: 16px;
-  margin: -12px 0 0 -8px; 
-  box-sizing: border-box;
-}
+          }
+          .buttonopenmap a:hover {
+            opacity: .5;
+          }
+          #buttonmap a {
+            padding-top: 60px;
+          }
+          #buttonmap a span {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 46px;
+            height: 46px;
+            margin-left: -23px;
+            border: 1px solid #fff;
+            border-radius: 100%;
+            box-sizing: border-box;
+            align-items: center;
+          }
+          #buttonmap a span::after {
+            font-family: FontAwesome;
+            position: absolute;
+            top: 50%;
+            left: 45%;
+            content: "\f279";
+            width: 16px;
+            height: 16px;
+            margin: -12px 0 0 -8px; 
+            box-sizing: border-box;
+          }
+          #buttonmap a span::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            content: '';
+            width: 44px;
+            height: 44px;
+            box-shadow: 0 0 0 0 rgba(255,255,255,.1);
+            border-radius: 100%;
+            opacity: 0;
+            -webkit-animation: sdb03 3s infinite;
+            animation: sdb03 3s infinite;
+            box-sizing: border-box;
+          }
+          @-webkit-keyframes sdb03 {
+            0% {
+              opacity: 0;
+            }
+            30% {
+              opacity: 1;
+            }
+            60% {
+              box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+              opacity: 0;
+            }
+            100% {
+              opacity: 0;
+            }
+          }
+          @keyframes sdb03 {
+            0% {
+              opacity: 0;
+            }
+            30% {
+              opacity: 1;
+            }
+            60% {
+              box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+              opacity: 0;
+            }
+            100% {
+              opacity: 0;
+            }
+          }
+
 
         </style>
-        <section id="buttonmap" class="demo" style="display: block;">  
+      <div class="banner-images bannerimagenes" style="display: block;">
+        <img alt="" role="presentation" src="../practica2/img/banner/9a8cf89b930fe8af543bfb552753dd18.svg" style="position: absolute;height: 100%;bottom: 0;left: 0;">
+        <img class="d-none d-lg-block" alt="" role="presentation" src="../practica2/img/banner/4d4cbd8adfa11d1daa972a04461b9baa.svg" style="position: absolute;height: 100%;bottom: 0;right: 0;">
+      </div> 
+      
+      <div class="banner-text bannerimagenes" style="display: block;" >
+        <h2 id="home-enter-address-title" class="d-none d-md-block d-lg-block d-xl-block">Tu comida favorita, a la velocidad de&nbsp;la luz
+        </h2> 
+        
+        <section id="buttonmap" class="buttonopenmap" style="display: block;">  
           <a  href="javascript:void(0)" onclick="consultarmapa()"><span data-toggle="popover"  id="popover" data-trigger="hover"></span></a>
         </section> 
     </div>
+    <style>
+      .buttoclosewindowmap a {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      z-index: 2;
+      display: inline-block;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      color: #000;
+      font : normal 400 20px/1 'Josefin Sans', sans-serif;
+      letter-spacing: .1em;
+      text-decoration: none;
+      transition: opacity .3s;
+      }
+      .buttoclosewindowmap a:hover {
+            opacity: .5;
+      }
+      #buttonexitmap a {
+  padding-top: 60px;
+      }
+      #buttonexitmap a span {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 46px;
+        height: 46px;
+        margin-left: -23px;
+        border: 2px solid #000;
+        border-radius: 100%;
+        box-sizing: border-box;
+        align-items: center;
+        background-color: #fff;
+      }
+      #buttonexitmap a span::after {
+        font-family: FontAwesome;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        content: "\f00d";
+        width: 16px;
+        height: 16px;
+        margin: -12px 0 0 -8px; 
+        box-sizing: border-box;
+      }
+      .buttonclosemap{
+        transform: translate(-50%, -50%);
+    left: 10%;
+    top: 30%;
+    position: absolute;}
+    /* Large desktop */
+@media (min-width: 1200px) {
+   .buttonclosemap{
+    left: 5%;
+    top: 20%;
+  }
+  }
 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { 
+  .buttonclosemap{
+    left: 5%;
+    top: 18%;
+  }
+ }
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+  .buttonclosemap{
+    left: 10%;
+    top: 18%;
+  }
+ }
+    </style>
     <div class="banner-images bannermapactivedrestaurants" style="display: none;">  
       <style>
         #map { 
@@ -317,17 +366,10 @@
         }
       </style>
       <div id="map"></div>
-    </div>
-    
-    <style>
-      .buttonclosemap{transform: translate(-50%, -50%);
-    left: 10%;
-    top: 30%;
-    position: absolute;}
-    </style>
+    </div> 
     <div class="buttonclosemap bannermapactivedrestaurants" style="display: none;" > 
       </h2>  
-      <section id="buttonexitmap" class="demo" >  
+      <section id="buttonexitmap" class="buttoclosewindowmap" >  
         <a  href="javascript:void(0)" onclick="salirmapa()"><span></span></a>
       </section> 
     </div>
