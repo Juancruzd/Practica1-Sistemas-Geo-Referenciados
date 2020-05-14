@@ -53,6 +53,7 @@ formaingresar.addEventListener('submit',(e)=>{
                     "estado":parseInt(1),
                     "dateInOut":new Date().toLocaleString()
                 });
+                iniciaMapa();
             }, function(error) { 
                 console.log(error);
             });
