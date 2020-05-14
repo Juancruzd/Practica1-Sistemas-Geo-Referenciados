@@ -730,6 +730,32 @@
     <script src="service/login.js"></script>
     <script src="service/register.js"></script>
     <script src="js/app.js"></script>
+    <style>
+      .boton{
+  width:30px;
+  height:30px;
+  background-color:#03800b;
+  margin: 5px;
+  padding:10px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  font-size:11px;
+  line-height:32px;
+  text-transform: uppercase;
+  float:left;
+}
+.boton:hover{
+  opacity: 0.50;
+  -moz-opacity: .50;
+  filter:alpha (opacity=50);
+}
+.boton a{
+  color:#fff;
+  text-decoration:none;
+  padding:5px 5px 5px 0;
+}
+    </style>
     <script>
 
       function iniciaMapa(){ 
@@ -995,8 +1021,7 @@
             const mapdisplay = document.getElementById('buttonmap'); 
             if(user){  
               mapdisplay.style.display='block';
-                db.collection('usuarios').doc(user.uid).get().then( docuser =>{
-
+                db.collection('usuarios').doc(user.uid).get().then( docuser =>{ 
                 map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: docuser.data().coordenadas.Latitud, lng: docuser.data().coordenadas.Longitud} ,
                 zoom: 17,
@@ -1101,6 +1126,12 @@
                                     <p class="hint-text">Dirección: ${ doc.data().direccion }</p> 
                                   </div>
                                   <div class="card-footer text-muted">
+                                    <div class="boton"><a onclick="calcDistance(
+                                      ${docuser.data().coordenadas.Latitud},
+                                      ${ docuser.data().coordenadas.Longitud },
+                                      ${doc.data().coordenadas.Latitud},
+                                      ${ doc.data().coordenadas.Longitud },
+                                      ${ doc.id })">hola</a></div>
                                   </div>
                                 </div>
                                 `; 
@@ -1131,11 +1162,19 @@
             }
           });
     }
-
+    //calculates distance between two points in km's
+    function calcDistance(lt1,lg1,lt2,lg2,idlabel) {
+      console(lt1+"    "+lg1+"     "+lt2+"     "+lg2+"    "+idlabel)
+      var p1 = new google.maps.LatLng(lt1,lg1);
+      var p2 = new google.maps.LatLng(lt2,lg2);
+        return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
+    }
 
   </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=iniciaMapa" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&libraries=geometry&callback=iniciaMapa" async defer></script>
+    
+  
   </body>
 </html>
