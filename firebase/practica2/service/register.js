@@ -32,7 +32,7 @@ formaregistrate.addEventListener('submit',(e)=>{
                 }).then(function() { 
                     formaregistrate.reset();
                     document.getElementById('errorregistrar').innerHTML = ''; 
-                    window.location.replace("index.html");
+                   // window.location.replace("index.html");
                     //window.location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html");
                 }).catch(function(error) {
                         console.error("Error regitering document: ", error);

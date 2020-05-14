@@ -49,6 +49,7 @@ formaingresar.addEventListener('submit',(e)=>{
                     Latitud: position.coords.latitude, 
                     Longitud: position.coords.longitude
                 } 
+                console.log(coordenadas);
                 return db.collection('usuarios').doc(cred.user.uid).update({
                     "coordenadas":coordenadas,
                     "estado":parseInt(1),
@@ -57,7 +58,7 @@ formaingresar.addEventListener('submit',(e)=>{
             }, function(error) { 
                 console.log(error);
             });
-        window.location.replace("index.html");
+        //window.location.replace("index.html");
         //window.location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html");
     }).catch( err => {  
         document.getElementById('erroringrear').innerHTML = mensajeError(err.code);
