@@ -30,8 +30,7 @@ const formaingresar =  document.getElementById('formaingresar');
 
 formaingresar.addEventListener('submit',(e)=>{
     e.preventDefault();
-    console.log(formaingresar['correo'].value
-    +"  "+formaingresar['contrasena'].value );
+    //console.log(formaingresar['correo'].value+"  "+formaingresar['contrasena'].value );
 
     
     let correo = formaingresar['correo'].value;
@@ -40,8 +39,7 @@ formaingresar.addEventListener('submit',(e)=>{
     if (navigator.geolocation) {
         auth.signInWithEmailAndPassword(correo,contrasena).then( cred =>{  
         formaingresar.reset(); 
-        document.getElementById('erroringrear').innerHTML = '';
-        console.log(cred); 
+        document.getElementById('erroringrear').innerHTML = ''; 
         sessionStorage.removeItem("uid");
         sessionStorage.setItem("uid", cred.user.uid);
             navigator.geolocation.getCurrentPosition(function(position) { 
