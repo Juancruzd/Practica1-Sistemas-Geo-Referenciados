@@ -1080,13 +1080,30 @@
                                 singleObj.lng = doc.data().coordenadas.Longitud;
                                 
                                 listOfObjects.push(singleObj); 
+                                var statusheader="";
+                                if(doc.data().estado ==0){
+                                  statusheader='<p class="card-text"><i style="color:red " class="fa fa-circle" aria-hidden="true"></i> Fuera de Servicio o Cerrado</p>';
+                                }
+                                if(doc.data().estado ==1){
+                                  statusheader='<p class="card-text"><i style="color:green " class="fa fa-circle" aria-hidden="true"></i> En Servicio o Cerrado</p>';
+                                }
 
                                 var informaciónrestaurante = "";   
                                 const htmlrestaurante = `
-                                    <p class="hint-text">Nombre: ${ doc.data().nombre }</p>
-                                    <p class="hint-text">Correo: ${ doc.data().correo}</p>
-                                    <p class="hint-text">Teléfono: ${ doc.data().telefono }</p>
-                                    <p class="hint-text">Dirección: ${ doc.data().direccion }</p>
+                                <div class="card">
+                                    <div class="card-header text-left">
+                                      ${statusheader }
+                                  </div>
+                                  <div class="card-body">
+                                    <h5 class="card-title">${ doc.data().nombre }</h5>
+                                    <p class="card-text">Correo: ${ doc.data().correo}</p>
+                                    <p class="hint-text">Telefono: Teléfono: ${ docuser.data().telefono }</p>
+                                    <p class="hint-text">Dirección: ${ doc.data().direccion }</p> 
+                                  </div>
+                                  <div class="card-footer text-muted">
+                                    Inicio de sesion: ${ doc.data().dateInOut }
+                                  </div>
+                                </div>
                                 `; 
                                 informaciónrestaurante = htmlrestaurante; 
                                 var infowindowrestaurant = new google.maps.InfoWindow({
