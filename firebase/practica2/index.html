@@ -279,7 +279,7 @@
         <h2 id="home-enter-address-title" class="d-none d-md-block d-lg-block d-xl-block">Tu comida favorita, a la velocidad de&nbsp;la luz
         </h2> 
         
-        <section id="buttonmap" class="buttonopenmap" style="display: block;">  
+        <section id="buttonmap" class="buttonopenmap" style="display: none;">  
           <a  href="javascript:void(0)" onclick="consultarmapa()"><span data-toggle="popover"  id="popover" data-trigger="hover"></span></a>
         </section> 
     </div>
@@ -990,7 +990,9 @@
                       {name: 'Mapa Salle Eats'}
           );
           auth.onAuthStateChanged( user =>{ 
+            const mapdisplay = document.getElementById('buttonmap'); 
             if(user){  
+              mapdisplay.style.display='block';
                 db.collection('usuarios').doc(user.uid).get().then( doc =>{
 
                 var map = new google.maps.Map(document.getElementById('map'), {
@@ -1040,6 +1042,7 @@
 
               });  
             }else{
+              mapdisplay.style.display='none';
               var signOutmap = document.getElementById('map'); 
                signOutmap.innerHTML = ""; 
                salirmapa();
