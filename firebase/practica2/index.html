@@ -1015,11 +1015,21 @@
                 map.setMapTypeId('styled_map');
 
                 var informaciónusuario = "";   
-                  const htmluser = `
-                      <p class="hint-text">Nombre: ${ docuser.data().nombre }</p>
-                      <p class="hint-text">Correo: ${ docuser.data().correo}</p>
-                      <p class="hint-text">Teléfono: ${ docuser.data().telefono }</p>
-                      <p class="hint-text">Dirección: ${ docuser.data().direccion }</p>
+                  const htmluser = ` 
+                  <div class="card text-center">
+                  <div class="card-header">
+                    Featured
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">${ docuser.data().nombre }</h5>
+                    <p class="card-text">${ docuser.data().correo}</p>
+                    <p class="hint-text">Teléfono: ${ docuser.data().telefono }</p>
+                    <p class="hint-text">Dirección: ${ docuser.data().direccion }</p> 
+                  </div>
+                  <div class="card-footer text-muted">
+                    ${ docuser.data().dateInOut }
+                  </div>
+                </div>
                   `; 
                   informaciónusuario = htmluser;
                 
