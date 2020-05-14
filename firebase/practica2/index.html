@@ -990,7 +990,7 @@
                       {name: 'Mapa Salle Eats'}
           );
           auth.onAuthStateChanged( user =>{ 
-            if(user){ 
+            if(user){  
                 db.collection('usuarios').doc(user.uid).get().then( doc =>{
 
                 var map = new google.maps.Map(document.getElementById('map'), {
@@ -1039,6 +1039,10 @@
                 });
 
               });  
+            }else{
+              var signOutmap = document.getElementById('map'); 
+               signOutmap.innerHTML = ""; 
+               salirmapa();
             }
           });
     }

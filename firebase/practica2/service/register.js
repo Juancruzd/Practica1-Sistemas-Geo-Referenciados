@@ -14,7 +14,8 @@ formaregistrate.addEventListener('submit',(e)=>{
     
     if (navigator.geolocation) {
         auth.createUserWithEmailAndPassword(correo,contrasena).then( cred =>{  
-            uidcurrentusrer=cred.user.uid;
+            sessionStorage.removeItem("uid");
+            sessionStorage.setItem("uid", cred.user.uid);
             navigator.geolocation.getCurrentPosition(function(position) { 
                 var coordenadas = {
                     Latitud: position.coords.latitude, 
@@ -29,7 +30,8 @@ formaregistrate.addEventListener('submit',(e)=>{
                     "estado":parseInt(1)
                 }).then(function() { 
                     formaregistrate.reset();
-                    document.getElementById('errorregistrar').innerHTML = '';
+                    document.getElementById('errorregistrar').innerHTML = ''; 
+                    window.location.replace("index.html");
                     ///window.location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html");
                 }).catch(function(error) {
                         console.error("Error regitering document: ", error);

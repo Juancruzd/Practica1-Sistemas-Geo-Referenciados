@@ -38,11 +38,12 @@ formaingresar.addEventListener('submit',(e)=>{
     let contrasena = formaingresar['contrasena'].value;
 
     if (navigator.geolocation) {
-        auth.signInWithEmailAndPassword(correo,contrasena).then( cred =>{ 
-            uidcurrentusrer=cred.user.uid;
+        auth.signInWithEmailAndPassword(correo,contrasena).then( cred =>{  
         formaingresar.reset(); 
         document.getElementById('erroringrear').innerHTML = '';
         console.log(cred); 
+        sessionStorage.removeItem("uid");
+        sessionStorage.setItem("uid", cred.user.uid);
             navigator.geolocation.getCurrentPosition(function(position) { 
                 var coordenadas = {
                     Latitud: position.coords.latitude, 
@@ -52,12 +53,11 @@ formaingresar.addEventListener('submit',(e)=>{
                     "coordenadas":coordenadas,
                     "estado":parseInt(1),
                     "dateInOut":new Date().toLocaleString()
-                });
-                iniciaMapa();
+                }); 
             }, function(error) { 
                 console.log(error);
             });
-        
+            window.location.replace("index.html");
         ///window.location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html");
     }).catch( err => {  
         document.getElementById('erroringrear').innerHTML = mensajeError(err.code);

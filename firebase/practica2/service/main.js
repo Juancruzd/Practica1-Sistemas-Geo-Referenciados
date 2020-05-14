@@ -30,11 +30,14 @@ if(user){
 const salir = document.getElementById('linksalir');
 salir.addEventListener('click', (e)=>{
     e.preventDefault();
-    auth.signOut().then(()=>{
-        return db.collection('usuarios').doc(uidcurrentusrer).update({ 
+    var uid = sessionStorage.getItem("uid");
+    auth.signOut().then(()=>{  
+        sessionStorage.removeItem("uid");
+        return db.collection('usuarios').doc(uid).update({ 
             "estado":parseInt(0),
             "dateInOut":new Date().toLocaleString()
-        });
+        }); 
+        
     });
 
 });
