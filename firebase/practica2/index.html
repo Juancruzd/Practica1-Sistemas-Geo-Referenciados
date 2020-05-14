@@ -990,15 +990,16 @@
 ],
                       {name: 'Mapa Salle Eats'}
           );
+          var map;
           auth.onAuthStateChanged( user =>{ 
             const mapdisplay = document.getElementById('buttonmap'); 
             if(user){  
               mapdisplay.style.display='block';
-                db.collection('usuarios').doc(user.uid).get().then( doc =>{
+                db.collection('usuarios').doc(user.uid).get().then( docuser =>{
 
-                var map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: doc.data().coordenadas.Latitud, lng: doc.data().coordenadas.Longitud} ,
-                zoom: 12,
+                map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: docuser.data().coordenadas.Latitud, lng: docuser.data().coordenadas.Longitud} ,
+                zoom: 10,
                 ///disableDefaultUI: true,
                 mapTypeControl: false,
                 panControl:false,
@@ -1013,15 +1014,14 @@
                 map.mapTypes.set('styled_map', styledMapType);
                 map.setMapTypeId('styled_map');
 
-                var informaciónusuario = "";  
-                
-                  const html = `
-                      <p class="hint-text">Nombre: ${ doc.data().nombre }</p>
-                      <p class="hint-text">Correo: ${ user.email}</p>
-                      <p class="hint-text">Teléfono: ${ doc.data().telefono }</p>
-                      <p class="hint-text">Dirección: ${ doc.data().direccion }</p>
+                var informaciónusuario = "";   
+                  const htmluser = `
+                      <p class="hint-text">Nombre: ${ docuser.data().nombre }</p>
+                      <p class="hint-text">Correo: ${ docuser.data().correo}</p>
+                      <p class="hint-text">Teléfono: ${ docuser.data().telefono }</p>
+                      <p class="hint-text">Dirección: ${ docuser.data().direccion }</p>
                   `; 
-                  informaciónusuario = html;
+                  informaciónusuario = htmluser;
                 
                 
                 var infowindowuser = new google.maps.InfoWindow({
@@ -1033,14 +1033,69 @@
                 };
                 let markeruser = new google.maps.Marker({
                 map: map,
-                position: new google.maps.LatLng(doc.data().coordenadas.Latitud,doc.data().coordenadas.Longitud),
+                position: new google.maps.LatLng(docuser.data().coordenadas.Latitud,docuser.data().coordenadas.Longitud),
                 title: user.email,
                 icon: iconouser
                 }); 
                 markeruser.addListener('click', function() {
                   infowindowuser.open(map, markeruser);
                 });
+                listOfObjects=[];
+                db.collection('usuarios').get().then( querySnapshot =>{
+                            var iconorestaurant = {
+                                url: "img/icons-map/restaurant.png", // url imagen
+                                scaledSize: new google.maps.Size(50, 50)
+                            };
+                            listOfObjects=[];
+                            querySnapshot.forEach(function (doc) { 
+                              if(doc.id != user.uid){
+                                var singleObj = {
+                                    id:"",
+                                    nombre:"",
+                                    correo:"",
+                                    dateInOut:"",
+                                    direccion:"",
+                                    telefono:"",
+                                    lat: 0, 
+                                    lng: 0,
+                                    estado:0
+                                };
+                                singleObj.id = doc.id;
+                                singleObj.nombre = doc.data().nombre;
+                                singleObj.correo = doc.data().correo;
+                                singleObj.dateInOut = doc.data().dateInOut;
+                                singleObj.direccion = doc.data().direccion;
+                                singleObj.telefono = doc.data().telefono;
+                                singleObj.lat = doc.data().coordenadas.Latitud;
+                                singleObj.lng = doc.data().coordenadas.Longitud;
+                                
+                                listOfObjects.push(singleObj); 
 
+                                var informaciónrestaurante = "";   
+                                const htmlrestaurante = `
+                                    <p class="hint-text">Nombre: ${ doc.data().nombre }</p>
+                                    <p class="hint-text">Correo: ${ doc.data().correo}</p>
+                                    <p class="hint-text">Teléfono: ${ doc.data().telefono }</p>
+                                    <p class="hint-text">Dirección: ${ doc.data().direccion }</p>
+                                `; 
+                                informaciónrestaurante = htmlrestaurante; 
+                                var infowindowrestaurant = new google.maps.InfoWindow({
+                                                        content: informaciónrestaurante
+                                });
+                                let markerrestaurant = new google.maps.Marker({
+                                map: map,
+                                position: new google.maps.LatLng(doc.data().coordenadas.Latitud,doc.data().coordenadas.Longitud),
+                                title: doc.data().correo,
+                                icon: iconorestaurant
+                                }); 
+                                markerrestaurant.addListener('click', function() {
+                                  infowindowrestaurant.open(map, markerrestaurant);
+                                });
+
+                              }
+                  });
+                  console.log(listOfObjects.length);
+                }); 
               });  
             }else{
               mapdisplay.style.display='none';

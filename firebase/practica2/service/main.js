@@ -4,7 +4,7 @@ if(user){
        db.collection('usuarios').doc(user.uid).get().then( doc =>{
            const html = `
                <p class="hint-text">Nombre: ${ doc.data().nombre }</p>
-               <p class="hint-text">Correo: ${ user.email}</p>
+               <p class="hint-text">Correo: ${ doc.data().correo}</p>
                <p class="hint-text">Teléfono: ${ doc.data().telefono }</p>
                <p class="hint-text">Dirección: ${ doc.data().direccion }</p>
            `; 

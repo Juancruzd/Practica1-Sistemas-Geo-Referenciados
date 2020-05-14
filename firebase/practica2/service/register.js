@@ -24,6 +24,7 @@ formaregistrate.addEventListener('submit',(e)=>{
                 return db.collection('usuarios').doc(cred.user.uid).set({
                     "nombre": formaregistrate['rnombre'].value,
                     "telefono": formaregistrate['rtelefono'].value,
+                    "correo": formaregistrate['rcorreo'].value,
                     "direccion": formaregistrate['rdireccion'].value,
                     "coordenadas":coordenadas,
                     "dateInOut":new Date().toLocaleString(),
@@ -31,8 +32,8 @@ formaregistrate.addEventListener('submit',(e)=>{
                 }).then(function() { 
                     formaregistrate.reset();
                     document.getElementById('errorregistrar').innerHTML = ''; 
-                    //window.location.replace("index.html");
-                    window.location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html");
+                    window.location.replace("index.html");
+                    //window.location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html");
                 }).catch(function(error) {
                         console.error("Error regitering document: ", error);
                 });
