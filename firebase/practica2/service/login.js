@@ -57,8 +57,8 @@ formaingresar.addEventListener('submit',(e)=>{
             }, function(error) { 
                 console.log(error);
             });
-            window.location.replace("index.html");
-        ///window.location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html");
+            //window.location.replace("index.html");
+        window.location.replace("https://juancruzd.github.io/Practica1-Sistemas-Geo-Referenciados/firebase/practica2/index.html");
     }).catch( err => {  
         document.getElementById('erroringrear').innerHTML = mensajeError(err.code);
         console.log(err);
