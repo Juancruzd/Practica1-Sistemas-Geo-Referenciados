@@ -49,7 +49,6 @@ formaingresar.addEventListener('submit',(e)=>{
                     Latitud: position.coords.latitude, 
                     Longitud: position.coords.longitude
                 } 
-                console.log(coordenadas);
                 return db.collection('usuarios').doc(cred.user.uid).update({
                     "coordenadas":coordenadas,
                     "estado":parseInt(1),
