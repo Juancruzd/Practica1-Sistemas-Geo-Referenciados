@@ -1113,28 +1113,26 @@
                                 }
 
                                 var informaciónrestaurante = "";
-                                const htmlrestaurante = `
-                                <div class="card">
-                                    <div class="card-header text-left">
-                                      ${statusheader }
-                                  </div>
-                                  <div class="card-body">
-                                    <h5 class="card-title">${ doc.data().nombre }</h5>
-                                    <p class="card-text">Correo: ${ doc.data().correo}</p>
-                                    <p class="hint-text">Telefono: Teléfono: ${ docuser.data().telefono }</p>
-                                    <p class="hint-text">Dirección: ${ doc.data().direccion }</p> 
-                                  </div>
-                                  <div class="card-footer text-muted">
-                                    <input type="button" class="boton" name="Calcular Distancia" value="Calcular Distancia" onclick="
-                                    calcDistance(
-                                      ${docuser.data().coordenadas.Latitud},
-                                      ${ docuser.data().coordenadas.Longitud },
-                                      ${doc.data().coordenadas.Latitud},
-                                      ${ doc.data().coordenadas.Longitud } );
-                                    "  />  
-                                  </div>
-                                </div>
-                                `; 
+                                const htmlrestaurante =  
+                                '<div class="card">'+
+                                  '<div class="card-header text-left">'+
+                                      statusheader+
+                                  '</div>'+
+                                  '<div class="card-body">'+
+                                    '<h5 class="card-title">'+doc.data().nombre+'</h5>'+
+                                    '<p class="card-text">Correo:'+doc.data().correo+'</p>'+
+                                    '<p class="hint-text">Telefono: Teléfono:'+docuser.data().telefono +'</p>'+
+                                    '<p class="hint-text">Dirección: '+doc.data().direccion+'</p> '+
+                                  '</div>'+
+                                  '<div class="card-footer text-muted">'+
+                                    '<input type="button" class="boton" name="Calcular Distancia" value="Calcular Distancia"  onclick="calcDistance('+ 
+                                      docuser.data().coordenadas.Latitud+","+
+                                      docuser.data().coordenadas.Longitud+","+
+                                      doc.data().coordenadas.Latitud+","+
+                                      doc.data().coordenadas.Longitud +');"/>'+
+                                  '</div>'+
+                                '</div>'; 
+
                                 informaciónrestaurante = htmlrestaurante; 
                                 var infowindowrestaurant = new google.maps.InfoWindow({
                                                         content: informaciónrestaurante
