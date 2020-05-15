@@ -756,8 +756,9 @@
 }
     </style>
     <script>
-
-      function iniciaMapa(){ 
+      var map;
+      var markers = [];
+    function iniciaMapa(){ 
           var styledMapType = new google.maps.StyledMapType(
             [
     {
@@ -1015,7 +1016,7 @@
 ],
                       {name: 'Mapa Salle Eats'}
           );
-          var map;
+          
           auth.onAuthStateChanged( user =>{ 
             const mapdisplay = document.getElementById('buttonmap'); 
             if(user){  
@@ -1073,89 +1074,18 @@
                 }); 
                 markeruser.addListener('click', function() {
                   infowindowuser.open(map, markeruser);
-                });
-                listOfObjects=[];
+                }); 
                 db.collection('usuarios').get().then( querySnapshot =>{
-                            var iconorestaurant = {
-                                url: "img/icons-map/restaurant.png", // url imagen
-                                scaledSize: new google.maps.Size(20,20)
-                            };
-                            listOfObjects=[];
+                             
                             querySnapshot.forEach(function (doc) { 
-                              if(doc.id != user.uid){
-                                var singleObj = {
-                                    id:"",
-                                    nombre:"",
-                                    correo:"",
-                                    dateInOut:"",
-                                    direccion:"",
-                                    telefono:"",
-                                    lat: 0, 
-                                    lng: 0,
-                                    estado:0
-                                };
-                                singleObj.id = doc.id;
-                                singleObj.nombre = doc.data().nombre;
-                                singleObj.correo = doc.data().correo;
-                                singleObj.dateInOut = doc.data().dateInOut;
-                                singleObj.direccion = doc.data().direccion;
-                                singleObj.telefono = doc.data().telefono;
-                                singleObj.lat = doc.data().coordenadas.Latitud;
-                                singleObj.lng = doc.data().coordenadas.Longitud;
-                                
-                                listOfObjects.push(singleObj); 
-                                var statusheader="";
-                                if(doc.data().estado ==0){
-                                  statusheader='<p class="card-text"><i style="color:red " class="fa fa-circle" aria-hidden="true"></i> Fuera de Servicio o Cerrado</p>';
-                                }
-                                if(doc.data().estado ==1){
-                                  statusheader='<p class="card-text"><i style="color:green " class="fa fa-circle" aria-hidden="true"></i> En Servicio o Abierto</p>';
-                                }
-
-                                var informaciónrestaurante = "";
-                                const htmlrestaurante =  
-                                '<div class="card">'+
-                                  '<div class="card-header text-left">'+
-                                      statusheader+
-                                  '</div>'+
-                                  '<div class="card-body">'+
-                                    '<h5 class="card-title">'+doc.data().nombre+'</h5>'+
-                                    '<p class="card-text">Correo: '+doc.data().correo+'</p>'+
-                                    '<p class="hint-text">Telefono: Teléfono: '+doc.data().telefono +'</p>'+
-                                    '<p class="hint-text">Dirección: '+doc.data().direccion+'</p> '+
-                                  '</div>'+
-                                  '<div class="card-footer text-muted">'+
-                                    '<p class="hint-text" id='+JSON.stringify(doc.id)+'></p>'+
-                                    '<input type="button" class="boton" name="Calcular Distancia" value="Calcular Distancia" onclick="calcDistance(\''+ 
-                                      docuser.data().coordenadas.Latitud+","+
-                                      docuser.data().coordenadas.Longitud+","+
-                                      doc.data().coordenadas.Latitud+","+
-                                      doc.data().coordenadas.Longitud+","+
-                                      doc.id+ '\')" />'+
-                                  '</div>'+
-                                '</div>'; 
-
-                                informaciónrestaurante = htmlrestaurante; 
-                                var infowindowrestaurant = new google.maps.InfoWindow({
-                                                        content: informaciónrestaurante
-                                });
-                                let markerrestaurant = new google.maps.Marker({
-                                id: doc.id,
-                                map: map,
-                                position: new google.maps.LatLng(doc.data().coordenadas.Latitud,doc.data().coordenadas.Longitud),
-                                title: doc.data().correo,
-                                icon: iconorestaurant
-                                }); 
-                                markerrestaurant.addListener('click', function() {
-                                  infowindowrestaurant.open(map, markerrestaurant);
-                                });
-
+                              if(doc.id != user.uid){   
+                                addMarker(doc,docuser)
                               }
-                  });
-                  console.log(listOfObjects.length);
+                  }); 
                 }); 
               });  
-            }else{
+            }
+            else{
               mapdisplay.style.display='none';
               var signOutmap = document.getElementById('map'); 
                signOutmap.innerHTML = ""; 
@@ -1180,7 +1110,60 @@
             });
         });
     }
+   
+    function addMarker(doc,docuser) {  
+      var iconorestaurant = {
+        url: "img/icons-map/restaurant.png", // url imagen
+        scaledSize: new google.maps.Size(20,20)
+      };
+      var statusheader="";
+      if(doc.data().estado ==0){
+          statusheader='<p class="card-text"><i style="color:red " class="fa fa-circle" aria-hidden="true"></i> Fuera de Servicio o Cerrado</p>';
+      }
+      if(doc.data().estado ==1){
+          statusheader='<p class="card-text"><i style="color:green " class="fa fa-circle" aria-hidden="true"></i> En Servicio o Abierto</p>';
+      }
+      var informaciónrestaurante =  
+                                '<div class="card">'+
+                                  '<div class="card-header text-left">'+
+                                      statusheader+
+                                  '</div>'+
+                                  '<div class="card-body">'+
+                                    '<h5 class="card-title">'+doc.data().nombre+'</h5>'+
+                                    '<p class="card-text">Correo: '+doc.data().correo+'</p>'+
+                                    '<p class="hint-text">Telefono: Teléfono: '+doc.data().telefono +'</p>'+
+                                    '<p class="hint-text">Dirección: '+doc.data().direccion+'</p> '+
+                                  '</div>'+
+                                  '<div class="card-footer text-muted">'+
+                                    '<p class="hint-text" id='+JSON.stringify(doc.id)+'></p>'+
+                                    '<input type="button" class="boton" name="Calcular Distancia" value="Calcular Distancia" onclick="calcDistance(\''+ 
+                                      docuser.data().coordenadas.Latitud+","+
+                                      docuser.data().coordenadas.Longitud+","+
+                                      doc.data().coordenadas.Latitud+","+
+                                      doc.data().coordenadas.Longitud+","+
+                                      doc.id+ '\')" />'+
+                                  '</div>'+
+                                '</div>';  
+      var infowindowrestaurant = new google.maps.InfoWindow({
+              content: informaciónrestaurante
+      });
+      let markerrestaurant = new google.maps.Marker({
+                                id: doc.id,
+                                map: map,
+                                position: new google.maps.LatLng(doc.data().coordenadas.Latitud,doc.data().coordenadas.Longitud),
+                                title: doc.data().correo,
+                                icon: iconorestaurant
+      }); 
 
+      markerrestaurant.addListener('click', function() {
+          infowindowrestaurant.open(map, markerrestaurant);
+      }); 
+      ///markers.push(marker); 
+    }
+
+    function removeMarker() { 
+        ///markers[i].setMap(null); 
+    }
     //calculates distance between two points in km's
     function calcDistance(array) {
       var arreglo = array.split(",",5);
