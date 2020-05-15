@@ -1189,19 +1189,17 @@
       let regex=/(\d*.\d{0,2})/;
       return t.match(regex)[0];
     }
-    function dibujarruta(lt1,lg1,lt2,lg2){
-      var directionsService = new google.maps.DirectionsService;
-      var directionsRenderer = new google.maps.DirectionsRenderer;
-      var waypts = [{ location: { lat: lt1, lng: lg1 }, stopover: true },
-            { location: { lat:lt2, lng: lg2 }, stopover: true } ];
-      directionsRenderer.setMap(map); 
-      directionsService.route({
-        origin: [waypts[0].location.lat, waypts[0].location.lng],
-        destination: [waypts[1].location.lat, waypts[1].location.lng],
-        waypoints: waypts,
-        optimizeWaypoints: true,
-        travelMode: 'DRIVING' 
-      });
+    function dibujarruta(lt1,lg1,lt2,lg2){ 
+      var waypts = [{ lat: lt1, lng: lg1 },{ lat:lt2, lng: lg2 } ]; 
+      var line = new google.maps.Polyline({
+          path: waypts,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+
+        line.setMap(map);
     }
   </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
