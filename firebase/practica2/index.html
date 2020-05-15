@@ -1078,11 +1078,9 @@
                 db.collection('usuarios').get().then( querySnapshot =>{ 
                             querySnapshot.forEach(function (doc) { 
                               if(doc.id != user.uid){    
-                                crearmarkerrestaurant(doc,docuser,map) 
+                                crearmarkerrestaurant(doc,docuser) 
                               }
-                  });
-
-                  console.log(listOfObjects.length);
+                  }); 
                 }); 
               });  
             }else{
@@ -1112,7 +1110,7 @@
         });
     }
 
-    function crearmarkerrestaurant(doc,docuser,mapita){
+    function crearmarkerrestaurant(doc,docuser){
       var iconorestaurant = {
         url: "img/icons-map/restaurant.png", // url imagen
         scaledSize: new google.maps.Size(20,20)
