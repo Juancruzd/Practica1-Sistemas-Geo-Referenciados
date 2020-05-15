@@ -1197,19 +1197,44 @@
     }
     var line=undefined;
     function dibujarruta(lt2,lg2){  
-      console.log(line);
-      removeLine();
-      line=undefined;
-      var waypts = [{ lat: lt1, lng: lg1 },{ lat:lt2, lng: lg2 } ]; 
-      line = new google.maps.Polyline({
-          path: waypts,
-          geodesic: true,
-          strokeColor: '#FF0000',
-          strokeOpacity: 1.0,
-          strokeWeight: 2
+        ///line
+        console.log(line);
+        removeLine();
+        line=undefined;
+        var twops = [{ lat: lt1, lng: lg1 },{ lat:lt2, lng: lg2 } ]; 
+        line = new google.maps.Polyline({
+            path: twops,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2
         }); 
         console.log(line); 
         line.setMap(map); 
+
+
+        //Route
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var waypts = [{ location: { lat: lt1, lng: lg1 }, stopover: true },
+         { location: { lat:lt2, lng: lg2 }, stopover: true }];
+         //add map
+        directionsDisplay.setMap(map);
+        // set the new
+        //new Array(waypts[0].location.lat,waypts[0].location.lng)
+        directionsService.route({
+            origin: { lat: waypts[0].location.lat, lng: waypts[0].location.lng },//db waypoint start
+            destination: { lat: waypts[1].location.lat, lng: waypts[1].location.lng },//db waypoint end
+            waypoints: waypts,
+            travelMode: google.maps.TravelMode.WALKING
+        }, function (response, status) {
+            if (status === google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+            } else {
+                window.alert('Ha fallat la comunicació amb el mapa a causa de: ' + status);
+            }
+        });
+
     }
     function removeLine() { 
         line.setMap(null); 
