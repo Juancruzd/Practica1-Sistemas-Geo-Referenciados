@@ -1130,7 +1130,8 @@
                                       ${docuser.data().coordenadas.Latitud},
                                       ${ docuser.data().coordenadas.Longitud },
                                       ${doc.data().coordenadas.Latitud},
-                                      ${ doc.data().coordenadas.Longitud }
+                                      ${ doc.data().coordenadas.Longitud },
+                                      ${ JSON.stringify( doc.id ) }
                                       )" ><a >hola</a>
                                       </div>
                                   </div>
@@ -1164,7 +1165,7 @@
           });
     }
     //calculates distance between two points in km's
-    function calcDistance(lt1,lg1,lt2,lg2) {
+    function calcDistance(lt1,lg1,lt2,lg2,id) {
       console.log(lt1+"    "+lg1+"     "+lt2+"     "+lg2)
       var p1 = new google.maps.LatLng(lt1,lg1);
       var p2 = new google.maps.LatLng(lt2,lg2);
