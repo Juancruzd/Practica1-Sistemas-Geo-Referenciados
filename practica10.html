@@ -341,10 +341,11 @@
             };
 
             var mapa = document.getElementById("map");
+            
+            var map = new google.maps.Map(mapa, propiedades);
             map.mapTypes.set('styled_map', styledMapType);
             map.setMapTypeId('styled_map');
-            var map = new google.maps.Map(mapa, propiedades);
-
+            
             var icono = {
                 url: "https://media.giphy.com/media/1ZweHMlSaxcc32mSSu/giphy.gif", 
                 scaledSize: new google.maps.Size(25, 25),  
