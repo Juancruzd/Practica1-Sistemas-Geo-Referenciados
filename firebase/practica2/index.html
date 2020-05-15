@@ -1109,12 +1109,9 @@
                 console.log("New: ", change.doc.data());
             }
             if (change.type === "modified") {
-                console.log("Modified: ", change.doc.data());
-                console.log(markers);
+                console.log("Modified: ", change.doc.data()); 
                 removeMarker(change.doc.id);
-                console.log(markers);
                 addMarker(change.doc);
-                console.log(markers);
             }
             if (change.type === "removed") {
                 console.log("Removed: ", change.doc.data());
@@ -1198,8 +1195,11 @@
       let regex=/(\d*.\d{0,2})/;
       return t.match(regex)[0];
     }
-    var line;
-    function dibujarruta(lt2,lg2){ 
+    var line=undefined;
+    function dibujarruta(lt2,lg2){  
+      console.log(line);
+      removeLine();
+      line=undefined;
       var waypts = [{ lat: lt1, lng: lg1 },{ lat:lt2, lng: lg2 } ]; 
       line = new google.maps.Polyline({
           path: waypts,
@@ -1208,8 +1208,8 @@
           strokeOpacity: 1.0,
           strokeWeight: 2
         }); 
-        removeLine() 
-        line.setMap(map);
+        console.log(line); 
+        line.setMap(map); 
     }
     function removeLine() { 
         line.setMap(null); 
