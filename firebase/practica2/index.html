@@ -1130,9 +1130,9 @@
                                       ${docuser.data().coordenadas.Latitud},
                                       ${ docuser.data().coordenadas.Longitud },
                                       ${doc.data().coordenadas.Latitud},
-                                      ${ doc.data().coordenadas.Longitud },
-                                      ${ JSON.parse(doc.id) }
-                                      )" ><a >hola</a></div>
+                                      ${ doc.data().coordenadas.Longitud }
+                                      )" ><a >hola</a>
+                                      </div>
                                   </div>
                                 </div>
                                 `; 
@@ -1164,11 +1164,11 @@
           });
     }
     //calculates distance between two points in km's
-    function calcDistance(lt1,lg1,lt2,lg2,idlabel) {
-      console(lt1+"    "+lg1+"     "+lt2+"     "+lg2+"    "+idlabel)
+    function calcDistance(lt1,lg1,lt2,lg2) {
+      console(lt1+"    "+lg1+"     "+lt2+"     "+lg2)
       var p1 = new google.maps.LatLng(lt1,lg1);
       var p2 = new google.maps.LatLng(lt2,lg2);
-        return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
+        //return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
     }
 
   </script>
