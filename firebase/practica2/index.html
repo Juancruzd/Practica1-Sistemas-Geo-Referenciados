@@ -1073,44 +1073,57 @@
                 }); 
                 markeruser.addListener('click', function() {
                   infowindowuser.open(map, markeruser);
-                });
-                listOfObjects=[];
-                db.collection('usuarios').get().then( querySnapshot =>{
-                            var iconorestaurant = {
-                                url: "img/icons-map/restaurant.png", // url imagen
-                                scaledSize: new google.maps.Size(20,20)
-                            };
-                            listOfObjects=[];
+                }); 
+
+                db.collection('usuarios').get().then( querySnapshot =>{ 
                             querySnapshot.forEach(function (doc) { 
-                              if(doc.id != user.uid){
-                                var singleObj = {
-                                    id:"",
-                                    nombre:"",
-                                    correo:"",
-                                    dateInOut:"",
-                                    direccion:"",
-                                    telefono:"",
-                                    lat: 0, 
-                                    lng: 0,
-                                    estado:0
-                                };
-                                singleObj.id = doc.id;
-                                singleObj.nombre = doc.data().nombre;
-                                singleObj.correo = doc.data().correo;
-                                singleObj.dateInOut = doc.data().dateInOut;
-                                singleObj.direccion = doc.data().direccion;
-                                singleObj.telefono = doc.data().telefono;
-                                singleObj.lat = doc.data().coordenadas.Latitud;
-                                singleObj.lng = doc.data().coordenadas.Longitud;
-                                
-                                listOfObjects.push(singleObj); 
-                                var statusheader="";
-                                if(doc.data().estado ==0){
-                                  statusheader='<p class="card-text"><i style="color:red " class="fa fa-circle" aria-hidden="true"></i> Fuera de Servicio o Cerrado</p>';
-                                }
-                                if(doc.data().estado ==1){
-                                  statusheader='<p class="card-text"><i style="color:green " class="fa fa-circle" aria-hidden="true"></i> En Servicio o Abierto</p>';
-                                }
+                              if(doc.id != user.uid){    
+                                crearmarkerrestaurant(doc,docuser,map) 
+                              }
+                  });
+
+                  console.log(listOfObjects.length);
+                }); 
+              });  
+            }else{
+              mapdisplay.style.display='none';
+              var signOutmap = document.getElementById('map'); 
+               signOutmap.innerHTML = ""; 
+               salirmapa();
+            }
+          });
+    
+        var markers = {};
+        // Listen for document metadata changes
+        db.collection("usuarios").onSnapshot({
+        includeMetadataChanges: true
+        }, function(snapshot) { 
+            snapshot.docChanges().forEach(function(change) {
+            if (change.type === "added") {
+                console.log("New: ", change.doc.data());
+            }
+            if (change.type === "modified") {
+                console.log("Modified: ", change.doc.data());
+            }
+            if (change.type === "removed") {
+                console.log("Removed: ", change.doc.data());
+            }
+            });
+        });
+    }
+
+    function crearmarkerrestaurant(doc,docuser,mapita){
+      var iconorestaurant = {
+        url: "img/icons-map/restaurant.png", // url imagen
+        scaledSize: new google.maps.Size(20,20)
+      }; 
+      var statusheader="";
+      if(doc.data().estado ==0){
+        statusheader='<p class="card-text"><i style="color:red " class="fa fa-circle" aria-hidden="true"></i> Fuera de Servicio o Cerrado</p>';
+      } 
+      if(doc.data().estado ==1){ 
+        statusheader='<p class="card-text"><i style="color:green " class="fa fa-circle" aria-hidden="true"></i> En Servicio o Abierto</p>';
+      }
 
                                 var informaciónrestaurante = "";
                                 const htmlrestaurante =  
@@ -1121,7 +1134,7 @@
                                   '<div class="card-body">'+
                                     '<h5 class="card-title">'+doc.data().nombre+'</h5>'+
                                     '<p class="card-text">Correo: '+doc.data().correo+'</p>'+
-                                    '<p class="hint-text">Telefono: Teléfono: '+docuser.data().telefono +'</p>'+
+                                    '<p class="hint-text">Telefono: Teléfono: '+doc.data().telefono +'</p>'+
                                     '<p class="hint-text">Dirección: '+doc.data().direccion+'</p> '+
                                   '</div>'+
                                   '<div class="card-footer text-muted">'+
@@ -1140,6 +1153,7 @@
                                                         content: informaciónrestaurante
                                 });
                                 let markerrestaurant = new google.maps.Marker({
+                                id: doc.id,
                                 map: map,
                                 position: new google.maps.LatLng(doc.data().coordenadas.Latitud,doc.data().coordenadas.Longitud),
                                 title: doc.data().correo,
@@ -1148,19 +1162,6 @@
                                 markerrestaurant.addListener('click', function() {
                                   infowindowrestaurant.open(map, markerrestaurant);
                                 });
-
-                              }
-                  });
-                  console.log(listOfObjects.length);
-                }); 
-              });  
-            }else{
-              mapdisplay.style.display='none';
-              var signOutmap = document.getElementById('map'); 
-               signOutmap.innerHTML = ""; 
-               salirmapa();
-            }
-          });
     }
     //calculates distance between two points in km's
     function calcDistance(array) {
