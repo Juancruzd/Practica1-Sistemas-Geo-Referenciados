@@ -1120,8 +1120,8 @@
                                   '</div>'+
                                   '<div class="card-body">'+
                                     '<h5 class="card-title">'+doc.data().nombre+'</h5>'+
-                                    '<p class="card-text">Correo:'+doc.data().correo+'</p>'+
-                                    '<p class="hint-text">Telefono: Teléfono:'+docuser.data().telefono +'</p>'+
+                                    '<p class="card-text">Correo: '+doc.data().correo+'</p>'+
+                                    '<p class="hint-text">Telefono: Teléfono: '+docuser.data().telefono +'</p>'+
                                     '<p class="hint-text">Dirección: '+doc.data().direccion+'</p> '+
                                   '</div>'+
                                   '<div class="card-footer text-muted">'+
@@ -1129,7 +1129,8 @@
                                       docuser.data().coordenadas.Latitud+","+
                                       docuser.data().coordenadas.Longitud+","+
                                       doc.data().coordenadas.Latitud+","+
-                                      doc.data().coordenadas.Longitud +');"/>'+
+                                      doc.data().coordenadas.Longitud+","+
+                                      JSON.stringify(doc.id)+ ');"/>'+
                                   '</div>'+
                                 '</div>'; 
 
@@ -1161,7 +1162,7 @@
           });
     }
     //calculates distance between two points in km's
-    function calcDistance(lt1,lg1,lt2,lg2) {
+    function calcDistance(lt1,lg1,lt2,lg2,txt) {
       console.log(lt1+"    "+lg1+"     "+lt2+"     "+lg2)
       var p1 = new google.maps.LatLng(lt1,lg1);
       var p2 = new google.maps.LatLng(lt2,lg2);
