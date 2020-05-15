@@ -1166,8 +1166,7 @@
         db.collection("usuarios").onSnapshot({
         // Listen for document metadata changes
         includeMetadataChanges: true
-        }, function(snapshot) {
-            ObtenerProductos();
+        }, function(snapshot) { 
             snapshot.docChanges().forEach(function(change) {
             if (change.type === "added") {
                 console.log("New: ", change.doc.data());
