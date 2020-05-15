@@ -1125,7 +1125,7 @@
                                     '<p class="hint-text">Dirección: '+doc.data().direccion+'</p> '+
                                   '</div>'+
                                   '<div class="card-footer text-muted">'+
-                                    '<p class="hint-text" id='+doc.id+'></p>'+
+                                    '<p class="hint-text" id='+JSON.stringify(doc.id)+'></p>'+
                                     '<input type="button" class="boton" name="Calcular Distancia" value="Calcular Distancia" onclick="calcDistance(\''+ 
                                       docuser.data().coordenadas.Latitud+","+
                                       docuser.data().coordenadas.Longitud+","+
@@ -1169,11 +1169,15 @@
       var lg1=parseFloat(arreglo[1]);
       var lt2=parseFloat(arreglo[2]);
       var lg2=parseFloat(arreglo[3]);
-      var idtext=arreglo[4];
-      console.log(idtext)
+      var idtext=arreglo[4]; 
       var p1 = new google.maps.LatLng(lt1,lg1);
-      var p2 = new google.maps.LatLng(lt2,lg2);
-       console.log(dosDecimales(google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000));
+      var p2 = new google.maps.LatLng(lt2,lg2); 
+      var d=(google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000);
+      var unidad=" kms";
+      if(d<1){
+        unidad=" mts";
+      }
+       document.getElementById(idtext).innerHTML = d+unidad; 
     }
     function dosDecimales(n) {
       let t=n.toString();
