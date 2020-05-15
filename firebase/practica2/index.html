@@ -1191,16 +1191,16 @@
     }
     function dibujarruta(lt1,lg1,lt2,lg2){
       var directionsService = new google.maps.DirectionsService;
-      var directionsDisplay = new google.maps.DirectionsRenderer;
+      var directionsRenderer = new google.maps.DirectionsRenderer;
       var waypts = [{ location: { lat: lt1, lng: lg1 }, stopover: true },
             { location: { lat:lt2, lng: lg2 }, stopover: true } ];
-      map.drawRoute({
-            origin: [waypts[0].location.lat, waypts[0].location.lng],
-            destination: [waypts[1].location.lat, waypts[1].location.lng],
-            travelMode: 'walking',
-            strokeColor: '#0054c2',
-            strokeOpacity: 0.6,
-            strokeWeight: 6
+      directionsRenderer.setMap(map); 
+      directionsService.route({
+        origin: [waypts[0].location.lat, waypts[0].location.lng],
+        destination: [waypts[1].location.lat, waypts[1].location.lng],
+        waypoints: waypts,
+        optimizeWaypoints: true,
+        travelMode: 'DRIVING' 
       });
     }
   </script>
