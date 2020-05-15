@@ -1016,6 +1016,10 @@
                       {name: 'Mapa Salle Eats'}
           );
           var map;
+          var iconorestaurant = {
+                                url: "img/icons-map/restaurant.png", // url imagen
+                                scaledSize: new google.maps.Size(20,20)
+           }; 
           auth.onAuthStateChanged( user =>{ 
             const mapdisplay = document.getElementById('buttonmap'); 
             if(user){  
@@ -1074,54 +1078,16 @@
                 markeruser.addListener('click', function() {
                   infowindowuser.open(map, markeruser);
                 }); 
-
                 db.collection('usuarios').get().then( querySnapshot =>{ 
                             querySnapshot.forEach(function (doc) { 
-                              if(doc.id != user.uid){    
-                                crearmarkerrestaurant(doc,docuser) 
-                              }
-                  }); 
-                }); 
-              });  
-            }else{
-              mapdisplay.style.display='none';
-              var signOutmap = document.getElementById('map'); 
-               signOutmap.innerHTML = ""; 
-               salirmapa();
-            }
-          });
-    
-        var markers = {};
-        // Listen for document metadata changes
-        db.collection("usuarios").onSnapshot({
-        includeMetadataChanges: true
-        }, function(snapshot) { 
-            snapshot.docChanges().forEach(function(change) {
-            if (change.type === "added") {
-                console.log("New: ", change.doc.data());
-            }
-            if (change.type === "modified") {
-                console.log("Modified: ", change.doc.data());
-            }
-            if (change.type === "removed") {
-                console.log("Removed: ", change.doc.data());
-            }
-            });
-        });
-    }
-
-    function crearmarkerrestaurant(doc,docuser){
-      var iconorestaurant = {
-        url: "img/icons-map/restaurant.png", // url imagen
-        scaledSize: new google.maps.Size(20,20)
-      }; 
-      var statusheader="";
-      if(doc.data().estado ==0){
-        statusheader='<p class="card-text"><i style="color:red " class="fa fa-circle" aria-hidden="true"></i> Fuera de Servicio o Cerrado</p>';
-      } 
-      if(doc.data().estado ==1){ 
-        statusheader='<p class="card-text"><i style="color:green " class="fa fa-circle" aria-hidden="true"></i> En Servicio o Abierto</p>';
-      }
+                              if(doc.id != user.uid){   
+                                var statusheader="";
+                                if(doc.data().estado ==0){
+                                  statusheader='<p class="card-text"><i style="color:red " class="fa fa-circle" aria-hidden="true"></i> Fuera de Servicio o Cerrado</p>';
+                                }
+                                if(doc.data().estado ==1){
+                                  statusheader='<p class="card-text"><i style="color:green " class="fa fa-circle" aria-hidden="true"></i> En Servicio o Abierto</p>';
+                                }
 
                                 var informaciónrestaurante = "";
                                 const htmlrestaurante =  
@@ -1132,7 +1098,7 @@
                                   '<div class="card-body">'+
                                     '<h5 class="card-title">'+doc.data().nombre+'</h5>'+
                                     '<p class="card-text">Correo: '+doc.data().correo+'</p>'+
-                                    '<p class="hint-text">Telefono: Teléfono: '+doc.data().telefono +'</p>'+
+                                    '<p class="hint-text">Telefono: Teléfono: '+docuser.data().telefono +'</p>'+
                                     '<p class="hint-text">Dirección: '+doc.data().direccion+'</p> '+
                                   '</div>'+
                                   '<div class="card-footer text-muted">'+
@@ -1160,7 +1126,38 @@
                                 markerrestaurant.addListener('click', function() {
                                   infowindowrestaurant.open(map, markerrestaurant);
                                 });
+
+                              }
+                  });
+                  console.log(listOfObjects.length);
+                }); 
+              });  
+            }else{
+              mapdisplay.style.display='none';
+              var signOutmap = document.getElementById('map'); 
+               signOutmap.innerHTML = ""; 
+               salirmapa();
+            }
+          });
+    
+        db.collection("usuarios").onSnapshot({
+        includeMetadataChanges: true
+        }, function(snapshot) {
+            ObtenerProductos();
+            snapshot.docChanges().forEach(function(change) {
+            if (change.type === "added") {
+                console.log("New: ", change.doc.data());
+            }
+            if (change.type === "modified") {
+                console.log("Modified: ", change.doc.data());
+            }
+            if (change.type === "removed") {
+                console.log("Removed: ", change.doc.data());
+            }
+            });
+        });
     }
+
     //calculates distance between two points in km's
     function calcDistance(array) {
       var arreglo = array.split(",",5);
