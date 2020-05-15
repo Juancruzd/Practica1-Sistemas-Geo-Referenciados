@@ -1114,6 +1114,10 @@
                                 }
 
                                 var informaciónrestaurante = "";   
+                                var idlabel = {
+                                    id:"" 
+                                };
+                                idlabel.id=doc.id;
                                 const htmlrestaurante = `
                                 <div class="card">
                                     <div class="card-header text-left">
@@ -1131,7 +1135,7 @@
                                       ${ docuser.data().coordenadas.Longitud },
                                       ${doc.data().coordenadas.Latitud},
                                       ${ doc.data().coordenadas.Longitud },
-                                      ${ doc.id } );" ><a >hola</a>
+                                      ${ idlabel  } );"><a>hola</a>
                                       </div>
                                   </div>
                                 </div>
