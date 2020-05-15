@@ -758,6 +758,7 @@
     <script>
       var map;
       var markers = [];
+      var lines = [];
     function iniciaMapa(){ 
           var styledMapType = new google.maps.StyledMapType(
             [
@@ -1162,8 +1163,10 @@
       markers[doc.id] = markerrestaurant;
     }
 
-    function removeMarker() { 
+    function removeMarker(id) { 
         ///markers[i].setMap(null); 
+        var marker = markers[id]; // find the marker by given id
+        marker.setMap(null);
     }
    
     //calculates distance between two points in km's
@@ -1189,17 +1192,21 @@
       let regex=/(\d*.\d{0,2})/;
       return t.match(regex)[0];
     }
+    var line;
     function dibujarruta(lt1,lg1,lt2,lg2){ 
       var waypts = [{ lat: lt1, lng: lg1 },{ lat:lt2, lng: lg2 } ]; 
-      var line = new google.maps.Polyline({
+      line = new google.maps.Polyline({
           path: waypts,
           geodesic: true,
           strokeColor: '#FF0000',
           strokeOpacity: 1.0,
           strokeWeight: 2
-        });
-
+        }); 
+        removeLine() 
         line.setMap(map);
+    }
+    function removeLine() { 
+        line.setMap(null); 
     }
   </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
