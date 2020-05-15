@@ -758,7 +758,8 @@
     <script>
       var map;
       var markers = [];
-      var lines = [];
+      var lt1,lg1;
+
     function iniciaMapa(){ 
           var styledMapType = new google.maps.StyledMapType(
             [
@@ -1023,6 +1024,8 @@
             if(user){  
               mapdisplay.style.display='block';
                 db.collection('usuarios').doc(user.uid).get().then( docuser =>{ 
+                lt1=docuser.data().coordenadas.Latitud;
+                lg1=docuser.data().coordenadas.Longitud;
                 map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: docuser.data().coordenadas.Latitud, lng: docuser.data().coordenadas.Longitud} ,
                 zoom: 17,
@@ -1080,7 +1083,7 @@
                              
                             querySnapshot.forEach(function (doc) { 
                               if(doc.id != user.uid){   
-                                addMarker(doc,docuser)
+                                addMarker(doc)
                               }
                   }); 
                 }); 
@@ -1107,13 +1110,16 @@
             }
             if (change.type === "modified") {
                 console.log("Modified: ", change.doc.data());
+                removeMarker(change.doc.id);
+                addMarker(change.doc);
             }
             if (change.type === "removed") {
                 console.log("Removed: ", change.doc.data());
+                removeMarker(change.doc.id);
             }
             });
     });
-    function addMarker(doc,docuser) {  
+    function addMarker(doc) {  
       var iconorestaurant = {
         url: "img/icons-map/restaurant.png", // url imagen
         scaledSize: new google.maps.Size(20,20)
@@ -1138,9 +1144,7 @@
                                   '</div>'+
                                   '<div class="card-footer text-muted">'+
                                     '<p class="hint-text" id='+JSON.stringify(doc.id)+'></p>'+
-                                    '<input type="button" class="boton" name="Calcular Distancia" value="Calcular Distancia" onclick="calcDistance(\''+ 
-                                      docuser.data().coordenadas.Latitud+","+
-                                      docuser.data().coordenadas.Longitud+","+
+                                    '<input type="button" class="boton" name="Calcular Distancia" value="Calcular Distancia" onclick="calcDistance(\''+
                                       doc.data().coordenadas.Latitud+","+
                                       doc.data().coordenadas.Longitud+","+
                                       doc.id+ '\')" />'+
@@ -1166,17 +1170,16 @@
     function removeMarker(id) { 
         ///markers[i].setMap(null); 
         var marker = markers[id]; // find the marker by given id
+        delete markers[id]
         marker.setMap(null);
     }
    
     //calculates distance between two points in km's
     function calcDistance(array) {
       var arreglo = array.split(",",5);
-      var lt1=parseFloat(arreglo[0]);
-      var lg1=parseFloat(arreglo[1]);
-      var lt2=parseFloat(arreglo[2]);
-      var lg2=parseFloat(arreglo[3]);
-      var idtext=arreglo[4]; 
+      var lt2=parseFloat(arreglo[0]);
+      var lg2=parseFloat(arreglo[1]); 
+      var idtext=arreglo[2]; 
       var p1 = new google.maps.LatLng(lt1,lg1);
       var p2 = new google.maps.LatLng(lt2,lg2); 
       var d=dosDecimales(google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000);
@@ -1185,7 +1188,7 @@
         unidad=" m";
       }
        document.getElementById(idtext).innerHTML = d+unidad; 
-       dibujarruta(lt1,lg1,lt2,lg2);
+       dibujarruta(lt2,lg2);
     }
     function dosDecimales(n) {
       let t=n.toString();
@@ -1193,7 +1196,7 @@
       return t.match(regex)[0];
     }
     var line;
-    function dibujarruta(lt1,lg1,lt2,lg2){ 
+    function dibujarruta(lt2,lg2){ 
       var waypts = [{ lat: lt1, lng: lg1 },{ lat:lt2, lng: lg2 } ]; 
       line = new google.maps.Polyline({
           path: waypts,
