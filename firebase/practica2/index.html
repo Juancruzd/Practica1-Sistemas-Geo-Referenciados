@@ -1172,10 +1172,10 @@
       var idtext=arreglo[4]; 
       var p1 = new google.maps.LatLng(lt1,lg1);
       var p2 = new google.maps.LatLng(lt2,lg2); 
-      var d=(google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000);
-      var unidad=" kms";
+      var d=dosDecimales(google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000);
+      var unidad=" km";
       if(d<1){
-        unidad=" mts";
+        unidad=" m";
       }
        document.getElementById(idtext).innerHTML = d+unidad; 
     }
