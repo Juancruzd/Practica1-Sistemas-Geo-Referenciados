@@ -6,7 +6,8 @@ var firebaseConfig = {
     projectId: "jdk-67024",
     storageBucket: "jdk-67024.appspot.com",
     messagingSenderId: "156274067262",
-    appId: "1:156274067262:web:ce191148ff46b892f88e6f"
+    appId: "1:156274067262:web:ce191148ff46b892f88e6f",
+    measurementId: "G-2P3T09B08X"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig); 
