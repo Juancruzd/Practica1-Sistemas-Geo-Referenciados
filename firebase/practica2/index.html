@@ -105,9 +105,9 @@
               <form id="formaingresar">
                 <p class="hint-text">Ingresa con una de tus redes sociales</p>
                 <div class="form-group social-btn clearfix">
-                  <a href="#" class="btn btn-danger pull-left"><i class="fa fa-google"></i> Google</a>
-                  <a href="#" class="btn btn-primary pull-right"><i class="fa fa-facebook"></i> Facebook</a>
-                  <a href="#" class="btn btn-info pull-left mt-1"><i class="fa fa-twitter"></i> Twitter</a>
+                  <a href="javascript:void(0)" class="btn btn-danger pull-left"  onclick="entrarGoogle()"><i class="fa fa-google"></i> Google</a>
+                  <a href="javascript:void(0)" class="btn btn-primary pull-right"><i class="fa fa-facebook"></i> Facebook</a>
+                  <a href="javascript:void(0)" class="btn btn-info pull-left mt-1"><i class="fa fa-twitter"></i> Twitter</a>
                 </div>
                 <div class="or-seperator"><b>O</b></div>
 
@@ -1168,10 +1168,12 @@
     }
 
     function removeMarker(id) { 
-        ///markers[i].setMap(null); 
+        ///markers[i].setMap(null);  
         var marker = markers[id]; // find the marker by given id
+        if(marker!= undefined){
         delete markers[id]
         marker.setMap(null);
+      }
     }
    
     //calculates distance between two points in km's

@@ -83,9 +83,9 @@ entrarGoogle = () => {
 
             console.log(user);
             const html = `
+                <img src="${ user.photoURL }" width="50px">
                 <p>Nombre: ${ user.displayName }</p>
                 <p>Correo: ${ user.email}</p>
-                <img src="${ user.photoURL }" width="50px">
             `;
             datosdelacuenta.innerHTML = html; 
             formaingresar.reset();
