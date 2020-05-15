@@ -1125,12 +1125,12 @@
                                     '<p class="hint-text">Dirección: '+doc.data().direccion+'</p> '+
                                   '</div>'+
                                   '<div class="card-footer text-muted">'+
-                                    '<input type="button" class="boton" name="Calcular Distancia" value="Calcular Distancia"  onclick="calcDistance('+ 
+                                    '<input type="button" class="boton" name="Calcular Distancia" value="Calcular Distancia" onclick="calcDistance(\''+ 
                                       docuser.data().coordenadas.Latitud+","+
                                       docuser.data().coordenadas.Longitud+","+
                                       doc.data().coordenadas.Latitud+","+
                                       doc.data().coordenadas.Longitud+","+
-                                      JSON.stringify(doc.id)+ ');"/>'+
+                                      JSON.stringify(doc.id)+ '\')" />'+
                                   '</div>'+
                                 '</div>'; 
 
