@@ -1083,6 +1083,7 @@
                               }
                   }); 
                 }); 
+                console.log(markers);
               });  
             }
             else{
@@ -1093,7 +1094,9 @@
             }
           });
     
-        db.collection("usuarios").onSnapshot({
+        
+    }
+    db.collection("usuarios").onSnapshot({
         // Listen for document metadata changes
         includeMetadataChanges: true
         }, function(snapshot) { 
@@ -1108,9 +1111,7 @@
                 console.log("Removed: ", change.doc.data());
             }
             });
-        });
-    }
-   
+    });
     function addMarker(doc,docuser) {  
       var iconorestaurant = {
         url: "img/icons-map/restaurant.png", // url imagen
@@ -1158,7 +1159,7 @@
       markerrestaurant.addListener('click', function() {
           infowindowrestaurant.open(map, markerrestaurant);
       }); 
-      ///markers.push(marker); 
+      markers[doc.id] = markerrestaurant;
     }
 
     function removeMarker() { 
