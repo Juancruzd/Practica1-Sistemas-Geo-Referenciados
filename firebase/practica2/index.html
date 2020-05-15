@@ -1162,8 +1162,14 @@
           });
     }
     //calculates distance between two points in km's
-    function calcDistance(lt1,lg1,lt2,lg2,txt) {
-      console.log(lt1+"    "+lg1+"     "+lt2+"     "+lg2)
+    function calcDistance(array) {
+      var arreglo = array.split(",",5);
+      var lt1=parseFloat(arreglo[0]);
+      var lg1=parseFloat(arreglo[1]);
+      var lt2=parseFloat(arreglo[2]);
+      var lg2=parseFloat(arreglo[3]);
+      var idtext=parseFloat(arreglo[6]);
+      console.log(idtext)
       var p1 = new google.maps.LatLng(lt1,lg1);
       var p2 = new google.maps.LatLng(lt2,lg2);
        console.log(dosDecimales(google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000));
