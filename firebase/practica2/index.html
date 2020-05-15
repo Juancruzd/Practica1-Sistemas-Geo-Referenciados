@@ -1110,8 +1110,11 @@
             }
             if (change.type === "modified") {
                 console.log("Modified: ", change.doc.data());
+                console.log(markers);
                 removeMarker(change.doc.id);
+                console.log(markers);
                 addMarker(change.doc);
+                console.log(markers);
             }
             if (change.type === "removed") {
                 console.log("Removed: ", change.doc.data());
