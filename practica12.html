@@ -73,7 +73,7 @@
             <div class="col-12 col-md-6">
                 <div id="mapa3"></div>
                 <p>Obtiene nivel de Zoom</p>
-                <p id="zoomactual"></p>
+                
             </div>
             <div class="col-12 col-md-6">
                 <div id="mapa4"></div>
@@ -153,8 +153,7 @@
             infowindowmapa3.open(mapa3);
 
             mapa3.addListener('zoom_changed', function(){
-                infowindowmapa3.setContent('Zoom' + mapa3.getZoom());
-                document.getElementById("zoomactual").innerHTML=mapa3.getZoom();
+                infowindowmapa3.setContent('Zoom' + mapa3.getZoom()); 
             });
 
 
