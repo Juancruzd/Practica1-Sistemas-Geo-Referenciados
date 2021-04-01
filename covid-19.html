@@ -601,7 +601,7 @@ function search(){
         });
         
         var latitud=0,longitud=0,flag="";     
-        fetch('https://corona.lmao.ninja/countries')
+        fetch('https://corona.lmao.ninja/v3/covid-19/countries')
         .then(function(respuesta) {
                         respuesta.json().then(function(datospaises) {
                             const map = new google.maps.Map(document.getElementById('map'), propiedades);
